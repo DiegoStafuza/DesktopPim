@@ -19,29 +19,10 @@ namespace DesktopPim.View
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void payrollBtn_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void relatorioBtn_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox1_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void HomeView_Load(object sender, EventArgs e)
-        {
-
+            PayrollView payrollView = new PayrollView();
+            payrollView.Show();
         }
     }
 }

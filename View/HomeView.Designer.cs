@@ -40,6 +40,7 @@
             payrollBtn = new Button();
             panelLogo = new Panel();
             labelLogo = new Label();
+            panel1 = new Panel();
             panelPrincipal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
@@ -118,6 +119,7 @@
             // 
             // pictureBox1
             // 
+            pictureBox1.Enabled = false;
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
             pictureBox1.Location = new Point(0, 106);
             pictureBox1.Name = "pictureBox1";
@@ -125,7 +127,6 @@
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 1;
             pictureBox1.TabStop = false;
-            pictureBox1.Click += pictureBox1_Click_1;
             // 
             // relatorioBtn
             // 
@@ -136,11 +137,11 @@
             relatorioBtn.Size = new Size(197, 86);
             relatorioBtn.TabIndex = 4;
             relatorioBtn.UseVisualStyleBackColor = true;
-            relatorioBtn.Click += relatorioBtn_Click;
             // 
             // payrollBtn
             // 
             payrollBtn.FlatAppearance.BorderSize = 0;
+            payrollBtn.FlatAppearance.MouseOverBackColor = Color.Transparent;
             payrollBtn.FlatStyle = FlatStyle.Flat;
             payrollBtn.Location = new Point(3, 114);
             payrollBtn.Name = "payrollBtn";
@@ -169,15 +170,24 @@
             labelLogo.Text = "Holfree";
             labelLogo.TextAlign = ContentAlignment.MiddleCenter;
             // 
+            // panel1
+            // 
+            panel1.BackgroundImage = (Image)resources.GetObject("panel1.BackgroundImage");
+            panel1.Dock = DockStyle.Fill;
+            panel1.Location = new Point(197, 0);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(951, 583);
+            panel1.TabIndex = 1;
+            // 
             // HomeView
             // 
             AutoScaleDimensions = new SizeF(96F, 96F);
             AutoScaleMode = AutoScaleMode.Dpi;
             BackColor = SystemColors.AppWorkspace;
             ClientSize = new Size(1148, 583);
+            Controls.Add(panel1);
             Controls.Add(panelPrincipal);
             Name = "HomeView";
-            Load += HomeView_Load;
             panelPrincipal.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
@@ -200,5 +210,6 @@
         private Button relatorioBtn;
         private PictureBox pictureBox4;
         private Button settingBtn;
+        private Panel panel1;
     }
 }

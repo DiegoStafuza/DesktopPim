@@ -20,7 +20,7 @@ namespace DesktopPim.Model
             using (SqlConnection con = new SqlConnection(connectionString))
             {
                 con.Open();
-                string query = "SELECT * FROM usuarios WHERE email = @email AND senha = @senha AND ativo = 1";
+                string query = "SELECT * FROM tb_usuarios WHERE email = @email AND senha = @senha AND ativo = 1";
 
                 using (SqlCommand cmd = new SqlCommand(query, con))
                 {
