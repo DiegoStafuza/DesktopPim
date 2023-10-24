@@ -36,6 +36,7 @@
             pictureBox2 = new PictureBox();
             pictureBox3 = new PictureBox();
             label1 = new Label();
+            label2 = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
@@ -112,12 +113,25 @@
             label1.Text = "Automatização de holerites";
             label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
+            // label2
+            // 
+            label2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
+            label2.BackColor = Color.IndianRed;
+            label2.BorderStyle = BorderStyle.FixedSingle;
+            label2.FlatStyle = FlatStyle.Popup;
+            label2.Location = new Point(177, 539);
+            label2.Name = "label2";
+            label2.Size = new Size(430, 43);
+            label2.TabIndex = 0;
+            label2.Visible = false;
+            // 
             // LoginView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(800, 626);
+            Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(pictureBox3);
             Controls.Add(pictureBox2);
@@ -125,8 +139,9 @@
             Controls.Add(UserBox);
             Controls.Add(Passwordbox);
             Controls.Add(Autenticar);
+            FormBorderStyle = FormBorderStyle.None;
             Name = "LoginView";
-            Text = "LoginView";
+            StartPosition = FormStartPosition.CenterScreen;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
@@ -143,5 +158,6 @@
         private PictureBox pictureBox2;
         private PictureBox pictureBox3;
         private Label label1;
+        private Label label2;
     }
 }

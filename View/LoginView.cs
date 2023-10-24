@@ -26,7 +26,7 @@ namespace DesktopPim.View
             string usuario = UserBox.Text;
             string senha = Passwordbox.Text;
 
-            UserRepo userRepository = new UserRepo("Data Source=LENOVODIEGO\\SQLEXPRESS;User ID=di;Password=1234;Connect Timeout=30;Encrypt=False;");
+            UserRepo userRepository = new UserRepo("Data Source=LENOVODIEGO\\SQLEXPRESS;Initial Catalog=PIM;User ID=di;Password=1234;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;");
             LoginController loginController = new LoginController(userRepository);
 
             if (loginController.AutenticaUsu(usuario, senha))
