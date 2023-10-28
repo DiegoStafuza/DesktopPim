@@ -1,4 +1,5 @@
 using DesktopPim.View;
+using DesktopPim.Views;
 
 namespace DesktopPim
 {

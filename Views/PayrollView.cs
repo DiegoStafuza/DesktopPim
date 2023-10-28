@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace DesktopPim.View
+namespace DesktopPim.Views
 {
     public partial class PayrollView : Form
     {
@@ -17,7 +17,7 @@ namespace DesktopPim.View
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Button1_Click(object sender, EventArgs e)
         {
             MessageBox.Show("teste click!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }

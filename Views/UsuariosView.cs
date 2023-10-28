@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace DesktopPim.View
+namespace DesktopPim.Views
 {
     public partial class UsuariosView : Form
     {
@@ -17,24 +17,34 @@ namespace DesktopPim.View
             InitializeComponent();
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
+        private void TextBox1_TextChanged(object sender, EventArgs e)
         {
 
         }
 
-        private void btnExcluir_Click(object sender, EventArgs e)
+        private void BtnExcluir_Click(object sender, EventArgs e)
         {
             MessageBox.Show("clicando!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
+        private void Panel1_Paint(object sender, PaintEventArgs e)
         {
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Button1_Click(object sender, EventArgs e)
         {
             MessageBox.Show("clicando!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void Button1_Click_1(object sender, EventArgs e)
+        {
+            MessageBox.Show("clicando!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void Label2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

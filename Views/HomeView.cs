@@ -7,8 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DesktopPim.Views;
 
-namespace DesktopPim.View
+namespace DesktopPim.Views
 {
     public partial class HomeView : Form
     {
@@ -33,15 +34,15 @@ namespace DesktopPim.View
             formularioFilho.Show();
         }
 
-        private void payrollBtn_Click(object sender, EventArgs e)
+        private void PayrollBtn_Click(object sender, EventArgs e)
         {
-            PayrollView payrollView = new PayrollView();
+            PayrollView payrollView = new();
             ABrirFormFilho(payrollView);
         }
 
-        private void peopleBtn_Click(object sender, EventArgs e)
+        private void PeopleBtn_Click(object sender, EventArgs e)
         {
-            UsuariosView usuariosView = new UsuariosView();
+            UsuariosView usuariosView = new();
             ABrirFormFilho(usuariosView);
         }
     }
