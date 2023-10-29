@@ -50,7 +50,6 @@
             Autenticar.TabIndex = 3;
             Autenticar.Text = "Autenticar";
             Autenticar.UseVisualStyleBackColor = true;
-            Autenticar.Click += Autenticar_Click;
             // 
             // Passwordbox
             // 

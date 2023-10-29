@@ -1,65 +1,44 @@
-﻿using System;
-using System.Net.Http;
-using System.Net.Http.Headers;
+﻿using System.Net;
 using System.Text;
-using Newtonsoft.Json;
+using System.Text.Json;
+using System.Web.Mvc;
 
-public class LoginController
+namespace DesktopPim.Controllers
 {
-    private readonly string apiBaseUrl = "https://20.206.249.21:433/api/Autenticacao/login"; //URL da API
-
-    public async Task<bool> AuthenticateAsync(string email, string password)
+    public class LoginController : Controller
     {
-        try
+
+        private readonly string apiUrl = "https://20.206.249.21/api/Autenticacao/login";
+        private readonly HttpClient client = new();
+
+        public async Task<Model.LoginResponse> Login(string username, string password)
         {
-            using (var client = new HttpClient())
+            ServicePointManager.ServerCertificateValidationCallback += (sender, certificate, chain, sslPolicyErrors) => true;
+
+            var data = new
             {
-                client.BaseAddress = new Uri(apiBaseUrl);
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                email = username,
+                Senha = password
+            };
 
-                var loginData = new
+            var json = JsonSerializer.Serialize(data);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+            HttpResponseMessage response = await client.PostAsync(apiUrl, content);
+
+            if (response.IsSuccessStatusCode)
+            {
+                var body = await response.Content.ReadAsStringAsync();
+                var loginResponse = JsonSerializer.Deserialize<Model.LoginResponse>(body);
+
+                if(loginResponse.usuario.ativo == 1 && loginResponse.usuario.administrador == 1)
                 {
-                    email,
-                    senha = password
-                };
-
-                var jsonContent = JsonConvert.SerializeObject(loginData);
-                var content = new StringContent(jsonContent, System.Text.Encoding.UTF8, "application/json");
-
-                var response = await client.PostAsync(apiBaseUrl, content);
-
-                if (response.IsSuccessStatusCode)
-                {
-                    bool isAdmin = IsUserAdmin(email);
-                    bool isUserActive = IsUserActive(email);
-
-                    if (isAdmin && isUserActive)
-                    {
-                        // Autenticação bem-sucedida
-                        return true;
-                    }
+                    return loginResponse;
                 }
+
             }
-
-            // Autenticação falhou
-            return false;
+            return null;
         }
-        catch (Exception ex)
-        {
-            // Lidar com erros, por exemplo, log ou notificar o usuário
-            return false;
-        }
-    }
-
-    private bool IsUserAdmin(string email)
-    {
-        return email == "admin@example.com";
-    }
-
-    private bool IsUserActive(string email)
-    {
-        // Simulação: Verifique se o usuário está ativo com base no email
-        // Substitua por sua lógica real
-        return true;
     }
 }
+

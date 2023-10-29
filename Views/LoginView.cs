@@ -1,4 +1,10 @@
-﻿using DesktopPim.Views;
+﻿using Azure;
+using DesktopPim.Controllers;
+using DesktopPim.Model;
+using DesktopPim.Views;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
+using System.Net.Http;
+using System.Text.Json;
 
 namespace DesktopPim.View
 {
@@ -9,30 +15,29 @@ namespace DesktopPim.View
             InitializeComponent();
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
-        }
+            Autenticar.Click += Autenticar_Click;
 
-        private async void Autenticar_Click(object sender, EventArgs e)
-        {
-            //    string usuario = UserBox.Text;
-            //    string senha = Passwordbox.Text;
 
-            //    var loginController = new LoginController();
-            //    bool isAuthenticated = await loginController.AuthenticateAsync(usuario, senha);
+            async void Autenticar_Click(object sender, EventArgs e)
+            {
+                string usuario = UserBox.Text;
+                string senha = Passwordbox.Text;
 
-            //    if (isAuthenticated)
-            //    {
-            //        MessageBox.Show("Login bem sucedido, bem-vindo!", "Autenticado com sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            HomeView homeView = new();
-            homeView.Show();
-            this.Hide();
+                LoginController loginController = new();
+                LoginResponse response = await loginController.Login(usuario, senha);
+
+                if (response != null && response.usuario.ativo == 1 && response.usuario.administrador == 1)
+                {
+                    MessageBox.Show("Login bem-sucedido!");
+                    HomeView homeView = new();
+                    homeView.Show();
+                    this.Hide();
+                }
+                else
+                {
+                    MessageBox.Show("Usuário ou senha incorretos. Tente novamente", "Erro ao autenticar.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
     }
 }
-//            }
-//            else
-//            {
-//                MessageBox.Show("Autenticação falhou. Verifique suas credenciais.", "Erro de Autenticação");
-//            }
-//        }
-//    }
-//}
