@@ -2,6 +2,7 @@
 using System.Text;
 using System.Text.Json;
 using System.Web.Mvc;
+using DesktopPim.Controllers;
 
 namespace DesktopPim.Controllers
 {
@@ -9,11 +10,15 @@ namespace DesktopPim.Controllers
     {
 
         private readonly string apiUrl = "https://20.206.249.21/api/Autenticacao/login";
-        private readonly HttpClient client = new();
+        private readonly HttpClient client;
+
+        public LoginController()
+        {
+            client = new HttpClientService().CreateHttpClient();
+        }
 
         public async Task<Model.LoginResponse> Login(string username, string password)
-        {
-            ServicePointManager.ServerCertificateValidationCallback += (sender, certificate, chain, sslPolicyErrors) => true;
+        { 
 
             var data = new
             {
@@ -31,10 +36,7 @@ namespace DesktopPim.Controllers
                 var body = await response.Content.ReadAsStringAsync();
                 var loginResponse = JsonSerializer.Deserialize<Model.LoginResponse>(body);
 
-                if(loginResponse.usuario.ativo == 1 && loginResponse.usuario.administrador == 1)
-                {
-                    return loginResponse;
-                }
+                return loginResponse;
 
             }
             return null;

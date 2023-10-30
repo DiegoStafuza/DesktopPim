@@ -28,10 +28,18 @@ namespace DesktopPim.View
 
                 if (response != null && response.usuario.ativo == 1 && response.usuario.administrador == 1)
                 {
-                    MessageBox.Show("Login bem-sucedido!");
+                    MessageBox.Show("Login bem-sucedido!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     HomeView homeView = new();
                     homeView.Show();
                     this.Hide();
+                }
+                else if(response != null && response.usuario.administrador == 0)
+                {
+                    MessageBox.Show("Você não possui permissão para acessar!", "Erro de permissão.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else if (response != null && response.usuario.ativo == 0)
+                {
+                    MessageBox.Show("Usuário inativo.", "Conta inativada.", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
                 else
                 {

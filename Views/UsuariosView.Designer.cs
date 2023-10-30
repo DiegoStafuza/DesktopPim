@@ -95,7 +95,6 @@ namespace DesktopPim.Views
             panel1.Name = "panel1";
             panel1.Size = new Size(1101, 273);
             panel1.TabIndex = 13;
-            panel1.Paint += Panel1_Paint;
             // 
             // pictureBox5
             // 
@@ -227,7 +226,6 @@ namespace DesktopPim.Views
             label2.Size = new Size(72, 25);
             label2.TabIndex = 0;
             label2.Text = "Excluir";
-            label2.Click += Label2_Click;
             // 
             // pictureBox2
             // 
@@ -256,6 +254,7 @@ namespace DesktopPim.Views
             button2.TabIndex = 3;
             button2.TextAlign = ContentAlignment.MiddleRight;
             button2.UseVisualStyleBackColor = false;
+            button2.Click += button2_Click;
             // 
             // label1
             // 
@@ -298,7 +297,6 @@ namespace DesktopPim.Views
             button1.TabIndex = 0;
             button1.TextAlign = ContentAlignment.MiddleRight;
             button1.UseVisualStyleBackColor = false;
-            button1.Click += Button1_Click_1;
             // 
             // button3
             // 
