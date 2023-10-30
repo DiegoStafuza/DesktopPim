@@ -45,5 +45,16 @@ namespace DesktopPim.Views
             UsuariosView usuariosView = new();
             ABrirFormFilho(usuariosView);
         }
+
+        private void DuvidasBtn_Click(object sender, EventArgs e)
+        {
+            DuvidasView duvidasView = new();
+            ABrirFormFilho(duvidasView);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

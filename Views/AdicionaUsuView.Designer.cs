@@ -46,7 +46,7 @@
             // NomeCompletoTx
             // 
             NomeCompletoTx.Cursor = Cursors.IBeam;
-            NomeCompletoTx.Location = new Point(21, 138);
+            NomeCompletoTx.Location = new Point(199, 138);
             NomeCompletoTx.Name = "NomeCompletoTx";
             NomeCompletoTx.Size = new Size(414, 23);
             NomeCompletoTx.TabIndex = 0;
@@ -56,7 +56,7 @@
             label1.FlatStyle = FlatStyle.Flat;
             label1.Font = new Font("Segoe UI", 26.25F, FontStyle.Bold, GraphicsUnit.Point);
             label1.ForeColor = Color.DarkGreen;
-            label1.Location = new Point(12, 18);
+            label1.Location = new Point(234, 9);
             label1.Name = "label1";
             label1.Size = new Size(361, 60);
             label1.TabIndex = 0;
@@ -65,7 +65,7 @@
             // label2
             // 
             label2.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.Location = new Point(16, 101);
+            label2.Location = new Point(199, 101);
             label2.Name = "label2";
             label2.Size = new Size(180, 34);
             label2.TabIndex = 0;
@@ -74,7 +74,7 @@
             // label3
             // 
             label3.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.Location = new Point(16, 192);
+            label3.Location = new Point(199, 192);
             label3.Name = "label3";
             label3.Size = new Size(180, 34);
             label3.TabIndex = 0;
@@ -83,7 +83,7 @@
             // EmailTx
             // 
             EmailTx.Cursor = Cursors.IBeam;
-            EmailTx.Location = new Point(21, 229);
+            EmailTx.Location = new Point(199, 229);
             EmailTx.Name = "EmailTx";
             EmailTx.Size = new Size(414, 23);
             EmailTx.TabIndex = 3;
@@ -91,7 +91,7 @@
             // label4
             // 
             label4.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label4.Location = new Point(16, 280);
+            label4.Location = new Point(199, 280);
             label4.Name = "label4";
             label4.Size = new Size(180, 34);
             label4.TabIndex = 0;
@@ -100,7 +100,7 @@
             // SenhaTx
             // 
             SenhaTx.Cursor = Cursors.IBeam;
-            SenhaTx.Location = new Point(21, 317);
+            SenhaTx.Location = new Point(199, 317);
             SenhaTx.Name = "SenhaTx";
             SenhaTx.Size = new Size(414, 23);
             SenhaTx.TabIndex = 5;
@@ -109,7 +109,7 @@
             // label5
             // 
             label5.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label5.Location = new Point(16, 367);
+            label5.Location = new Point(199, 367);
             label5.Name = "label5";
             label5.Size = new Size(180, 34);
             label5.TabIndex = 0;
@@ -118,7 +118,7 @@
             // ConfirmSenCheck
             // 
             ConfirmSenCheck.Cursor = Cursors.IBeam;
-            ConfirmSenCheck.Location = new Point(21, 404);
+            ConfirmSenCheck.Location = new Point(199, 404);
             ConfirmSenCheck.Name = "ConfirmSenCheck";
             ConfirmSenCheck.Size = new Size(414, 23);
             ConfirmSenCheck.TabIndex = 7;
@@ -126,9 +126,10 @@
             // 
             // CheckAtivo
             // 
+            CheckAtivo.Cursor = Cursors.Hand;
             CheckAtivo.FlatStyle = FlatStyle.Flat;
             CheckAtivo.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            CheckAtivo.Location = new Point(21, 519);
+            CheckAtivo.Location = new Point(199, 510);
             CheckAtivo.Name = "CheckAtivo";
             CheckAtivo.Size = new Size(166, 57);
             CheckAtivo.TabIndex = 9;
@@ -137,9 +138,10 @@
             // 
             // CheckAdm
             // 
+            CheckAdm.Cursor = Cursors.Hand;
             CheckAdm.FlatStyle = FlatStyle.Flat;
             CheckAdm.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            CheckAdm.Location = new Point(21, 456);
+            CheckAdm.Location = new Point(199, 447);
             CheckAdm.Name = "CheckAdm";
             CheckAdm.Size = new Size(166, 57);
             CheckAdm.TabIndex = 10;
@@ -149,10 +151,11 @@
             // button1
             // 
             button1.BackgroundImage = (Image)resources.GetObject("button1.BackgroundImage");
+            button1.Cursor = Cursors.Hand;
             button1.FlatStyle = FlatStyle.Flat;
             button1.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
             button1.ForeColor = Color.White;
-            button1.Location = new Point(21, 610);
+            button1.Location = new Point(199, 573);
             button1.Name = "button1";
             button1.Size = new Size(414, 57);
             button1.TabIndex = 11;

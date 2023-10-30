@@ -30,22 +30,27 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HomeView));
             panelPrincipal = new Panel();
+            label5 = new Label();
+            pictureBox5 = new PictureBox();
+            button1 = new Button();
             label1 = new Label();
             label4 = new Label();
             label3 = new Label();
-            label2 = new Label();
             pictureBox4 = new PictureBox();
             pictureBox2 = new PictureBox();
-            settingBtn = new Button();
-            peopleBtn = new Button();
+            DuvidasBtn = new Button();
             pictureBox3 = new PictureBox();
             pictureBox1 = new PictureBox();
             relatorioBtn = new Button();
             payrollBtn = new Button();
             panelLogo = new Panel();
             labelLogo = new Label();
+            label2 = new Label();
+            peopleBtn = new Button();
+            panel2 = new Panel();
             panel1 = new Panel();
             panelPrincipal.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox5).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
@@ -56,24 +61,67 @@
             // panelPrincipal
             // 
             panelPrincipal.BackColor = Color.DarkGreen;
+            panelPrincipal.Controls.Add(label5);
+            panelPrincipal.Controls.Add(pictureBox5);
+            panelPrincipal.Controls.Add(button1);
             panelPrincipal.Controls.Add(label1);
             panelPrincipal.Controls.Add(label4);
             panelPrincipal.Controls.Add(label3);
-            panelPrincipal.Controls.Add(label2);
             panelPrincipal.Controls.Add(pictureBox4);
             panelPrincipal.Controls.Add(pictureBox2);
-            panelPrincipal.Controls.Add(settingBtn);
-            panelPrincipal.Controls.Add(peopleBtn);
+            panelPrincipal.Controls.Add(DuvidasBtn);
             panelPrincipal.Controls.Add(pictureBox3);
             panelPrincipal.Controls.Add(pictureBox1);
             panelPrincipal.Controls.Add(relatorioBtn);
             panelPrincipal.Controls.Add(payrollBtn);
             panelPrincipal.Controls.Add(panelLogo);
+            panelPrincipal.Controls.Add(label2);
+            panelPrincipal.Controls.Add(peopleBtn);
+            panelPrincipal.Controls.Add(panel2);
             panelPrincipal.Dock = DockStyle.Left;
             panelPrincipal.Location = new Point(0, 0);
             panelPrincipal.Name = "panelPrincipal";
             panelPrincipal.Size = new Size(293, 583);
             panelPrincipal.TabIndex = 0;
+            // 
+            // label5
+            // 
+            label5.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            label5.Enabled = false;
+            label5.Font = new Font("Segoe UI", 24F, FontStyle.Regular, GraphicsUnit.Point);
+            label5.Location = new Point(127, 523);
+            label5.Name = "label5";
+            label5.Size = new Size(76, 48);
+            label5.TabIndex = 0;
+            label5.Text = "Sair";
+            label5.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // pictureBox5
+            // 
+            pictureBox5.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            pictureBox5.Enabled = false;
+            pictureBox5.Image = (Image)resources.GetObject("pictureBox5.Image");
+            pictureBox5.Location = new Point(3, 519);
+            pictureBox5.Name = "pictureBox5";
+            pictureBox5.Size = new Size(114, 59);
+            pictureBox5.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox5.TabIndex = 10;
+            pictureBox5.TabStop = false;
+            // 
+            // button1
+            // 
+            button1.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            button1.BackgroundImage = (Image)resources.GetObject("button1.BackgroundImage");
+            button1.BackgroundImageLayout = ImageLayout.Stretch;
+            button1.Cursor = Cursors.Hand;
+            button1.FlatAppearance.BorderSize = 0;
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.Location = new Point(0, 516);
+            button1.Name = "button1";
+            button1.Size = new Size(293, 64);
+            button1.TabIndex = 0;
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // label1
             // 
@@ -105,16 +153,6 @@
             label3.TabIndex = 0;
             label3.Text = "Relatórios";
             // 
-            // label2
-            // 
-            label2.Enabled = false;
-            label2.Font = new Font("Segoe UI", 24F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.Location = new Point(125, 196);
-            label2.Name = "label2";
-            label2.Size = new Size(148, 40);
-            label2.TabIndex = 0;
-            label2.Text = "Usuários";
-            // 
             // pictureBox4
             // 
             pictureBox4.Enabled = false;
@@ -137,33 +175,19 @@
             pictureBox2.TabIndex = 3;
             pictureBox2.TabStop = false;
             // 
-            // settingBtn
+            // DuvidasBtn
             // 
-            settingBtn.BackgroundImage = (Image)resources.GetObject("settingBtn.BackgroundImage");
-            settingBtn.BackgroundImageLayout = ImageLayout.Stretch;
-            settingBtn.Cursor = Cursors.Hand;
-            settingBtn.FlatAppearance.BorderSize = 0;
-            settingBtn.FlatStyle = FlatStyle.Flat;
-            settingBtn.Location = new Point(0, 324);
-            settingBtn.Name = "settingBtn";
-            settingBtn.Size = new Size(293, 64);
-            settingBtn.TabIndex = 6;
-            settingBtn.UseVisualStyleBackColor = true;
-            // 
-            // peopleBtn
-            // 
-            peopleBtn.BackgroundImage = (Image)resources.GetObject("peopleBtn.BackgroundImage");
-            peopleBtn.BackgroundImageLayout = ImageLayout.Stretch;
-            peopleBtn.Cursor = Cursors.Hand;
-            peopleBtn.FlatAppearance.BorderColor = Color.Green;
-            peopleBtn.FlatAppearance.BorderSize = 0;
-            peopleBtn.FlatStyle = FlatStyle.Flat;
-            peopleBtn.Location = new Point(3, 186);
-            peopleBtn.Name = "peopleBtn";
-            peopleBtn.Size = new Size(290, 64);
-            peopleBtn.TabIndex = 0;
-            peopleBtn.UseVisualStyleBackColor = true;
-            peopleBtn.Click += PeopleBtn_Click;
+            DuvidasBtn.BackgroundImage = (Image)resources.GetObject("DuvidasBtn.BackgroundImage");
+            DuvidasBtn.BackgroundImageLayout = ImageLayout.Stretch;
+            DuvidasBtn.Cursor = Cursors.Hand;
+            DuvidasBtn.FlatAppearance.BorderSize = 0;
+            DuvidasBtn.FlatStyle = FlatStyle.Flat;
+            DuvidasBtn.Location = new Point(0, 324);
+            DuvidasBtn.Name = "DuvidasBtn";
+            DuvidasBtn.Size = new Size(293, 64);
+            DuvidasBtn.TabIndex = 0;
+            DuvidasBtn.UseVisualStyleBackColor = true;
+            DuvidasBtn.Click += DuvidasBtn_Click;
             // 
             // pictureBox3
             // 
@@ -238,6 +262,42 @@
             labelLogo.Text = "Holfree";
             labelLogo.TextAlign = ContentAlignment.MiddleCenter;
             // 
+            // label2
+            // 
+            label2.Cursor = Cursors.Hand;
+            label2.Enabled = false;
+            label2.FlatStyle = FlatStyle.Flat;
+            label2.Font = new Font("Segoe UI", 24F, FontStyle.Regular, GraphicsUnit.Point);
+            label2.Location = new Point(125, 196);
+            label2.Name = "label2";
+            label2.Size = new Size(148, 40);
+            label2.TabIndex = 0;
+            label2.Text = "Usuários";
+            // 
+            // peopleBtn
+            // 
+            peopleBtn.BackColor = Color.DarkGreen;
+            peopleBtn.BackgroundImage = (Image)resources.GetObject("peopleBtn.BackgroundImage");
+            peopleBtn.BackgroundImageLayout = ImageLayout.Stretch;
+            peopleBtn.Cursor = Cursors.Hand;
+            peopleBtn.FlatAppearance.BorderColor = Color.Green;
+            peopleBtn.FlatAppearance.BorderSize = 0;
+            peopleBtn.FlatStyle = FlatStyle.Flat;
+            peopleBtn.Location = new Point(3, 186);
+            peopleBtn.Name = "peopleBtn";
+            peopleBtn.Size = new Size(290, 64);
+            peopleBtn.TabIndex = 0;
+            peopleBtn.UseVisualStyleBackColor = false;
+            peopleBtn.Click += PeopleBtn_Click;
+            // 
+            // panel2
+            // 
+            panel2.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            panel2.Location = new Point(0, 516);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(293, 64);
+            panel2.TabIndex = 11;
+            // 
             // panel1
             // 
             panel1.BackgroundImage = (Image)resources.GetObject("panel1.BackgroundImage");
@@ -257,6 +317,7 @@
             Controls.Add(panelPrincipal);
             Name = "HomeView";
             panelPrincipal.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox5).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
@@ -277,11 +338,15 @@
         private PictureBox pictureBox3;
         private Button relatorioBtn;
         private PictureBox pictureBox4;
-        private Button settingBtn;
+        private Button DuvidasBtn;
         private Panel panel1;
         private Label label1;
         private Label label4;
         private Label label3;
         private Label label2;
+        private Label label5;
+        private PictureBox pictureBox5;
+        private Button button1;
+        private Panel panel2;
     }
 }

@@ -45,12 +45,12 @@ namespace DesktopPim.Views
 
             if (sucesso)
             {
-                MessageBox.Show("Cadastro realizado com sucesso!");
+                MessageBox.Show("Cadastro realizado com sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 LimparCampos();
             }
             else
             {
-                MessageBox.Show("Não foi possível realizar o cadastro.");
+                MessageBox.Show("Não foi possível realizar o cadastro.", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 LimparCampos();
             }
         }
