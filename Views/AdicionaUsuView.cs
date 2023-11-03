@@ -27,7 +27,7 @@ namespace DesktopPim.Views
             SenhaTx.Clear();
             CheckAtivo.Checked = false;
             CheckAdm.Checked = false;
-            ConfirmSenCheck.Clear();
+            ConfirmSenTx.Clear();
         }
 
         private async void button1_Click(object sender, EventArgs e)
@@ -43,7 +43,12 @@ namespace DesktopPim.Views
                 Ativo = (short)(CheckAtivo.Checked ? 1 : 0)
             });
 
-            if (sucesso)
+            if (SenhaTx.Text != ConfirmSenTx.Text)
+            {
+                MessageBox.Show("As senhas devem ser iguais!", "Verifique!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+
+            else if (sucesso) 
             {
                 MessageBox.Show("Cadastro realizado com sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 LimparCampos();

@@ -37,7 +37,7 @@
             label4 = new Label();
             SenhaTx = new TextBox();
             label5 = new Label();
-            ConfirmSenCheck = new TextBox();
+            ConfirmSenTx = new TextBox();
             CheckAtivo = new CheckBox();
             CheckAdm = new CheckBox();
             button1 = new Button();
@@ -115,14 +115,14 @@
             label5.TabIndex = 0;
             label5.Text = "Confirma senha";
             // 
-            // ConfirmSenCheck
+            // ConfirmSenTx
             // 
-            ConfirmSenCheck.Cursor = Cursors.IBeam;
-            ConfirmSenCheck.Location = new Point(199, 404);
-            ConfirmSenCheck.Name = "ConfirmSenCheck";
-            ConfirmSenCheck.Size = new Size(414, 23);
-            ConfirmSenCheck.TabIndex = 7;
-            ConfirmSenCheck.UseSystemPasswordChar = true;
+            ConfirmSenTx.Cursor = Cursors.IBeam;
+            ConfirmSenTx.Location = new Point(199, 404);
+            ConfirmSenTx.Name = "ConfirmSenTx";
+            ConfirmSenTx.Size = new Size(414, 23);
+            ConfirmSenTx.TabIndex = 7;
+            ConfirmSenTx.UseSystemPasswordChar = true;
             // 
             // CheckAtivo
             // 
@@ -173,7 +173,7 @@
             Controls.Add(CheckAdm);
             Controls.Add(CheckAtivo);
             Controls.Add(label5);
-            Controls.Add(ConfirmSenCheck);
+            Controls.Add(ConfirmSenTx);
             Controls.Add(label4);
             Controls.Add(SenhaTx);
             Controls.Add(label3);
@@ -198,7 +198,7 @@
         private Label label4;
         private TextBox SenhaTx;
         private Label label5;
-        private TextBox ConfirmSenCheck;
+        private TextBox ConfirmSenTx;
         private CheckBox CheckAtivo;
         private CheckBox CheckAdm;
         private Button button1;
