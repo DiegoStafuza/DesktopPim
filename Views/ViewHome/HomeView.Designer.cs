@@ -30,6 +30,9 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HomeView));
             panelPrincipal = new Panel();
+            label6 = new Label();
+            pictureBox6 = new PictureBox();
+            button2 = new Button();
             label5 = new Label();
             pictureBox5 = new PictureBox();
             button1 = new Button();
@@ -50,6 +53,7 @@
             panel2 = new Panel();
             panel1 = new Panel();
             panelPrincipal.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox6).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox5).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
@@ -61,6 +65,9 @@
             // panelPrincipal
             // 
             panelPrincipal.BackColor = Color.DarkGreen;
+            panelPrincipal.Controls.Add(label6);
+            panelPrincipal.Controls.Add(pictureBox6);
+            panelPrincipal.Controls.Add(button2);
             panelPrincipal.Controls.Add(label5);
             panelPrincipal.Controls.Add(pictureBox5);
             panelPrincipal.Controls.Add(button1);
@@ -83,6 +90,41 @@
             panelPrincipal.Name = "panelPrincipal";
             panelPrincipal.Size = new Size(293, 583);
             panelPrincipal.TabIndex = 0;
+            // 
+            // label6
+            // 
+            label6.Enabled = false;
+            label6.Font = new Font("Segoe UI", 21.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label6.Location = new Point(123, 265);
+            label6.Name = "label6";
+            label6.Size = new Size(179, 47);
+            label6.TabIndex = 12;
+            label6.Text = "Funcionários";
+            // 
+            // pictureBox6
+            // 
+            pictureBox6.Enabled = false;
+            pictureBox6.Image = (Image)resources.GetObject("pictureBox6.Image");
+            pictureBox6.Location = new Point(12, 261);
+            pictureBox6.Name = "pictureBox6";
+            pictureBox6.Size = new Size(102, 62);
+            pictureBox6.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox6.TabIndex = 14;
+            pictureBox6.TabStop = false;
+            // 
+            // button2
+            // 
+            button2.BackgroundImage = (Image)resources.GetObject("button2.BackgroundImage");
+            button2.BackgroundImageLayout = ImageLayout.Stretch;
+            button2.Cursor = Cursors.Hand;
+            button2.FlatAppearance.BorderColor = Color.Green;
+            button2.FlatAppearance.BorderSize = 0;
+            button2.FlatStyle = FlatStyle.Flat;
+            button2.Location = new Point(-1, 259);
+            button2.Name = "button2";
+            button2.Size = new Size(295, 64);
+            button2.TabIndex = 13;
+            button2.UseVisualStyleBackColor = true;
             // 
             // label5
             // 
@@ -126,7 +168,7 @@
             // label1
             // 
             label1.Enabled = false;
-            label1.Font = new Font("Segoe UI", 24F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.Font = new Font("Segoe UI", 21.75F, FontStyle.Regular, GraphicsUnit.Point);
             label1.Location = new Point(124, 126);
             label1.Name = "label1";
             label1.Size = new Size(149, 42);
@@ -136,8 +178,8 @@
             // label4
             // 
             label4.Enabled = false;
-            label4.Font = new Font("Segoe UI", 24F, FontStyle.Regular, GraphicsUnit.Point);
-            label4.Location = new Point(124, 334);
+            label4.Font = new Font("Segoe UI", 21.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label4.Location = new Point(126, 413);
             label4.Name = "label4";
             label4.Size = new Size(149, 48);
             label4.TabIndex = 0;
@@ -146,8 +188,8 @@
             // label3
             // 
             label3.Enabled = false;
-            label3.Font = new Font("Segoe UI", 24F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.Location = new Point(124, 263);
+            label3.Font = new Font("Segoe UI", 21.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label3.Location = new Point(124, 342);
             label3.Name = "label3";
             label3.Size = new Size(163, 47);
             label3.TabIndex = 0;
@@ -157,7 +199,7 @@
             // 
             pictureBox4.Enabled = false;
             pictureBox4.Image = (Image)resources.GetObject("pictureBox4.Image");
-            pictureBox4.Location = new Point(4, 326);
+            pictureBox4.Location = new Point(6, 405);
             pictureBox4.Name = "pictureBox4";
             pictureBox4.Size = new Size(114, 59);
             pictureBox4.SizeMode = PictureBoxSizeMode.Zoom;
@@ -182,7 +224,7 @@
             DuvidasBtn.Cursor = Cursors.Hand;
             DuvidasBtn.FlatAppearance.BorderSize = 0;
             DuvidasBtn.FlatStyle = FlatStyle.Flat;
-            DuvidasBtn.Location = new Point(0, 324);
+            DuvidasBtn.Location = new Point(2, 403);
             DuvidasBtn.Name = "DuvidasBtn";
             DuvidasBtn.Size = new Size(293, 64);
             DuvidasBtn.TabIndex = 0;
@@ -193,7 +235,7 @@
             // 
             pictureBox3.Enabled = false;
             pictureBox3.Image = (Image)resources.GetObject("pictureBox3.Image");
-            pictureBox3.Location = new Point(3, 256);
+            pictureBox3.Location = new Point(5, 335);
             pictureBox3.Name = "pictureBox3";
             pictureBox3.Size = new Size(115, 59);
             pictureBox3.SizeMode = PictureBoxSizeMode.Zoom;
@@ -219,7 +261,7 @@
             relatorioBtn.FlatAppearance.BorderColor = Color.Green;
             relatorioBtn.FlatAppearance.BorderSize = 0;
             relatorioBtn.FlatStyle = FlatStyle.Flat;
-            relatorioBtn.Location = new Point(0, 254);
+            relatorioBtn.Location = new Point(0, 333);
             relatorioBtn.Name = "relatorioBtn";
             relatorioBtn.Size = new Size(295, 64);
             relatorioBtn.TabIndex = 0;
@@ -267,7 +309,7 @@
             label2.Cursor = Cursors.Hand;
             label2.Enabled = false;
             label2.FlatStyle = FlatStyle.Flat;
-            label2.Font = new Font("Segoe UI", 24F, FontStyle.Regular, GraphicsUnit.Point);
+            label2.Font = new Font("Segoe UI", 21.75F, FontStyle.Regular, GraphicsUnit.Point);
             label2.Location = new Point(125, 196);
             label2.Name = "label2";
             label2.Size = new Size(148, 40);
@@ -315,8 +357,10 @@
             ClientSize = new Size(1148, 583);
             Controls.Add(panel1);
             Controls.Add(panelPrincipal);
+            FormBorderStyle = FormBorderStyle.None;
             Name = "HomeView";
             panelPrincipal.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox6).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox5).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
@@ -348,5 +392,8 @@
         private PictureBox pictureBox5;
         private Button button1;
         private Panel panel2;
+        private Label label6;
+        private PictureBox pictureBox6;
+        private Button button2;
     }
 }

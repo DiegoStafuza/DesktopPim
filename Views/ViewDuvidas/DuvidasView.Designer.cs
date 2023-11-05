@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DuvidasView));
             label1 = new Label();
             panel1 = new Panel();
             button1 = new Button();
@@ -69,7 +70,9 @@
             // button1
             // 
             button1.BackColor = Color.Transparent;
-            button1.BackgroundImageLayout = ImageLayout.None;
+            button1.BackgroundImage = (Image)resources.GetObject("button1.BackgroundImage");
+            button1.BackgroundImageLayout = ImageLayout.Stretch;
+            button1.Cursor = Cursors.Hand;
             button1.Dock = DockStyle.Fill;
             button1.FlatAppearance.BorderSize = 0;
             button1.FlatStyle = FlatStyle.Flat;
@@ -78,10 +81,11 @@
             button1.Location = new Point(0, 0);
             button1.Name = "button1";
             button1.Size = new Size(537, 47);
-            button1.TabIndex = 2;
+            button1.TabIndex = 0;
             button1.Text = "Processo de cadastro de novos usuários";
             button1.TextAlign = ContentAlignment.MiddleLeft;
             button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
             // 
             // panel2
             // 
@@ -94,7 +98,9 @@
             // button2
             // 
             button2.BackColor = Color.Transparent;
-            button2.BackgroundImageLayout = ImageLayout.None;
+            button2.BackgroundImage = (Image)resources.GetObject("button2.BackgroundImage");
+            button2.BackgroundImageLayout = ImageLayout.Stretch;
+            button2.Cursor = Cursors.Hand;
             button2.Dock = DockStyle.Fill;
             button2.FlatAppearance.BorderSize = 0;
             button2.FlatStyle = FlatStyle.Flat;
@@ -103,10 +109,11 @@
             button2.Location = new Point(0, 0);
             button2.Name = "button2";
             button2.Size = new Size(440, 49);
-            button2.TabIndex = 2;
+            button2.TabIndex = 0;
             button2.Text = "Geração da folha de pagamento";
             button2.TextAlign = ContentAlignment.MiddleLeft;
             button2.UseVisualStyleBackColor = false;
+            button2.Click += button2_Click;
             // 
             // panel3
             // 
@@ -119,7 +126,9 @@
             // button3
             // 
             button3.BackColor = Color.Transparent;
-            button3.BackgroundImageLayout = ImageLayout.None;
+            button3.BackgroundImage = (Image)resources.GetObject("button3.BackgroundImage");
+            button3.BackgroundImageLayout = ImageLayout.Stretch;
+            button3.Cursor = Cursors.Hand;
             button3.Dock = DockStyle.Fill;
             button3.FlatAppearance.BorderSize = 0;
             button3.FlatStyle = FlatStyle.Flat;
@@ -128,10 +137,11 @@
             button3.Location = new Point(0, 0);
             button3.Name = "button3";
             button3.Size = new Size(502, 49);
-            button3.TabIndex = 2;
+            button3.TabIndex = 0;
             button3.Text = "Como cadastrar um novo funcionário";
             button3.TextAlign = ContentAlignment.MiddleLeft;
             button3.UseVisualStyleBackColor = false;
+            button3.Click += button3_Click;
             // 
             // panel4
             // 
@@ -144,7 +154,9 @@
             // button4
             // 
             button4.BackColor = Color.Transparent;
-            button4.BackgroundImageLayout = ImageLayout.None;
+            button4.BackgroundImage = (Image)resources.GetObject("button4.BackgroundImage");
+            button4.BackgroundImageLayout = ImageLayout.Stretch;
+            button4.Cursor = Cursors.Hand;
             button4.Dock = DockStyle.Fill;
             button4.FlatAppearance.BorderSize = 0;
             button4.FlatStyle = FlatStyle.Flat;
@@ -153,10 +165,11 @@
             button4.Location = new Point(0, 0);
             button4.Name = "button4";
             button4.Size = new Size(502, 49);
-            button4.TabIndex = 2;
+            button4.TabIndex = 0;
             button4.Text = "Adicionar um provento ou desconto";
             button4.TextAlign = ContentAlignment.MiddleLeft;
             button4.UseVisualStyleBackColor = false;
+            button4.Click += button4_Click;
             // 
             // panel5
             // 
@@ -169,7 +182,9 @@
             // button5
             // 
             button5.BackColor = Color.Transparent;
-            button5.BackgroundImageLayout = ImageLayout.None;
+            button5.BackgroundImage = (Image)resources.GetObject("button5.BackgroundImage");
+            button5.BackgroundImageLayout = ImageLayout.Stretch;
+            button5.Cursor = Cursors.Hand;
             button5.Dock = DockStyle.Fill;
             button5.FlatAppearance.BorderSize = 0;
             button5.FlatStyle = FlatStyle.Flat;
@@ -178,25 +193,26 @@
             button5.Location = new Point(0, 0);
             button5.Name = "button5";
             button5.Size = new Size(456, 49);
-            button5.TabIndex = 2;
+            button5.TabIndex = 0;
             button5.Text = "Atualizar cadastro de funcionário";
             button5.TextAlign = ContentAlignment.MiddleLeft;
             button5.UseVisualStyleBackColor = false;
+            button5.Click += button5_Click;
             // 
             // panelDuvidas
             // 
-            panelDuvidas.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
-            panelDuvidas.Location = new Point(541, 0);
+            panelDuvidas.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
+            panelDuvidas.Location = new Point(533, 25);
             panelDuvidas.Name = "panelDuvidas";
-            panelDuvidas.Size = new Size(747, 603);
-            panelDuvidas.TabIndex = 7;
+            panelDuvidas.Size = new Size(555, 549);
+            panelDuvidas.TabIndex = 0;
             // 
             // DuvidasView
             // 
             AutoScaleDimensions = new SizeF(96F, 96F);
             AutoScaleMode = AutoScaleMode.Dpi;
             BackColor = SystemColors.ActiveBorder;
-            ClientSize = new Size(1288, 603);
+            ClientSize = new Size(1288, 573);
             Controls.Add(panelDuvidas);
             Controls.Add(panel5);
             Controls.Add(panel4);
