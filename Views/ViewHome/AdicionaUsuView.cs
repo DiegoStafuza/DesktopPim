@@ -43,20 +43,27 @@ namespace DesktopPim.Views
                 Ativo = (short)(CheckAtivo.Checked ? 1 : 0)
             });
 
-            if (SenhaTx.Text != ConfirmSenTx.Text)
+            if(SenhaTx.Text == ConfirmSenTx.Text)
             {
-                MessageBox.Show("As senhas devem ser iguais!", "Verifique!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
+                sucesso = true;
 
-            else if (sucesso) 
+                if(sucesso == true) 
+                {
+                    MessageBox.Show("Cadastro realizado com sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    LimparCampos();
+                }
+                else
+                {
+                    MessageBox.Show("Não foi possível concluir o cadastro.", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else if (NomeCompletoTx.Text == null || EmailTx.Text == null || SenhaTx.Text == null || ConfirmSenTx.Text == null)
             {
-                MessageBox.Show("Cadastro realizado com sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                LimparCampos();
+                MessageBox.Show("Um dos campos obrigatórios está vazio!", "Verifique!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             else
             {
-                MessageBox.Show("Não foi possível realizar o cadastro.", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                LimparCampos();
+                MessageBox.Show("As senhas não coincidem.", "Verifique!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
     }
