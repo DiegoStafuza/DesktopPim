@@ -129,7 +129,6 @@
             Controls.Add(label1);
             FormBorderStyle = FormBorderStyle.None;
             Name = "DvdCadUsu";
-            Text = "DvdCadUsu";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();

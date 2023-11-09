@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            label4 = new Label();
             label3 = new Label();
             textBoxDepto = new TextBox();
             label2 = new Label();
@@ -39,7 +40,6 @@
             buttonAtualizarDetalhes = new Button();
             buttonAdicionar = new Button();
             dataGridViewDescontos = new DataGridView();
-            label4 = new Label();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewDescontos).BeginInit();
             SuspendLayout();
@@ -60,18 +60,28 @@
             panel1.Size = new Size(1147, 211);
             panel1.TabIndex = 0;
             // 
+            // label4
+            // 
+            label4.Font = new Font("Segoe UI", 21.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label4.ForeColor = Color.OliveDrab;
+            label4.Location = new Point(12, 9);
+            label4.Name = "label4";
+            label4.Size = new Size(268, 46);
+            label4.TabIndex = 7;
+            label4.Text = "Geração de folha";
+            // 
             // label3
             // 
             label3.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.Location = new Point(448, 45);
+            label3.Location = new Point(448, 34);
             label3.Name = "label3";
-            label3.Size = new Size(144, 35);
+            label3.Size = new Size(144, 36);
             label3.TabIndex = 6;
             label3.Text = "Departamento";
             // 
             // textBoxDepto
             // 
-            textBoxDepto.Location = new Point(448, 83);
+            textBoxDepto.Location = new Point(448, 73);
             textBoxDepto.Name = "textBoxDepto";
             textBoxDepto.Size = new Size(352, 23);
             textBoxDepto.TabIndex = 5;
@@ -143,16 +153,6 @@
             dataGridViewDescontos.RowTemplate.Height = 25;
             dataGridViewDescontos.Size = new Size(879, 275);
             dataGridViewDescontos.TabIndex = 4;
-            // 
-            // label4
-            // 
-            label4.Font = new Font("Segoe UI", 21.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label4.ForeColor = Color.OliveDrab;
-            label4.Location = new Point(12, 9);
-            label4.Name = "label4";
-            label4.Size = new Size(238, 46);
-            label4.TabIndex = 7;
-            label4.Text = "Geração de folha";
             // 
             // PayrollView
             // 

@@ -95,7 +95,7 @@
             // 
             label6.Enabled = false;
             label6.Font = new Font("Segoe UI", 21.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label6.Location = new Point(123, 265);
+            label6.Location = new Point(123, 270);
             label6.Name = "label6";
             label6.Size = new Size(179, 47);
             label6.TabIndex = 12;
@@ -105,9 +105,9 @@
             // 
             pictureBox6.Enabled = false;
             pictureBox6.Image = (Image)resources.GetObject("pictureBox6.Image");
-            pictureBox6.Location = new Point(12, 261);
+            pictureBox6.Location = new Point(6, 261);
             pictureBox6.Name = "pictureBox6";
-            pictureBox6.Size = new Size(102, 62);
+            pictureBox6.Size = new Size(114, 62);
             pictureBox6.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox6.TabIndex = 14;
             pictureBox6.TabStop = false;
@@ -125,6 +125,7 @@
             button2.Size = new Size(295, 64);
             button2.TabIndex = 13;
             button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
             // 
             // label5
             // 

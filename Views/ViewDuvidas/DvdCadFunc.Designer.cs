@@ -38,7 +38,6 @@
             ClientSize = new Size(800, 450);
             FormBorderStyle = FormBorderStyle.None;
             Name = "DvdCadFunc";
-            Text = "DvdCadFunc";
             ResumeLayout(false);
         }
 

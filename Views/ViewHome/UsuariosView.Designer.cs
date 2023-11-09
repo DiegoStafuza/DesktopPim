@@ -33,6 +33,7 @@ namespace DesktopPim.Views
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UsuariosView));
             dataGridView1 = new DataGridView();
             panel1 = new Panel();
+            label6 = new Label();
             pictureBox5 = new PictureBox();
             label5 = new Label();
             button5 = new Button();
@@ -75,6 +76,7 @@ namespace DesktopPim.Views
             // 
             // panel1
             // 
+            panel1.Controls.Add(label6);
             panel1.Controls.Add(pictureBox5);
             panel1.Controls.Add(label5);
             panel1.Controls.Add(button5);
@@ -96,12 +98,24 @@ namespace DesktopPim.Views
             panel1.Size = new Size(1101, 273);
             panel1.TabIndex = 13;
             // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.BackColor = Color.Transparent;
+            label6.Font = new Font("Segoe UI", 21.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label6.ForeColor = Color.OliveDrab;
+            label6.Location = new Point(12, 9);
+            label6.Name = "label6";
+            label6.Size = new Size(136, 40);
+            label6.TabIndex = 16;
+            label6.Text = "Usuários";
+            // 
             // pictureBox5
             // 
             pictureBox5.BackColor = Color.DarkGreen;
             pictureBox5.Enabled = false;
             pictureBox5.Image = (Image)resources.GetObject("pictureBox5.Image");
-            pictureBox5.Location = new Point(773, 132);
+            pictureBox5.Location = new Point(925, 206);
             pictureBox5.Name = "pictureBox5";
             pictureBox5.Size = new Size(53, 50);
             pictureBox5.SizeMode = PictureBoxSizeMode.Zoom;
@@ -116,7 +130,7 @@ namespace DesktopPim.Views
             label5.FlatStyle = FlatStyle.Flat;
             label5.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             label5.ForeColor = Color.White;
-            label5.Location = new Point(839, 145);
+            label5.Location = new Point(991, 219);
             label5.Name = "label5";
             label5.Size = new Size(71, 25);
             label5.TabIndex = 0;
@@ -131,7 +145,7 @@ namespace DesktopPim.Views
             button5.FlatAppearance.BorderColor = Color.White;
             button5.FlatStyle = FlatStyle.Flat;
             button5.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            button5.Location = new Point(771, 129);
+            button5.Location = new Point(923, 203);
             button5.Name = "button5";
             button5.Size = new Size(166, 56);
             button5.TabIndex = 14;
@@ -140,9 +154,9 @@ namespace DesktopPim.Views
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(48, 150);
+            textBox1.Location = new Point(34, 219);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(717, 23);
+            textBox1.Size = new Size(883, 23);
             textBox1.TabIndex = 12;
             // 
             // label4
@@ -153,7 +167,7 @@ namespace DesktopPim.Views
             label4.FlatStyle = FlatStyle.Flat;
             label4.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             label4.ForeColor = Color.White;
-            label4.Location = new Point(302, 39);
+            label4.Location = new Point(288, 108);
             label4.Name = "label4";
             label4.Size = new Size(73, 25);
             label4.TabIndex = 0;
@@ -164,7 +178,7 @@ namespace DesktopPim.Views
             pictureBox4.BackColor = Color.DarkGreen;
             pictureBox4.Enabled = false;
             pictureBox4.Image = (Image)resources.GetObject("pictureBox4.Image");
-            pictureBox4.Location = new Point(233, 26);
+            pictureBox4.Location = new Point(219, 95);
             pictureBox4.Name = "pictureBox4";
             pictureBox4.Size = new Size(53, 50);
             pictureBox4.SizeMode = PictureBoxSizeMode.Zoom;
@@ -180,7 +194,7 @@ namespace DesktopPim.Views
             button4.FlatAppearance.BorderColor = Color.White;
             button4.FlatStyle = FlatStyle.Flat;
             button4.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            button4.Location = new Point(229, 23);
+            button4.Location = new Point(215, 92);
             button4.Name = "button4";
             button4.Size = new Size(166, 56);
             button4.TabIndex = 9;
@@ -195,7 +209,7 @@ namespace DesktopPim.Views
             label3.FlatStyle = FlatStyle.Flat;
             label3.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             label3.ForeColor = Color.White;
-            label3.Location = new Point(474, 39);
+            label3.Location = new Point(460, 108);
             label3.Name = "label3";
             label3.Size = new Size(98, 25);
             label3.TabIndex = 0;
@@ -206,7 +220,7 @@ namespace DesktopPim.Views
             pictureBox3.BackColor = Color.DarkGreen;
             pictureBox3.Enabled = false;
             pictureBox3.Image = (Image)resources.GetObject("pictureBox3.Image");
-            pictureBox3.Location = new Point(601, 26);
+            pictureBox3.Location = new Point(587, 95);
             pictureBox3.Name = "pictureBox3";
             pictureBox3.Size = new Size(53, 50);
             pictureBox3.SizeMode = PictureBoxSizeMode.Zoom;
@@ -221,7 +235,7 @@ namespace DesktopPim.Views
             label2.FlatStyle = FlatStyle.Flat;
             label2.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             label2.ForeColor = Color.White;
-            label2.Location = new Point(667, 39);
+            label2.Location = new Point(653, 108);
             label2.Name = "label2";
             label2.Size = new Size(72, 25);
             label2.TabIndex = 0;
@@ -232,7 +246,7 @@ namespace DesktopPim.Views
             pictureBox2.BackColor = Color.DarkGreen;
             pictureBox2.Enabled = false;
             pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(415, 26);
+            pictureBox2.Location = new Point(401, 95);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(53, 50);
             pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
@@ -248,7 +262,7 @@ namespace DesktopPim.Views
             button2.FlatAppearance.BorderColor = Color.White;
             button2.FlatStyle = FlatStyle.Flat;
             button2.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            button2.Location = new Point(413, 23);
+            button2.Location = new Point(399, 92);
             button2.Name = "button2";
             button2.Size = new Size(166, 56);
             button2.TabIndex = 3;
@@ -264,7 +278,7 @@ namespace DesktopPim.Views
             label1.FlatStyle = FlatStyle.Flat;
             label1.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(107, 39);
+            label1.Location = new Point(93, 108);
             label1.Name = "label1";
             label1.Size = new Size(98, 25);
             label1.TabIndex = 0;
@@ -275,7 +289,7 @@ namespace DesktopPim.Views
             pictureBox1.BackColor = Color.DarkGreen;
             pictureBox1.Enabled = false;
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(48, 26);
+            pictureBox1.Location = new Point(34, 95);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(53, 50);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
@@ -291,7 +305,7 @@ namespace DesktopPim.Views
             button1.FlatAppearance.BorderColor = Color.White;
             button1.FlatStyle = FlatStyle.Flat;
             button1.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            button1.Location = new Point(44, 23);
+            button1.Location = new Point(30, 92);
             button1.Name = "button1";
             button1.Size = new Size(166, 56);
             button1.TabIndex = 0;
@@ -307,7 +321,7 @@ namespace DesktopPim.Views
             button3.FlatAppearance.BorderColor = Color.White;
             button3.FlatStyle = FlatStyle.Flat;
             button3.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            button3.Location = new Point(599, 23);
+            button3.Location = new Point(585, 92);
             button3.Name = "button3";
             button3.Size = new Size(166, 56);
             button3.TabIndex = 6;
@@ -366,5 +380,6 @@ namespace DesktopPim.Views
         private Label label5;
         private Button button5;
         private TextBox textBox1;
+        private Label label6;
     }
 }

@@ -43,11 +43,11 @@ namespace DesktopPim.Views
                 Ativo = (short)(CheckAtivo.Checked ? 1 : 0)
             });
 
-            if(SenhaTx.Text == ConfirmSenTx.Text)
+            if (SenhaTx.Text == ConfirmSenTx.Text)
             {
                 sucesso = true;
 
-                if(sucesso == true) 
+                if (sucesso == true)
                 {
                     MessageBox.Show("Cadastro realizado com sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     LimparCampos();

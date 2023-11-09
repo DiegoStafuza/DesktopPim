@@ -50,7 +50,6 @@
             Controls.Add(label1);
             FormBorderStyle = FormBorderStyle.None;
             Name = "DvdGeraFolha";
-            Text = "DvdGeraFolha";
             ResumeLayout(false);
         }
 
