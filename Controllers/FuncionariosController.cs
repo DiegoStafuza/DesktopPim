@@ -3,6 +3,7 @@ using System.Text.Json;
 using DesktopPim.Model;
 using DesktopPim.Views.ViewHome;
 using DesktopPim.Models;
+using DesktopPim.Views;
 
 namespace DesktopPim.Controllers
 {
@@ -57,5 +58,28 @@ namespace DesktopPim.Controllers
                 }
             }
         }
+
+        public async Task LoadCargos(AdicionaFuncionarioView addFuncionariosView)
+        {
+            var response = await client.GetAsync("https://20.206.249.21/api/Cargos/retornaCargos");
+
+            if (response.IsSuccessStatusCode)
+            {
+                var jsonString = await response.Content.ReadAsStringAsync();
+                var cargos = JsonSerializer.Deserialize<List<CargosDTO>>(jsonString);
+
+                addFuncionariosView.comboBoxCargos.Items.Clear();
+
+                var itemVazio = new CargosDTO { id_cargo = 0, nome_cargo = "" };
+                cargos.Insert(0, itemVazio);
+
+                addFuncionariosView.comboBoxCargos.DataSource = cargos;
+                addFuncionariosView.comboBoxCargos.DisplayMember = "nome_cargo";
+                addFuncionariosView.comboBoxCargos.ValueMember = "id_cargo";
+                //int selectedCargoId = (int)addFuncionariosView.comboBoxCargos.SelectedValue;
+            }
+        }
+
+
     }
 }
