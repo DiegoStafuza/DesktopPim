@@ -1,8 +1,10 @@
 ﻿using com.sun.security.ntlm;
 using DesktopPim.Controllers;
 using DesktopPim.Model;
+using DesktopPim.Views;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -14,12 +16,15 @@ public class CalculaFolhaController
     private readonly string apiDadosFunc;
     private CalculaFolhaViewModel viewModel;
     private readonly HttpClient httpClient;
+    
     public CalculaFolhaController()
     {
-        apiDadosFuncComplt = "https://20.206.249.21/api/Funcionarios/dadosFuncionarioCompleto/{id}";
-        apiDadosFunc = "https://20.206.249.21/api/Funcionarios";
+        apiDadosFuncComplt = "https://20.14.87.19/api/Funcionarios/dadosFuncionarioCompleto/{id}";
+        apiDadosFunc = "https://20.14.87.19/api/Funcionarios";
         viewModel = new CalculaFolhaViewModel();
         httpClient = new HttpClientService().CreateHttpClient();
+        
+
     }
 
     public async Task<List<FuncionariosCalculo>> ObterTodosFuncionarios()
@@ -44,33 +49,43 @@ public class CalculaFolhaController
         return new List<FuncionariosCalculo>();
     }
 
-    public async Task<List<FuncionarioDetalhes>> ObterDetalhesFuncionario(int funcionarioId)
+    public async Task<FuncionarioDetalhes> ObterDetalhesFuncionario(int id)
     {
-        try
-        {
-            var response = await httpClient.GetAsync(apiDadosFuncComplt);
+        var detalhes = await ObterDetalhesFuncionarioPorId(id);
 
-            if (response.IsSuccessStatusCode)
-            {
-                var jsonString = await response.Content.ReadAsStringAsync();
-                return JsonSerializer.Deserialize<List<FuncionarioDetalhes>>(jsonString);
-            }
-
-        }
-        catch (Exception ex)
+        if (detalhes != null)
         {
-            MessageBox.Show(ex.Message);
+            return detalhes;
         }
-        return new List<FuncionarioDetalhes>();
+        else
+        {
+            return null;
+        }
     }
 
-    public void PreencherDataGridView(int funcionarioId)
+    public async Task PreencherDetalhesFuncionario(int selectedFuncionarioId)
     {
+        PayrollView payrollView = new();
+        var funcionarioDetalhes = await ObterDetalhesFuncionario(selectedFuncionarioId);
+        await payrollView.PreencherDetalhesFuncionario(funcionarioDetalhes);
+    }
 
-        DataGridViewRow row = new DataGridViewRow();
-        row.Cells.Add(new DataGridViewTextBoxCell { Value = "INSS" });
-        row.Cells.Add(new DataGridViewTextBoxCell { Value = "Desconto" });
-        row.Cells.Add(new DataGridViewTextBoxCell { Value = "10%" });
+    public async Task<FuncionarioDetalhes> ObterDetalhesFuncionarioPorId(int id)
+    {
+        var response = await httpClient.GetAsync($"https://20.14.87.19/api/Funcionarios/dadosFuncionarioCalculo/{id}");
+
+        if (response.IsSuccessStatusCode)
+        {
+            var jsonString = await response.Content.ReadAsStringAsync();
+            var funcionarioDetalhes = JsonSerializer.Deserialize<List<FuncionarioDetalhes>>(jsonString);
+
+            if (funcionarioDetalhes != null && funcionarioDetalhes.Count > 0)
+            {
+                return funcionarioDetalhes[0];
+            }
+        }
+
+        return null;
     }
 
 }

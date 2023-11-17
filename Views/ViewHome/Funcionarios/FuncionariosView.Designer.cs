@@ -37,6 +37,8 @@
             button1 = new Button();
             label1 = new Label();
             panel3 = new Panel();
+            button3 = new Button();
+            button2 = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridViewFuncionarios).BeginInit();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
@@ -45,6 +47,7 @@
             // 
             // dataGridViewFuncionarios
             // 
+            dataGridViewFuncionarios.AllowUserToAddRows = false;
             dataGridViewFuncionarios.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewFuncionarios.BackgroundColor = SystemColors.Control;
             dataGridViewFuncionarios.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
@@ -107,7 +110,7 @@
             button1.Name = "button1";
             button1.Size = new Size(142, 41);
             button1.TabIndex = 2;
-            button1.Text = "NOVO";
+            button1.Text = "CADASTRAR";
             button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
             // 
@@ -124,11 +127,42 @@
             // 
             // panel3
             // 
+            panel3.Controls.Add(button3);
+            panel3.Controls.Add(button2);
             panel3.Controls.Add(button1);
             panel3.Location = new Point(14, 12);
             panel3.Name = "panel3";
             panel3.Size = new Size(1127, 100);
             panel3.TabIndex = 4;
+            // 
+            // button3
+            // 
+            button3.BackColor = Color.Goldenrod;
+            button3.Cursor = Cursors.Hand;
+            button3.FlatStyle = FlatStyle.Flat;
+            button3.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            button3.ForeColor = SystemColors.Control;
+            button3.Location = new Point(659, 56);
+            button3.Name = "button3";
+            button3.Size = new Size(142, 41);
+            button3.TabIndex = 4;
+            button3.Text = "ALTERAR";
+            button3.UseVisualStyleBackColor = false;
+            // 
+            // button2
+            // 
+            button2.BackColor = Color.Brown;
+            button2.Cursor = Cursors.Hand;
+            button2.FlatStyle = FlatStyle.Flat;
+            button2.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            button2.ForeColor = SystemColors.Control;
+            button2.Location = new Point(822, 56);
+            button2.Name = "button2";
+            button2.Size = new Size(142, 41);
+            button2.TabIndex = 3;
+            button2.Text = "EXCLUIR";
+            button2.UseVisualStyleBackColor = false;
+            button2.Click += button2_Click;
             // 
             // FuncionariosView
             // 
@@ -152,7 +186,6 @@
 
         #endregion
         private Panel panel1;
-        private Button button1;
         private Label label1;
         private DataGridViewTextBoxColumn ID;
         private DataGridViewTextBoxColumn nome_completo;
@@ -160,5 +193,8 @@
         public DataGridView dataGridViewFuncionarios;
         private Panel panel2;
         private Panel panel3;
+        private Button button3;
+        public Button button1;
+        public Button button2;
     }
 }

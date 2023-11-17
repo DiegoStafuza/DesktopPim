@@ -19,7 +19,7 @@ namespace DesktopPim.Controllers
     public class CadastroUsuarioController : Controller
     {
         private readonly HttpClient client;
-        private readonly string apiUrl = "https://20.206.249.21/api/Autenticacao/registrar";
+        private readonly string apiUrl = "https://20.14.87.19/api/Autenticacao/registrar";
 
         public CadastroUsuarioController()
         {
@@ -51,7 +51,7 @@ namespace DesktopPim.Controllers
                 }
                 return false;
             }
-            catch (Exception ex)
+            catch
             {
                 return false;
             }

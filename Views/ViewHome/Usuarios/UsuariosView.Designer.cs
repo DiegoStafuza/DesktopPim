@@ -31,7 +31,7 @@ namespace DesktopPim.Views
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UsuariosView));
-            dataGridView1 = new DataGridView();
+            dataGridViewUsuarios = new DataGridView();
             panel1 = new Panel();
             label6 = new Label();
             pictureBox5 = new PictureBox();
@@ -51,7 +51,7 @@ namespace DesktopPim.Views
             button1 = new Button();
             button3 = new Button();
             panel2 = new Panel();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewUsuarios).BeginInit();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox5).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
@@ -61,18 +61,18 @@ namespace DesktopPim.Views
             panel2.SuspendLayout();
             SuspendLayout();
             // 
-            // dataGridView1
+            // dataGridViewUsuarios
             // 
-            dataGridView1.BackgroundColor = SystemColors.Control;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Cursor = Cursors.Hand;
-            dataGridView1.Dock = DockStyle.Fill;
-            dataGridView1.GridColor = SystemColors.Control;
-            dataGridView1.Location = new Point(0, 0);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(1070, 323);
-            dataGridView1.TabIndex = 6;
+            dataGridViewUsuarios.BackgroundColor = SystemColors.Control;
+            dataGridViewUsuarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewUsuarios.Cursor = Cursors.Hand;
+            dataGridViewUsuarios.Dock = DockStyle.Fill;
+            dataGridViewUsuarios.GridColor = SystemColors.Control;
+            dataGridViewUsuarios.Location = new Point(0, 0);
+            dataGridViewUsuarios.Name = "dataGridViewUsuarios";
+            dataGridViewUsuarios.RowTemplate.Height = 25;
+            dataGridViewUsuarios.Size = new Size(1070, 323);
+            dataGridViewUsuarios.TabIndex = 6;
             // 
             // panel1
             // 
@@ -262,6 +262,7 @@ namespace DesktopPim.Views
             button2.FlatAppearance.BorderColor = Color.White;
             button2.FlatStyle = FlatStyle.Flat;
             button2.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            button2.ForeColor = Color.White;
             button2.Location = new Point(399, 92);
             button2.Name = "button2";
             button2.Size = new Size(166, 56);
@@ -311,6 +312,7 @@ namespace DesktopPim.Views
             button1.TabIndex = 0;
             button1.TextAlign = ContentAlignment.MiddleRight;
             button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
             // 
             // button3
             // 
@@ -331,7 +333,7 @@ namespace DesktopPim.Views
             // panel2
             // 
             panel2.AutoSize = true;
-            panel2.Controls.Add(dataGridView1);
+            panel2.Controls.Add(dataGridViewUsuarios);
             panel2.Location = new Point(31, 279);
             panel2.Name = "panel2";
             panel2.Size = new Size(1070, 323);
@@ -347,7 +349,7 @@ namespace DesktopPim.Views
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
             Name = "UsuariosView";
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewUsuarios).EndInit();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox5).EndInit();
@@ -361,7 +363,6 @@ namespace DesktopPim.Views
         }
 
         #endregion
-        private DataGridView dataGridView1;
         private Panel panel1;
         private Panel panel2;
         private PictureBox pictureBox1;
@@ -381,5 +382,6 @@ namespace DesktopPim.Views
         private Button button5;
         private TextBox textBox1;
         private Label label6;
+        public DataGridView dataGridViewUsuarios;
     }
 }

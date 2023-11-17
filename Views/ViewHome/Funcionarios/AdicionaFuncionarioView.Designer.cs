@@ -30,9 +30,9 @@
         {
             label1 = new Label();
             label2 = new Label();
-            textBox1 = new TextBox();
+            textBoxNomeCompleto = new TextBox();
             label3 = new Label();
-            maskedTextBox1 = new MaskedTextBox();
+            maskedTextCPF = new MaskedTextBox();
             label4 = new Label();
             checkBox1 = new CheckBox();
             checkBox2 = new CheckBox();
@@ -49,7 +49,6 @@
             label12 = new Label();
             sqlCommand1 = new Microsoft.Data.SqlClient.SqlCommand();
             label13 = new Label();
-            textBox6 = new TextBox();
             textBox5 = new TextBox();
             label15 = new Label();
             label14 = new Label();
@@ -65,8 +64,9 @@
             label18 = new Label();
             textBox7 = new TextBox();
             textBox2 = new TextBox();
-            button1 = new Button();
+            buttonCadastrarFunc = new Button();
             panel3 = new Panel();
+            maskedTextBox1 = new MaskedTextBox();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             panel3.SuspendLayout();
@@ -77,7 +77,7 @@
             label1.FlatStyle = FlatStyle.Flat;
             label1.Font = new Font("Segoe UI", 26.25F, FontStyle.Bold, GraphicsUnit.Point);
             label1.ForeColor = Color.DarkGreen;
-            label1.Location = new Point(178, 9);
+            label1.Location = new Point(202, 9);
             label1.Name = "label1";
             label1.Size = new Size(418, 60);
             label1.TabIndex = 12;
@@ -92,13 +92,13 @@
             label2.TabIndex = 12;
             label2.Text = "Nome completo";
             // 
-            // textBox1
+            // textBoxNomeCompleto
             // 
-            textBox1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox1.Location = new Point(12, 104);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(414, 29);
-            textBox1.TabIndex = 13;
+            textBoxNomeCompleto.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            textBoxNomeCompleto.Location = new Point(12, 104);
+            textBoxNomeCompleto.Name = "textBoxNomeCompleto";
+            textBoxNomeCompleto.Size = new Size(414, 29);
+            textBoxNomeCompleto.TabIndex = 1;
             // 
             // label3
             // 
@@ -108,17 +108,16 @@
             label3.Size = new Size(56, 34);
             label3.TabIndex = 14;
             label3.Text = "CPF";
-            label3.Click += label3_Click;
             // 
-            // maskedTextBox1
+            // maskedTextCPF
             // 
-            maskedTextBox1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            maskedTextBox1.Location = new Point(573, 104);
-            maskedTextBox1.Mask = "000,000,000-00";
-            maskedTextBox1.Name = "maskedTextBox1";
-            maskedTextBox1.Size = new Size(262, 29);
-            maskedTextBox1.TabIndex = 15;
-            maskedTextBox1.TextMaskFormat = MaskFormat.IncludePromptAndLiterals;
+            maskedTextCPF.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            maskedTextCPF.Location = new Point(573, 104);
+            maskedTextCPF.Mask = "000,000,000-00";
+            maskedTextCPF.Name = "maskedTextCPF";
+            maskedTextCPF.Size = new Size(262, 29);
+            maskedTextCPF.TabIndex = 2;
+            maskedTextCPF.TextMaskFormat = MaskFormat.IncludePromptAndLiterals;
             // 
             // label4
             // 
@@ -135,7 +134,7 @@
             checkBox1.Location = new Point(12, 169);
             checkBox1.Name = "checkBox1";
             checkBox1.Size = new Size(124, 35);
-            checkBox1.TabIndex = 17;
+            checkBox1.TabIndex = 0;
             checkBox1.Text = "Masculino";
             checkBox1.UseVisualStyleBackColor = true;
             checkBox1.CheckedChanged += checkBox1_CheckedChanged;
@@ -146,7 +145,7 @@
             checkBox2.Location = new Point(139, 169);
             checkBox2.Name = "checkBox2";
             checkBox2.Size = new Size(109, 35);
-            checkBox2.TabIndex = 18;
+            checkBox2.TabIndex = 0;
             checkBox2.Text = "Feminino";
             checkBox2.UseVisualStyleBackColor = true;
             checkBox2.CheckedChanged += checkBox2_CheckedChanged;
@@ -188,7 +187,7 @@
             comboBoxEstadoCivil.Location = new Point(12, 268);
             comboBoxEstadoCivil.Name = "comboBoxEstadoCivil";
             comboBoxEstadoCivil.Size = new Size(153, 29);
-            comboBoxEstadoCivil.TabIndex = 21;
+            comboBoxEstadoCivil.TabIndex = 3;
             // 
             // label6
             // 
@@ -206,13 +205,13 @@
             comboBoxCargos.Location = new Point(271, 268);
             comboBoxCargos.Name = "comboBoxCargos";
             comboBoxCargos.Size = new Size(228, 29);
-            comboBoxCargos.TabIndex = 23;
+            comboBoxCargos.TabIndex = 4;
             // 
             // monthCalendar1
             // 
             monthCalendar1.Location = new Point(568, 219);
             monthCalendar1.Name = "monthCalendar1";
-            monthCalendar1.TabIndex = 24;
+            monthCalendar1.TabIndex = 5;
             // 
             // panel2
             // 
@@ -263,21 +262,13 @@
             label13.TabIndex = 37;
             label13.Text = "Número";
             // 
-            // textBox6
-            // 
-            textBox6.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox6.Location = new Point(435, 229);
-            textBox6.Name = "textBox6";
-            textBox6.Size = new Size(53, 29);
-            textBox6.TabIndex = 41;
-            // 
             // textBox5
             // 
             textBox5.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             textBox5.Location = new Point(589, 136);
             textBox5.Name = "textBox5";
             textBox5.Size = new Size(153, 29);
-            textBox5.TabIndex = 36;
+            textBox5.TabIndex = 10;
             // 
             // label15
             // 
@@ -303,7 +294,7 @@
             textBox4.Location = new Point(12, 229);
             textBox4.Name = "textBox4";
             textBox4.Size = new Size(414, 29);
-            textBox4.TabIndex = 39;
+            textBox4.TabIndex = 11;
             // 
             // maskedTextBox2
             // 
@@ -312,7 +303,7 @@
             maskedTextBox2.Mask = "00000-000";
             maskedTextBox2.Name = "maskedTextBox2";
             maskedTextBox2.Size = new Size(153, 29);
-            maskedTextBox2.TabIndex = 38;
+            maskedTextBox2.TabIndex = 9;
             maskedTextBox2.TextMaskFormat = MaskFormat.IncludePromptAndLiterals;
             // 
             // label16
@@ -348,7 +339,7 @@
             textBox3.Location = new Point(10, 136);
             textBox3.Name = "textBox3";
             textBox3.Size = new Size(414, 29);
-            textBox3.TabIndex = 30;
+            textBox3.TabIndex = 8;
             // 
             // comboBoxTpContato
             // 
@@ -357,7 +348,7 @@
             comboBoxTpContato.Location = new Point(11, 356);
             comboBoxTpContato.Name = "comboBoxTpContato";
             comboBoxTpContato.Size = new Size(176, 29);
-            comboBoxTpContato.TabIndex = 45;
+            comboBoxTpContato.TabIndex = 13;
             // 
             // label10
             // 
@@ -375,7 +366,7 @@
             comboBoxTpEndereco.Location = new Point(432, 54);
             comboBoxTpEndereco.Name = "comboBoxTpEndereco";
             comboBoxTpEndereco.Size = new Size(153, 29);
-            comboBoxTpEndereco.TabIndex = 35;
+            comboBoxTpEndereco.TabIndex = 7;
             // 
             // label18
             // 
@@ -392,7 +383,7 @@
             textBox7.Location = new Point(208, 356);
             textBox7.Name = "textBox7";
             textBox7.Size = new Size(206, 29);
-            textBox7.TabIndex = 46;
+            textBox7.TabIndex = 14;
             // 
             // textBox2
             // 
@@ -400,25 +391,27 @@
             textBox2.Location = new Point(10, 54);
             textBox2.Name = "textBox2";
             textBox2.Size = new Size(414, 29);
-            textBox2.TabIndex = 28;
+            textBox2.TabIndex = 6;
             // 
-            // button1
+            // buttonCadastrarFunc
             // 
-            button1.BackColor = Color.OliveDrab;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
-            button1.ForeColor = SystemColors.Control;
-            button1.Location = new Point(634, 334);
-            button1.Name = "button1";
-            button1.Size = new Size(199, 51);
-            button1.TabIndex = 49;
-            button1.Text = "Cadastrar";
-            button1.UseVisualStyleBackColor = false;
+            buttonCadastrarFunc.BackColor = Color.OliveDrab;
+            buttonCadastrarFunc.FlatStyle = FlatStyle.Flat;
+            buttonCadastrarFunc.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonCadastrarFunc.ForeColor = SystemColors.Control;
+            buttonCadastrarFunc.Location = new Point(634, 334);
+            buttonCadastrarFunc.Name = "buttonCadastrarFunc";
+            buttonCadastrarFunc.Size = new Size(199, 51);
+            buttonCadastrarFunc.TabIndex = 15;
+            buttonCadastrarFunc.Text = "Cadastrar";
+            buttonCadastrarFunc.UseVisualStyleBackColor = false;
+            buttonCadastrarFunc.Click += buttonCadastrarFunc_Click;
             // 
             // panel3
             // 
+            panel3.Controls.Add(maskedTextBox1);
             panel3.Controls.Add(label9);
-            panel3.Controls.Add(button1);
+            panel3.Controls.Add(buttonCadastrarFunc);
             panel3.Controls.Add(textBox2);
             panel3.Controls.Add(label12);
             panel3.Controls.Add(textBox7);
@@ -435,12 +428,21 @@
             panel3.Controls.Add(label14);
             panel3.Controls.Add(label15);
             panel3.Controls.Add(textBox5);
-            panel3.Controls.Add(textBox6);
             panel3.Controls.Add(label13);
             panel3.Location = new Point(2, 381);
             panel3.Name = "panel3";
             panel3.Size = new Size(842, 396);
             panel3.TabIndex = 48;
+            // 
+            // maskedTextBox1
+            // 
+            maskedTextBox1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            maskedTextBox1.Location = new Point(435, 229);
+            maskedTextBox1.Mask = "AA";
+            maskedTextBox1.Name = "maskedTextBox1";
+            maskedTextBox1.Size = new Size(53, 29);
+            maskedTextBox1.TabIndex = 12;
+            maskedTextBox1.TextMaskFormat = MaskFormat.IncludePromptAndLiterals;
             // 
             // AdicionaFuncionarioView
             // 
@@ -452,9 +454,9 @@
             Controls.Add(label6);
             Controls.Add(comboBoxEstadoCivil);
             Controls.Add(label5);
-            Controls.Add(maskedTextBox1);
+            Controls.Add(maskedTextCPF);
             Controls.Add(label2);
-            Controls.Add(textBox1);
+            Controls.Add(textBoxNomeCompleto);
             Controls.Add(label1);
             Controls.Add(panel1);
             Controls.Add(panel2);
@@ -475,17 +477,11 @@
 
         private Label label1;
         private Label label2;
-        private TextBox textBox1;
         private Label label3;
-        private MaskedTextBox maskedTextBox1;
         private Label label4;
-        private CheckBox checkBox1;
-        private CheckBox checkBox2;
         private Panel panel1;
         private Label label5;
-        private ComboBox comboBoxEstadoCivil;
         private Label label6;
-        private MonthCalendar monthCalendar1;
         private Label label7;
         private Panel panel2;
         private Label label8;
@@ -493,24 +489,30 @@
         private Label label12;
         private Microsoft.Data.SqlClient.SqlCommand sqlCommand1;
         private Label label13;
-        private TextBox textBox6;
-        private TextBox textBox5;
         private Label label15;
         private Label label14;
-        private TextBox textBox4;
-        private MaskedTextBox maskedTextBox2;
         private Label label16;
         private Label label11;
         private Label label17;
-        private TextBox textBox3;
-        private ComboBox comboBoxTpContato;
         private Label label10;
-        private ComboBox comboBoxTpEndereco;
         private Label label18;
-        private TextBox textBox7;
-        private TextBox textBox2;
-        private Button button1;
         private Panel panel3;
         public ComboBox comboBoxCargos;
+        public ComboBox comboBoxEstadoCivil;
+        public ComboBox comboBoxTpContato;
+        public ComboBox comboBoxTpEndereco;
+        public TextBox textBoxNomeCompleto;
+        public MaskedTextBox maskedTextCPF;
+        public CheckBox checkBox1;
+        public CheckBox checkBox2;
+        public MonthCalendar monthCalendar1;
+        public TextBox textBox5;
+        public TextBox textBox4;
+        public MaskedTextBox maskedTextBox2;
+        public TextBox textBox3;
+        public TextBox textBox7;
+        public TextBox textBox2;
+        public Button buttonCadastrarFunc;
+        public MaskedTextBox maskedTextBox1;
     }
 }

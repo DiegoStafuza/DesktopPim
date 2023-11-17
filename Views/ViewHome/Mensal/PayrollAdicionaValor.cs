@@ -8,18 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace DesktopPim.Views
+namespace DesktopPim.Views.ViewHome.Mensal
 {
-    public partial class UsuariosView : Form
+    public partial class PayrollAdicionaValor : Form
     {
-        public UsuariosView()
+        public PayrollAdicionaValor()
         {
             InitializeComponent();
-        }
-        private void button2_Click(object sender, EventArgs e)
-        {
-            AdicionaUsu addUsuView = new AdicionaUsu();
-            addUsuView.Show();
         }
     }
 }

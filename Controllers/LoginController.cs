@@ -9,7 +9,7 @@ namespace DesktopPim.Controllers
     public class LoginController : Controller
     {
 
-        private readonly string apiUrl = "https://20.206.249.21/api/Autenticacao/login";
+        private readonly string apiUrl = "https://20.14.87.19/api/Autenticacao/login";
         private readonly HttpClient client;
 
         public LoginController()

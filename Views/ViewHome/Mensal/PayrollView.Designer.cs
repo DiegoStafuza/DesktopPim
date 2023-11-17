@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PayrollView));
             panel1 = new Panel();
             label4 = new Label();
             label3 = new Label();
@@ -37,9 +38,14 @@
             label1 = new Label();
             textBoxCargo = new TextBox();
             comboBoxFuncionarios = new ComboBox();
-            buttonAtualizarDetalhes = new Button();
             buttonAdicionar = new Button();
             dataGridViewDescontos = new DataGridView();
+            ID = new DataGridViewTextBoxColumn();
+            Tipo = new DataGridViewTextBoxColumn();
+            Nome = new DataGridViewTextBoxColumn();
+            Valor = new DataGridViewTextBoxColumn();
+            button1 = new Button();
+            labelValorLiquido = new Label();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewDescontos).BeginInit();
             SuspendLayout();
@@ -81,9 +87,10 @@
             // 
             // textBoxDepto
             // 
+            textBoxDepto.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             textBoxDepto.Location = new Point(448, 73);
             textBoxDepto.Name = "textBoxDepto";
-            textBoxDepto.Size = new Size(352, 23);
+            textBoxDepto.Size = new Size(352, 33);
             textBoxDepto.TabIndex = 5;
             // 
             // label2
@@ -91,15 +98,16 @@
             label2.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             label2.Location = new Point(448, 128);
             label2.Name = "label2";
-            label2.Size = new Size(100, 35);
+            label2.Size = new Size(73, 35);
             label2.TabIndex = 4;
             label2.Text = "Salário";
             // 
             // textBoxSalario
             // 
-            textBoxSalario.Location = new Point(448, 166);
+            textBoxSalario.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            textBoxSalario.Location = new Point(448, 165);
             textBoxSalario.Name = "textBoxSalario";
-            textBoxSalario.Size = new Size(352, 23);
+            textBoxSalario.Size = new Size(352, 33);
             textBoxSalario.TabIndex = 3;
             // 
             // label1
@@ -107,52 +115,108 @@
             label1.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             label1.Location = new Point(36, 128);
             label1.Name = "label1";
-            label1.Size = new Size(100, 35);
+            label1.Size = new Size(65, 35);
             label1.TabIndex = 2;
             label1.Text = "Cargo";
             // 
             // textBoxCargo
             // 
+            textBoxCargo.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             textBoxCargo.Location = new Point(36, 166);
             textBoxCargo.Name = "textBoxCargo";
-            textBoxCargo.Size = new Size(352, 23);
+            textBoxCargo.Size = new Size(352, 33);
             textBoxCargo.TabIndex = 1;
             // 
             // comboBoxFuncionarios
             // 
+            comboBoxFuncionarios.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             comboBoxFuncionarios.FormattingEnabled = true;
             comboBoxFuncionarios.Location = new Point(36, 73);
             comboBoxFuncionarios.Name = "comboBoxFuncionarios";
-            comboBoxFuncionarios.Size = new Size(352, 23);
+            comboBoxFuncionarios.Size = new Size(352, 33);
             comboBoxFuncionarios.TabIndex = 0;
             comboBoxFuncionarios.SelectedIndexChanged += comboBoxFuncionarios_SelectedIndexChanged;
             // 
-            // buttonAtualizarDetalhes
-            // 
-            buttonAtualizarDetalhes.Location = new Point(36, 577);
-            buttonAtualizarDetalhes.Name = "buttonAtualizarDetalhes";
-            buttonAtualizarDetalhes.Size = new Size(146, 43);
-            buttonAtualizarDetalhes.TabIndex = 2;
-            buttonAtualizarDetalhes.Text = "button1";
-            buttonAtualizarDetalhes.UseVisualStyleBackColor = true;
-            // 
             // buttonAdicionar
             // 
+            buttonAdicionar.BackColor = Color.DarkGreen;
+            buttonAdicionar.BackgroundImage = (Image)resources.GetObject("buttonAdicionar.BackgroundImage");
+            buttonAdicionar.BackgroundImageLayout = ImageLayout.Stretch;
+            buttonAdicionar.Cursor = Cursors.Hand;
+            buttonAdicionar.FlatStyle = FlatStyle.Flat;
+            buttonAdicionar.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonAdicionar.ForeColor = SystemColors.Control;
             buttonAdicionar.Location = new Point(769, 247);
             buttonAdicionar.Name = "buttonAdicionar";
             buttonAdicionar.Size = new Size(146, 43);
             buttonAdicionar.TabIndex = 3;
-            buttonAdicionar.Text = "button1";
-            buttonAdicionar.UseVisualStyleBackColor = true;
+            buttonAdicionar.Text = "Adicionar";
+            buttonAdicionar.UseVisualStyleBackColor = false;
             // 
             // dataGridViewDescontos
             // 
+            dataGridViewDescontos.AllowUserToAddRows = false;
+            dataGridViewDescontos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewDescontos.BackgroundColor = SystemColors.Control;
+            dataGridViewDescontos.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
             dataGridViewDescontos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewDescontos.Columns.AddRange(new DataGridViewColumn[] { ID, Tipo, Nome, Valor });
             dataGridViewDescontos.Location = new Point(36, 296);
             dataGridViewDescontos.Name = "dataGridViewDescontos";
+            dataGridViewDescontos.ReadOnly = true;
+            dataGridViewDescontos.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridViewDescontos.RowTemplate.Height = 25;
             dataGridViewDescontos.Size = new Size(879, 275);
             dataGridViewDescontos.TabIndex = 4;
+            // 
+            // ID
+            // 
+            ID.HeaderText = "ID";
+            ID.Name = "ID";
+            ID.ReadOnly = true;
+            // 
+            // Tipo
+            // 
+            Tipo.HeaderText = "Tipo";
+            Tipo.Name = "Tipo";
+            Tipo.ReadOnly = true;
+            // 
+            // Nome
+            // 
+            Nome.HeaderText = "Nome";
+            Nome.Name = "Nome";
+            Nome.ReadOnly = true;
+            // 
+            // Valor
+            // 
+            Valor.HeaderText = "Valor";
+            Valor.Name = "Valor";
+            Valor.ReadOnly = true;
+            // 
+            // button1
+            // 
+            button1.BackColor = Color.DarkGreen;
+            button1.BackgroundImage = (Image)resources.GetObject("button1.BackgroundImage");
+            button1.BackgroundImageLayout = ImageLayout.Stretch;
+            button1.Cursor = Cursors.Hand;
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            button1.ForeColor = SystemColors.Control;
+            button1.Location = new Point(769, 577);
+            button1.Name = "button1";
+            button1.Size = new Size(146, 43);
+            button1.TabIndex = 5;
+            button1.Text = "Adicionar";
+            button1.UseVisualStyleBackColor = false;
+            // 
+            // labelValorLiquido
+            // 
+            labelValorLiquido.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            labelValorLiquido.Location = new Point(38, 594);
+            labelValorLiquido.Name = "labelValorLiquido";
+            labelValorLiquido.Size = new Size(266, 23);
+            labelValorLiquido.TabIndex = 0;
+            labelValorLiquido.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // PayrollView
             // 
@@ -160,9 +224,10 @@
             AutoScaleMode = AutoScaleMode.Dpi;
             BackColor = SystemColors.ActiveBorder;
             ClientSize = new Size(1147, 657);
+            Controls.Add(labelValorLiquido);
+            Controls.Add(button1);
             Controls.Add(dataGridViewDescontos);
             Controls.Add(buttonAdicionar);
-            Controls.Add(buttonAtualizarDetalhes);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
             Name = "PayrollView";
@@ -178,15 +243,20 @@
 
         private Panel panel1;
         private Label label1;
-        private TextBox textBoxCargo;
-        private ComboBox comboBoxFuncionarios;
         private Label label3;
-        private TextBox textBoxDepto;
         private Label label2;
-        private TextBox textBoxSalario;
-        private Button buttonAtualizarDetalhes;
         private Button buttonAdicionar;
-        private DataGridView dataGridViewDescontos;
         private Label label4;
+        public TextBox textBoxCargo;
+        public ComboBox comboBoxFuncionarios;
+        public TextBox textBoxDepto;
+        public TextBox textBoxSalario;
+        public DataGridView dataGridViewDescontos;
+        private Button button1;
+        private DataGridViewTextBoxColumn ID;
+        private DataGridViewTextBoxColumn Tipo;
+        private DataGridViewTextBoxColumn Nome;
+        private DataGridViewTextBoxColumn Valor;
+        private Label labelValorLiquido;
     }
 }
