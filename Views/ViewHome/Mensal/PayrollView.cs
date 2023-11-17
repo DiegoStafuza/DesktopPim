@@ -1,4 +1,5 @@
 ﻿using DesktopPim.Model;
+using DesktopPim.Views.ViewHome.Mensal;
 
 namespace DesktopPim.Views
 {
@@ -10,6 +11,7 @@ namespace DesktopPim.Views
         public PayrollView()
         {
             InitializeComponent();
+            dataGridViewDescontos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
         }
         async void PayrollView_Load(object sender, EventArgs e)
@@ -109,6 +111,39 @@ namespace DesktopPim.Views
             labelValorLiquido.Text = $"Valor líquido: R$ {valorLiquido:N2}";
         }
 
+        private void buttonAdicionar_Click(object sender, EventArgs e)
+        {
+            AbrirFormularioModal();
+        }
 
+        private PayrollAdicionaValor formularioModal;
+
+        private void AbrirFormularioModal()
+        {
+            if (formularioModal == null || formularioModal.IsDisposed)
+            {
+                formularioModal = new PayrollAdicionaValor();
+                formularioModal.FormClosed += (sender, e) => formularioModal = null;
+                formularioModal.Show();
+            }
+            else
+            {
+                formularioModal.BringToFront();
+            }
+        }
+
+        private void dataGridViewDescontos_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.ColumnIndex == dataGridViewDescontos.Columns["Valor"].Index && e.Value != null)
+            {
+
+                if (e.Value is decimal || e.Value is double || e.Value is float)
+                {
+
+                    e.Value = string.Format("R$ {0:N2}", e.Value);
+                    e.FormattingApplied = true;
+                }
+            }
+        }
     }
 }

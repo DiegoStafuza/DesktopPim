@@ -396,6 +396,7 @@
             // buttonCadastrarFunc
             // 
             buttonCadastrarFunc.BackColor = Color.OliveDrab;
+            buttonCadastrarFunc.Cursor = Cursors.Hand;
             buttonCadastrarFunc.FlatStyle = FlatStyle.Flat;
             buttonCadastrarFunc.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
             buttonCadastrarFunc.ForeColor = SystemColors.Control;

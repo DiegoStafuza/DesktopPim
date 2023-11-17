@@ -152,6 +152,7 @@
             buttonAdicionar.TabIndex = 3;
             buttonAdicionar.Text = "Adicionar";
             buttonAdicionar.UseVisualStyleBackColor = false;
+            buttonAdicionar.Click += buttonAdicionar_Click;
             // 
             // dataGridViewDescontos
             // 
@@ -162,12 +163,14 @@
             dataGridViewDescontos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewDescontos.Columns.AddRange(new DataGridViewColumn[] { ID, Tipo, Nome, Valor });
             dataGridViewDescontos.Location = new Point(36, 296);
+            dataGridViewDescontos.MultiSelect = false;
             dataGridViewDescontos.Name = "dataGridViewDescontos";
             dataGridViewDescontos.ReadOnly = true;
             dataGridViewDescontos.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridViewDescontos.RowTemplate.Height = 25;
             dataGridViewDescontos.Size = new Size(879, 275);
             dataGridViewDescontos.TabIndex = 4;
+            dataGridViewDescontos.CellFormatting += dataGridViewDescontos_CellFormatting;
             // 
             // ID
             // 

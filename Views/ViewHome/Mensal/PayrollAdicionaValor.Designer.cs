@@ -129,6 +129,7 @@
             button2.TabIndex = 15;
             button2.Text = "Fechar";
             button2.UseVisualStyleBackColor = false;
+            button2.Click += button2_Click;
             // 
             // panel1
             // 
@@ -141,7 +142,7 @@
             // 
             AutoScaleDimensions = new SizeF(96F, 96F);
             AutoScaleMode = AutoScaleMode.Dpi;
-            BackColor = SystemColors.ActiveBorder;
+            BackColor = SystemColors.ControlLight;
             ClientSize = new Size(493, 375);
             Controls.Add(button2);
             Controls.Add(button1);
@@ -153,7 +154,8 @@
             Controls.Add(textBox1);
             Controls.Add(label1);
             Controls.Add(panel1);
-            FormBorderStyle = FormBorderStyle.None;
+            FormBorderStyle = FormBorderStyle.FixedToolWindow;
+            MaximizeBox = false;
             Name = "PayrollAdicionaValor";
             StartPosition = FormStartPosition.CenterScreen;
             ResumeLayout(false);

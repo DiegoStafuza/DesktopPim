@@ -84,7 +84,6 @@ namespace DesktopPim.Views.ViewHome
             {
                 FuncionariosController funcionariosController = new();
                 MessageBox.Show("Preencha todos os campos antes de cadastrar um novo funcionário!", "Existem campos sem preenchimento!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                funcionariosController.LimparCampos(this);
             }
         }
 

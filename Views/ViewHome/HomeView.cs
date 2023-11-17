@@ -21,7 +21,7 @@ namespace DesktopPim.Views
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
         }
 
-        private void ABrirFormFilho(Form formularioFilho)
+        public void ABrirFormFilho(Form formularioFilho)
         {
             if (panel1.Controls.Count > 0)
             {

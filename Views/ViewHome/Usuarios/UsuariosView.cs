@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DesktopPim.Views.ViewHome.Mensal;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -18,13 +19,23 @@ namespace DesktopPim.Views
         }
         private void button2_Click(object sender, EventArgs e)
         {
-            AdicionaUsu addUsuView = new AdicionaUsu();
-            addUsuView.Show();
+            AbrirFormularioModal();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
+        private AdicionaUsu formularioModal;
 
+        private void AbrirFormularioModal()
+        {
+            if (formularioModal == null || formularioModal.IsDisposed)
+            {
+                formularioModal = new AdicionaUsu();
+                formularioModal.FormClosed += (sender, e) => formularioModal = null;
+                formularioModal.Show();
+            }
+            else
+            {
+                formularioModal.BringToFront();
+            }
         }
     }
 }
