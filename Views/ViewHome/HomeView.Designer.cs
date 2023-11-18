@@ -347,7 +347,7 @@
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(293, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(855, 583);
+            panel1.Size = new Size(699, 583);
             panel1.TabIndex = 1;
             // 
             // HomeView
@@ -355,7 +355,7 @@
             AutoScaleDimensions = new SizeF(96F, 96F);
             AutoScaleMode = AutoScaleMode.Dpi;
             BackColor = SystemColors.AppWorkspace;
-            ClientSize = new Size(1148, 583);
+            ClientSize = new Size(992, 583);
             Controls.Add(panel1);
             Controls.Add(panelPrincipal);
             FormBorderStyle = FormBorderStyle.None;

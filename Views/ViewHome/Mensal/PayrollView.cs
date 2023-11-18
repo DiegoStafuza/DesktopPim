@@ -1,5 +1,7 @@
 ﻿using DesktopPim.Model;
 using DesktopPim.Views.ViewHome.Mensal;
+using System.Windows.Forms;
+using System.Linq;
 
 namespace DesktopPim.Views
 {
@@ -12,6 +14,8 @@ namespace DesktopPim.Views
         {
             InitializeComponent();
             dataGridViewDescontos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            calculaFolha.IniciarComboBoxes(this);
+
 
         }
         async void PayrollView_Load(object sender, EventArgs e)
@@ -19,7 +23,10 @@ namespace DesktopPim.Views
             funcionariosCalculos = await calculaFolha.ObterTodosFuncionarios();
             comboBoxFuncionarios.DataSource = funcionariosCalculos;
             comboBoxFuncionarios.DisplayMember = "nome_funcionario";
+            calculaFolha.ValorLiquido();
         }
+
+
 
         async void comboBoxFuncionarios_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -86,30 +93,6 @@ namespace DesktopPim.Views
             textBoxCargo.Enabled = true;
         }
 
-        void ValorLiquido()
-        {
-            decimal valorProventos = 0;
-            decimal valorDescontos = 0;
-
-            foreach (DataGridViewRow row in dataGridViewDescontos.Rows)
-            {
-                string tipo = row.Cells["Tipo"].Value.ToString();
-                decimal valor = Convert.ToDecimal(row.Cells["Valor"].Value);
-
-                if (tipo == "Provento")
-                {
-                    valorProventos += valor;
-                }
-                else if (tipo == "Desconto")
-                {
-                    valorDescontos += valor;
-                }
-            }
-
-            decimal valorLiquido = valorProventos - valorDescontos;
-
-            labelValorLiquido.Text = $"Valor líquido: R$ {valorLiquido:N2}";
-        }
 
         private void buttonAdicionar_Click(object sender, EventArgs e)
         {
