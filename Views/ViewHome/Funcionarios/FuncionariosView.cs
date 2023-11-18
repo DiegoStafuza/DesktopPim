@@ -19,14 +19,13 @@ namespace DesktopPim.Views.ViewHome
         {
             InitializeComponent();
             dataGridViewFuncionarios.Columns.Clear();
-            funcionariosController.LoadDataAPI(this);
             dataGridViewFuncionarios.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
         }
 
         private void FuncionariosView_Load(object sender, EventArgs e)
         {
-
+            funcionariosController.LoadDataAPI(this);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -86,6 +85,11 @@ namespace DesktopPim.Views.ViewHome
             {
                 formularioModal.BringToFront();
             }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            funcionariosController.LoadDataAPI(this);
         }
     }
 }

@@ -79,6 +79,7 @@ namespace DesktopPim.Views.ViewHome
                 await funcionariosController.CadastrarFuncionario(NovoFunc);
                 MessageBox.Show("Cadastro realizado com sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 funcionariosController.LimparCampos(this);
+                this.Close();
             }
             else
             {

@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DesktopPim.Models;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace DesktopPim.Views
 {
@@ -43,29 +44,36 @@ namespace DesktopPim.Views
                 Ativo = (short)(CheckAtivo.Checked ? 1 : 0)
             });
 
-            if (SenhaTx.Text == ConfirmSenTx.Text)
+            if (CamposPreenchidos() == true)
             {
-                sucesso = true;
-
-                if (sucesso == true)
+                if (SenhaTx.Text != ConfirmSenTx.Text)
                 {
-                    MessageBox.Show("Cadastro realizado com sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    LimparCampos();
+                    MessageBox.Show("As senhas não coincidem", "Verifique!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
                 else
                 {
-                    MessageBox.Show("Não foi possível concluir o cadastro.", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    if (sucesso == true)
+                    {
+                        MessageBox.Show("Cadastro realizado com sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        LimparCampos();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Não foi possível concluir o cadastro. Revise as informações do usuário.", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
-            else if (NomeCompletoTx.Text == null || EmailTx.Text == null || SenhaTx.Text == null || ConfirmSenTx.Text == null)
+            else if (CamposPreenchidos() == false)
             {
-                MessageBox.Show("Um dos campos obrigatórios está vazio!", "Verifique!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
-            else
-            {
-                MessageBox.Show("As senhas não coincidem.", "Verifique!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Um dos campos obrigatórios não está preenchido.", "Verifique!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+
+        private bool CamposPreenchidos() =>
+            !string.IsNullOrWhiteSpace(NomeCompletoTx.Text)
+                && !string.IsNullOrWhiteSpace(EmailTx.Text)
+                && !string.IsNullOrWhiteSpace(SenhaTx.Text)
+                && !string.IsNullOrWhiteSpace(ConfirmSenTx.Text);
     }
 }
 

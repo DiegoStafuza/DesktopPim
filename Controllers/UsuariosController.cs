@@ -19,14 +19,14 @@ namespace DesktopPim.Controllers
 {
     public class UsuariosController : Controller
     {
-        //private readonly HttpClient client;
-        //private readonly string apiUrl = "https://20.14.87.19/api/Autenticacao/listarUsuarios";
-        //UsuariosView usuView = new();
+        private readonly HttpClient client;
+        private readonly string apiUrl = "https://20.14.87.19/api/Autenticacao/listarUsuarios";
+        UsuariosView usuView = new();
 
-        //public UsuariosController()
-        //{
-        //    client = new HttpClientService().CreateHttpClient();
-        //}
+        public UsuariosController()
+        {
+            client = new HttpClientService().CreateHttpClient();
+        }
 
         //public async void button1_Click(object sender, EventArgs e)
         //{
@@ -39,12 +39,16 @@ namespace DesktopPim.Controllers
         //            string jsonResponse = await response.Content.ReadAsStringAsync();
         //            var usuarios = JsonConvert.DeserializeObject<Usuarios[]>(jsonResponse);
 
-        //            if(usuarios.Length > 0)
+        //            if (usuarios.Length > 0)
         //            {
         //                usuView.dataGridViewUsuarios.Rows.Clear();
         //                usuView.dataGridViewUsuarios.Columns.Clear();
         //            }
         //        }
+        //    }
+        //    catch(Exception ex)
+        //    {
+        //        MessageBox.Show($"Erro ao tentar listar usuários: {ex.Message}");
         //    }
         //}
     }

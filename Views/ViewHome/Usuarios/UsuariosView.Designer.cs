@@ -34,30 +34,13 @@ namespace DesktopPim.Views
             dataGridViewUsuarios = new DataGridView();
             panel1 = new Panel();
             label6 = new Label();
-            pictureBox5 = new PictureBox();
-            label5 = new Label();
-            button5 = new Button();
-            textBox1 = new TextBox();
-            label4 = new Label();
-            pictureBox4 = new PictureBox();
             button4 = new Button();
-            label3 = new Label();
-            pictureBox3 = new PictureBox();
-            label2 = new Label();
-            pictureBox2 = new PictureBox();
             button2 = new Button();
-            label1 = new Label();
-            pictureBox1 = new PictureBox();
             button1 = new Button();
             button3 = new Button();
             panel2 = new Panel();
             ((System.ComponentModel.ISupportInitialize)dataGridViewUsuarios).BeginInit();
             panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox5).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel2.SuspendLayout();
             SuspendLayout();
             // 
@@ -65,10 +48,8 @@ namespace DesktopPim.Views
             // 
             dataGridViewUsuarios.BackgroundColor = SystemColors.Control;
             dataGridViewUsuarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewUsuarios.Cursor = Cursors.Hand;
-            dataGridViewUsuarios.Dock = DockStyle.Fill;
             dataGridViewUsuarios.GridColor = SystemColors.Control;
-            dataGridViewUsuarios.Location = new Point(0, 0);
+            dataGridViewUsuarios.Location = new Point(72, 3);
             dataGridViewUsuarios.Name = "dataGridViewUsuarios";
             dataGridViewUsuarios.RowTemplate.Height = 25;
             dataGridViewUsuarios.Size = new Size(1070, 323);
@@ -77,25 +58,13 @@ namespace DesktopPim.Views
             // panel1
             // 
             panel1.Controls.Add(label6);
-            panel1.Controls.Add(pictureBox5);
-            panel1.Controls.Add(label5);
-            panel1.Controls.Add(button5);
-            panel1.Controls.Add(textBox1);
-            panel1.Controls.Add(label4);
-            panel1.Controls.Add(pictureBox4);
             panel1.Controls.Add(button4);
-            panel1.Controls.Add(label3);
-            panel1.Controls.Add(pictureBox3);
-            panel1.Controls.Add(label2);
-            panel1.Controls.Add(pictureBox2);
             panel1.Controls.Add(button2);
-            panel1.Controls.Add(label1);
-            panel1.Controls.Add(pictureBox1);
             panel1.Controls.Add(button1);
             panel1.Controls.Add(button3);
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1101, 273);
+            panel1.Size = new Size(1223, 216);
             panel1.TabIndex = 13;
             // 
             // label6
@@ -110,83 +79,9 @@ namespace DesktopPim.Views
             label6.TabIndex = 16;
             label6.Text = "Usuários";
             // 
-            // pictureBox5
-            // 
-            pictureBox5.BackColor = Color.DarkGreen;
-            pictureBox5.Enabled = false;
-            pictureBox5.Image = (Image)resources.GetObject("pictureBox5.Image");
-            pictureBox5.Location = new Point(925, 206);
-            pictureBox5.Name = "pictureBox5";
-            pictureBox5.Size = new Size(53, 50);
-            pictureBox5.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox5.TabIndex = 15;
-            pictureBox5.TabStop = false;
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.BackColor = Color.DarkGreen;
-            label5.Enabled = false;
-            label5.FlatStyle = FlatStyle.Flat;
-            label5.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            label5.ForeColor = Color.White;
-            label5.Location = new Point(991, 219);
-            label5.Name = "label5";
-            label5.Size = new Size(71, 25);
-            label5.TabIndex = 0;
-            label5.Text = "Buscar";
-            // 
-            // button5
-            // 
-            button5.BackColor = Color.DarkGreen;
-            button5.BackgroundImage = (Image)resources.GetObject("button5.BackgroundImage");
-            button5.BackgroundImageLayout = ImageLayout.Stretch;
-            button5.Cursor = Cursors.Hand;
-            button5.FlatAppearance.BorderColor = Color.White;
-            button5.FlatStyle = FlatStyle.Flat;
-            button5.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            button5.Location = new Point(923, 203);
-            button5.Name = "button5";
-            button5.Size = new Size(166, 56);
-            button5.TabIndex = 14;
-            button5.TextAlign = ContentAlignment.MiddleRight;
-            button5.UseVisualStyleBackColor = false;
-            // 
-            // textBox1
-            // 
-            textBox1.Location = new Point(34, 219);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(883, 23);
-            textBox1.TabIndex = 12;
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.BackColor = Color.DarkGreen;
-            label4.Enabled = false;
-            label4.FlatStyle = FlatStyle.Flat;
-            label4.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            label4.ForeColor = Color.White;
-            label4.Location = new Point(288, 108);
-            label4.Name = "label4";
-            label4.Size = new Size(73, 25);
-            label4.TabIndex = 0;
-            label4.Text = "Alterar";
-            // 
-            // pictureBox4
-            // 
-            pictureBox4.BackColor = Color.DarkGreen;
-            pictureBox4.Enabled = false;
-            pictureBox4.Image = (Image)resources.GetObject("pictureBox4.Image");
-            pictureBox4.Location = new Point(219, 95);
-            pictureBox4.Name = "pictureBox4";
-            pictureBox4.Size = new Size(53, 50);
-            pictureBox4.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox4.TabIndex = 10;
-            pictureBox4.TabStop = false;
-            // 
             // button4
             // 
+            button4.Anchor = AnchorStyles.Bottom;
             button4.BackColor = Color.DarkGreen;
             button4.BackgroundImage = (Image)resources.GetObject("button4.BackgroundImage");
             button4.BackgroundImageLayout = ImageLayout.Stretch;
@@ -194,67 +89,17 @@ namespace DesktopPim.Views
             button4.FlatAppearance.BorderColor = Color.White;
             button4.FlatStyle = FlatStyle.Flat;
             button4.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            button4.Location = new Point(215, 92);
+            button4.ForeColor = SystemColors.Control;
+            button4.Location = new Point(259, 157);
             button4.Name = "button4";
             button4.Size = new Size(166, 56);
             button4.TabIndex = 9;
-            button4.TextAlign = ContentAlignment.MiddleRight;
+            button4.Text = "Alterar";
             button4.UseVisualStyleBackColor = false;
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.BackColor = Color.DarkGreen;
-            label3.Enabled = false;
-            label3.FlatStyle = FlatStyle.Flat;
-            label3.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            label3.ForeColor = Color.White;
-            label3.Location = new Point(460, 108);
-            label3.Name = "label3";
-            label3.Size = new Size(98, 25);
-            label3.TabIndex = 0;
-            label3.Text = "Adicionar";
-            // 
-            // pictureBox3
-            // 
-            pictureBox3.BackColor = Color.DarkGreen;
-            pictureBox3.Enabled = false;
-            pictureBox3.Image = (Image)resources.GetObject("pictureBox3.Image");
-            pictureBox3.Location = new Point(587, 95);
-            pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new Size(53, 50);
-            pictureBox3.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox3.TabIndex = 7;
-            pictureBox3.TabStop = false;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.BackColor = Color.DarkGreen;
-            label2.Enabled = false;
-            label2.FlatStyle = FlatStyle.Flat;
-            label2.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.ForeColor = Color.White;
-            label2.Location = new Point(653, 108);
-            label2.Name = "label2";
-            label2.Size = new Size(72, 25);
-            label2.TabIndex = 0;
-            label2.Text = "Excluir";
-            // 
-            // pictureBox2
-            // 
-            pictureBox2.BackColor = Color.DarkGreen;
-            pictureBox2.Enabled = false;
-            pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(401, 95);
-            pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(53, 50);
-            pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox2.TabIndex = 4;
-            pictureBox2.TabStop = false;
             // 
             // button2
             // 
+            button2.Anchor = AnchorStyles.Bottom;
             button2.BackColor = Color.DarkGreen;
             button2.BackgroundImage = (Image)resources.GetObject("button2.BackgroundImage");
             button2.BackgroundImageLayout = ImageLayout.Stretch;
@@ -262,43 +107,18 @@ namespace DesktopPim.Views
             button2.FlatAppearance.BorderColor = Color.White;
             button2.FlatStyle = FlatStyle.Flat;
             button2.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            button2.ForeColor = Color.White;
-            button2.Location = new Point(399, 92);
+            button2.ForeColor = SystemColors.Control;
+            button2.Location = new Point(976, 157);
             button2.Name = "button2";
             button2.Size = new Size(166, 56);
             button2.TabIndex = 3;
-            button2.TextAlign = ContentAlignment.MiddleRight;
+            button2.Text = "Adicionar";
             button2.UseVisualStyleBackColor = false;
             button2.Click += button2_Click;
             // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.BackColor = Color.DarkGreen;
-            label1.Enabled = false;
-            label1.FlatStyle = FlatStyle.Flat;
-            label1.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.ForeColor = Color.White;
-            label1.Location = new Point(93, 108);
-            label1.Name = "label1";
-            label1.Size = new Size(98, 25);
-            label1.TabIndex = 0;
-            label1.Text = "Consultar";
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.BackColor = Color.DarkGreen;
-            pictureBox1.Enabled = false;
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(34, 95);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(53, 50);
-            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox1.TabIndex = 1;
-            pictureBox1.TabStop = false;
-            // 
             // button1
             // 
+            button1.Anchor = AnchorStyles.Bottom;
             button1.BackColor = Color.DarkGreen;
             button1.BackgroundImage = (Image)resources.GetObject("button1.BackgroundImage");
             button1.BackgroundImageLayout = ImageLayout.Stretch;
@@ -306,16 +126,17 @@ namespace DesktopPim.Views
             button1.FlatAppearance.BorderColor = Color.White;
             button1.FlatStyle = FlatStyle.Flat;
             button1.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            button1.Location = new Point(30, 92);
+            button1.ForeColor = SystemColors.Control;
+            button1.Location = new Point(74, 157);
             button1.Name = "button1";
             button1.Size = new Size(166, 56);
             button1.TabIndex = 0;
-            button1.TextAlign = ContentAlignment.MiddleRight;
+            button1.Text = "Consultar";
             button1.UseVisualStyleBackColor = false;
-
             // 
             // button3
             // 
+            button3.Anchor = AnchorStyles.Bottom;
             button3.BackColor = Color.DarkGreen;
             button3.BackgroundImage = (Image)resources.GetObject("button3.BackgroundImage");
             button3.BackgroundImageLayout = ImageLayout.Stretch;
@@ -323,20 +144,21 @@ namespace DesktopPim.Views
             button3.FlatAppearance.BorderColor = Color.White;
             button3.FlatStyle = FlatStyle.Flat;
             button3.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            button3.Location = new Point(585, 92);
+            button3.ForeColor = SystemColors.Control;
+            button3.Location = new Point(441, 157);
             button3.Name = "button3";
             button3.Size = new Size(166, 56);
             button3.TabIndex = 6;
-            button3.TextAlign = ContentAlignment.MiddleRight;
+            button3.Text = "Excluir";
             button3.UseVisualStyleBackColor = false;
             // 
             // panel2
             // 
             panel2.AutoSize = true;
             panel2.Controls.Add(dataGridViewUsuarios);
-            panel2.Location = new Point(31, 279);
+            panel2.Location = new Point(0, 222);
             panel2.Name = "panel2";
-            panel2.Size = new Size(1070, 323);
+            panel2.Size = new Size(1223, 380);
             panel2.TabIndex = 14;
             // 
             // UsuariosView
@@ -352,11 +174,6 @@ namespace DesktopPim.Views
             ((System.ComponentModel.ISupportInitialize)dataGridViewUsuarios).EndInit();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox5).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel2.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
@@ -365,22 +182,10 @@ namespace DesktopPim.Views
         #endregion
         private Panel panel1;
         private Panel panel2;
-        private PictureBox pictureBox1;
         private Button button1;
-        private Label label1;
-        private Label label4;
-        private PictureBox pictureBox4;
         private Button button4;
-        private Label label3;
-        private PictureBox pictureBox3;
         private Button button3;
-        private Label label2;
-        private PictureBox pictureBox2;
         private Button button2;
-        private PictureBox pictureBox5;
-        private Label label5;
-        private Button button5;
-        private TextBox textBox1;
         private Label label6;
         public DataGridView dataGridViewUsuarios;
     }
