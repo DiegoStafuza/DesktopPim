@@ -89,13 +89,6 @@ public class CalculaFolhaController
         return null;
     }
 
-    //private ProventosViewModel CapturarValoresDaView()
-    //{
-    //    ProventosViewModel model = new();
-
-
-    //}
-
     public void IniciarComboBoxes(PayrollView payroll)
     {
 

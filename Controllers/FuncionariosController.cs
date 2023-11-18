@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using System.Net.Http.Headers;
 using ApiPIM.Models;
 using com.sun.xml.@internal.bind.v2.model.core;
+using DesktopPim.Views.ViewHome.Funcionarios;
 
 namespace DesktopPim.Controllers
 {
@@ -202,5 +203,66 @@ namespace DesktopPim.Controllers
             addFuncionario.monthCalendar1.SelectionStart = addFuncionario.monthCalendar1.TodayDate;
             addFuncionario.monthCalendar1.SelectionEnd = addFuncionario.monthCalendar1.TodayDate;
         }
+        public void IniciarComboBoxes(AlteraFuncionarioView altFuncionario)
+        {
+            altFuncionario.comboBoxEstadoCivil.Items.Insert(0, string.Empty);
+            altFuncionario.comboBoxEstadoCivil.Items.Insert(1, "Solteiro(a)");
+            altFuncionario.comboBoxEstadoCivil.Items.Insert(2, "Casado(a)");
+            altFuncionario.comboBoxEstadoCivil.Items.Insert(3, "Divorciado(a)");
+            altFuncionario.comboBoxEstadoCivil.Items.Insert(4, "União estável");
+
+            altFuncionario.comboBoxTpContato.Items.Insert(0, string.Empty);
+            altFuncionario.comboBoxTpContato.Items.Insert(1, "Telefone");
+            altFuncionario.comboBoxTpContato.Items.Insert(2, "Comercial");
+            altFuncionario.comboBoxTpContato.Items.Insert(3, "Residencial");
+
+            altFuncionario.comboBoxTpEndereco.Items.Insert(0, string.Empty);
+            altFuncionario.comboBoxTpEndereco.Items.Insert(1, "Residencial");
+            altFuncionario.comboBoxTpEndereco.Items.Insert(2, "Comercial");
+            altFuncionario.comboBoxTpEndereco.Items.Insert(3, "Apartamento");
+        }
+        public async Task LoadCargos(AlteraFuncionarioView alteraFuncionario)
+        {
+            var response = await client.GetAsync("https://20.14.87.19/api/Cargos/retornaCargos");
+
+            if (response.IsSuccessStatusCode)
+            {
+                var jsonString = await response.Content.ReadAsStringAsync();
+                var cargos = JsonSerializer.Deserialize<List<CargosDTO>>(jsonString);
+
+                alteraFuncionario.comboBoxCargos.Items.Clear();
+
+                var itemVazio = new CargosDTO { id_cargo = 0, nome_cargo = "" };
+                cargos.Insert(0, itemVazio);
+
+                alteraFuncionario.comboBoxCargos.DataSource = cargos;
+                alteraFuncionario.comboBoxCargos.DisplayMember = "nome_cargo";
+                alteraFuncionario.comboBoxCargos.ValueMember = "id_cargo";
+                //int selectedCargoId = (int)addFuncionariosView.comboBoxCargos.SelectedValue;
+            }
+        }
+        public async Task<Model.FuncionarioDTO> ObterFuncionarioPorId(int id)
+        {
+            var response = await client.GetAsync($"https://20.14.87.19/api/Funcionarios/dadosFuncionarioCompleto/{id}");
+
+            if (response.IsSuccessStatusCode)
+            {
+                var jsonString = await response.Content.ReadAsStringAsync();
+                var funcionarios = JsonSerializer.Deserialize<List<Model.FuncionarioDTO>>(jsonString);
+
+                if(funcionarios != null && funcionarios.Count > 0)
+                {
+                    return funcionarios[0];
+                }
+                
+            }
+            return null;
+        }
+
+        //public async Task PreencherDetalhesFuncionario(int idFunc)
+        
+        //    var funcionarioDetalhes = await ObterFuncionarioPorId(idFunc);
+        //    await altView.PreencherFormAlteracao(funcionarioDetalhes);
+        //}
     }
 }

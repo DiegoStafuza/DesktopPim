@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
-            button4 = new Button();
-            button2 = new Button();
-            button1 = new Button();
+            buttonAtualizar = new Button();
+            buttonExcluir = new Button();
+            buttonCadastrar = new Button();
             dataGridViewFuncionarios = new DataGridView();
             ID = new DataGridViewTextBoxColumn();
             nome_completo = new DataGridViewTextBoxColumn();
             departamento = new DataGridViewTextBoxColumn();
-            button3 = new Button();
+            buttonAlterar = new Button();
             label1 = new Label();
             panel3 = new Panel();
             panel1.SuspendLayout();
@@ -45,60 +45,60 @@
             // 
             // panel1
             // 
-            panel1.Controls.Add(button4);
-            panel1.Controls.Add(button2);
-            panel1.Controls.Add(button1);
+            panel1.Controls.Add(buttonAtualizar);
+            panel1.Controls.Add(buttonExcluir);
+            panel1.Controls.Add(buttonCadastrar);
             panel1.Controls.Add(dataGridViewFuncionarios);
-            panel1.Controls.Add(button3);
+            panel1.Controls.Add(buttonAlterar);
             panel1.Location = new Point(0, 57);
             panel1.Name = "panel1";
             panel1.Size = new Size(1222, 544);
             panel1.TabIndex = 1;
             // 
-            // button4
+            // buttonAtualizar
             // 
-            button4.BackColor = Color.DarkGreen;
-            button4.Cursor = Cursors.Hand;
-            button4.FlatStyle = FlatStyle.Flat;
-            button4.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            button4.ForeColor = SystemColors.Control;
-            button4.Location = new Point(81, 483);
-            button4.Name = "button4";
-            button4.Size = new Size(166, 56);
-            button4.TabIndex = 5;
-            button4.Text = "Atualizar tabela";
-            button4.UseVisualStyleBackColor = false;
-            button4.Click += button4_Click;
+            buttonAtualizar.BackColor = Color.DarkGreen;
+            buttonAtualizar.Cursor = Cursors.Hand;
+            buttonAtualizar.FlatStyle = FlatStyle.Flat;
+            buttonAtualizar.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonAtualizar.ForeColor = SystemColors.Control;
+            buttonAtualizar.Location = new Point(81, 483);
+            buttonAtualizar.Name = "buttonAtualizar";
+            buttonAtualizar.Size = new Size(166, 56);
+            buttonAtualizar.TabIndex = 5;
+            buttonAtualizar.Text = "Atualizar tabela";
+            buttonAtualizar.UseVisualStyleBackColor = false;
+            buttonAtualizar.Click += buttonAtualizar_Click;
             // 
-            // button2
+            // buttonExcluir
             // 
-            button2.BackColor = Color.Brown;
-            button2.Cursor = Cursors.Hand;
-            button2.FlatStyle = FlatStyle.Flat;
-            button2.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            button2.ForeColor = SystemColors.Control;
-            button2.Location = new Point(265, 87);
-            button2.Name = "button2";
-            button2.Size = new Size(166, 56);
-            button2.TabIndex = 3;
-            button2.Text = "Excluir";
-            button2.UseVisualStyleBackColor = false;
-            button2.Click += button2_Click;
+            buttonExcluir.BackColor = Color.Brown;
+            buttonExcluir.Cursor = Cursors.Hand;
+            buttonExcluir.FlatStyle = FlatStyle.Flat;
+            buttonExcluir.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonExcluir.ForeColor = SystemColors.Control;
+            buttonExcluir.Location = new Point(265, 87);
+            buttonExcluir.Name = "buttonExcluir";
+            buttonExcluir.Size = new Size(166, 56);
+            buttonExcluir.TabIndex = 3;
+            buttonExcluir.Text = "Excluir";
+            buttonExcluir.UseVisualStyleBackColor = false;
+            buttonExcluir.Click += buttonExcluir_Click;
             // 
-            // button1
+            // buttonCadastrar
             // 
-            button1.BackColor = Color.DarkGreen;
-            button1.Cursor = Cursors.Hand;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            button1.ForeColor = SystemColors.Control;
-            button1.Location = new Point(987, 87);
-            button1.Name = "button1";
-            button1.Size = new Size(166, 56);
-            button1.TabIndex = 2;
-            button1.Text = "Cadastrar";
-            button1.UseVisualStyleBackColor = false;
-            button1.Click += button1_Click;
+            buttonCadastrar.BackColor = Color.DarkGreen;
+            buttonCadastrar.Cursor = Cursors.Hand;
+            buttonCadastrar.FlatStyle = FlatStyle.Flat;
+            buttonCadastrar.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonCadastrar.ForeColor = SystemColors.Control;
+            buttonCadastrar.Location = new Point(987, 87);
+            buttonCadastrar.Name = "buttonCadastrar";
+            buttonCadastrar.Size = new Size(166, 56);
+            buttonCadastrar.TabIndex = 2;
+            buttonCadastrar.Text = "Cadastrar";
+            buttonCadastrar.UseVisualStyleBackColor = false;
+            buttonCadastrar.Click += buttonCadastrar_Click;
             // 
             // dataGridViewFuncionarios
             // 
@@ -137,19 +137,20 @@
             departamento.Name = "departamento";
             departamento.ReadOnly = true;
             // 
-            // button3
+            // buttonAlterar
             // 
-            button3.BackColor = Color.Goldenrod;
-            button3.Cursor = Cursors.Hand;
-            button3.FlatStyle = FlatStyle.Flat;
-            button3.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            button3.ForeColor = SystemColors.Control;
-            button3.Location = new Point(83, 87);
-            button3.Name = "button3";
-            button3.Size = new Size(166, 56);
-            button3.TabIndex = 4;
-            button3.Text = "Alterar";
-            button3.UseVisualStyleBackColor = false;
+            buttonAlterar.BackColor = Color.Goldenrod;
+            buttonAlterar.Cursor = Cursors.Hand;
+            buttonAlterar.FlatStyle = FlatStyle.Flat;
+            buttonAlterar.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonAlterar.ForeColor = SystemColors.Control;
+            buttonAlterar.Location = new Point(83, 87);
+            buttonAlterar.Name = "buttonAlterar";
+            buttonAlterar.Size = new Size(166, 56);
+            buttonAlterar.TabIndex = 4;
+            buttonAlterar.Text = "Alterar";
+            buttonAlterar.UseVisualStyleBackColor = false;
+            buttonAlterar.Click += buttonAlterar_Click;
             // 
             // label1
             // 
@@ -191,13 +192,13 @@
         private Panel panel1;
         private Label label1;
         private Panel panel3;
-        private Button button3;
-        public Button button1;
-        public Button button2;
+        private Button buttonAlterar;
+        public Button buttonCadastrar;
+        public Button buttonExcluir;
         public DataGridView dataGridViewFuncionarios;
         private DataGridViewTextBoxColumn ID;
         private DataGridViewTextBoxColumn nome_completo;
         private DataGridViewTextBoxColumn departamento;
-        private Button button4;
+        private Button buttonAtualizar;
     }
 }

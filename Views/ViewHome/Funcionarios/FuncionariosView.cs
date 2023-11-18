@@ -9,12 +9,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DesktopPim.Model;
+using DesktopPim.Views.ViewHome.Funcionarios;
+using com.sun.xml.@internal.bind.v2.model.core;
 
 namespace DesktopPim.Views.ViewHome
 {
     public partial class FuncionariosView : Form
     {
-        FuncionariosController funcionariosController = new FuncionariosController();
+        
+        AlteraFuncionarioView altView = new();
+        
+
         public FuncionariosView()
         {
             InitializeComponent();
@@ -25,15 +31,16 @@ namespace DesktopPim.Views.ViewHome
 
         private void FuncionariosView_Load(object sender, EventArgs e)
         {
+            FuncionariosController funcionariosController = new FuncionariosController();
             funcionariosController.LoadDataAPI(this);
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void buttonCadastrar_Click(object sender, EventArgs e)
         {
             AbrirFormularioModal();
         }
 
-        public async void button2_Click(object sender, EventArgs e)
+        public async void buttonExcluir_Click(object sender, EventArgs e)
         {
             if (dataGridViewFuncionarios.SelectedRows.Count > 0)
             {
@@ -71,6 +78,7 @@ namespace DesktopPim.Views.ViewHome
         }
 
 
+
         private AdicionaFuncionarioView formularioModal;
 
         private void AbrirFormularioModal()
@@ -87,9 +95,41 @@ namespace DesktopPim.Views.ViewHome
             }
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void buttonAtualizar_Click(object sender, EventArgs e)
         {
+            FuncionariosController funcionariosController = new FuncionariosController();
             funcionariosController.LoadDataAPI(this);
         }
+
+        private async void buttonAlterar_Click(object sender, EventArgs e)
+        {
+
+            int idFunci = Convert.ToInt32(dataGridViewFuncionarios.SelectedRows[0].Cells["ID"].Value);
+
+            FuncionariosController funcionariosController = new();
+
+            funcionariosController.ObterFuncionarioPorId(idFunci);
+
+            altView.PreencherDetalhesFuncionario(idFunci);
+
+            AbrirFormularioAlteracao();
+
+
+        }
+        private AlteraFuncionarioView altera;
+        private void AbrirFormularioAlteracao()
+        {
+            if (altera == null || altera.IsDisposed)
+            {
+                altera = new AlteraFuncionarioView();
+                altera.FormClosed += (sender, e) => altera = null;
+                altera.Show();
+            }
+            else
+            {
+                altera.BringToFront();
+            }
+        }
+
     }
 }
