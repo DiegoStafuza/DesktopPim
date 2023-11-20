@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             label1 = new Label();
-            textBox1 = new TextBox();
+            textBoxNomeValor = new TextBox();
             label2 = new Label();
-            comboBox1 = new ComboBox();
+            comboBoxTp = new ComboBox();
             label3 = new Label();
             label4 = new Label();
-            textBox2 = new TextBox();
-            button1 = new Button();
+            textBoxValor = new TextBox();
+            buttonAdicionarValor = new Button();
             button2 = new Button();
             panel1 = new Panel();
             SuspendLayout();
@@ -50,13 +50,13 @@
             label1.TabIndex = 8;
             label1.Text = "Adicionar desconto/provento";
             // 
-            // textBox1
+            // textBoxNomeValor
             // 
-            textBox1.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox1.Location = new Point(12, 95);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(368, 33);
-            textBox1.TabIndex = 9;
+            textBoxNomeValor.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            textBoxNomeValor.Location = new Point(12, 95);
+            textBoxNomeValor.Name = "textBoxNomeValor";
+            textBoxNomeValor.Size = new Size(368, 33);
+            textBoxNomeValor.TabIndex = 1;
             // 
             // label2
             // 
@@ -67,14 +67,14 @@
             label2.TabIndex = 8;
             label2.Text = "Nomenclatura do valor";
             // 
-            // comboBox1
+            // comboBoxTp
             // 
-            comboBox1.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(12, 189);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(368, 33);
-            comboBox1.TabIndex = 10;
+            comboBoxTp.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            comboBoxTp.FormattingEnabled = true;
+            comboBoxTp.Location = new Point(12, 189);
+            comboBoxTp.Name = "comboBoxTp";
+            comboBoxTp.Size = new Size(368, 33);
+            comboBoxTp.TabIndex = 2;
             // 
             // label3
             // 
@@ -94,27 +94,28 @@
             label4.TabIndex = 12;
             label4.Text = "Valor";
             // 
-            // textBox2
+            // textBoxValor
             // 
-            textBox2.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox2.Location = new Point(12, 276);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(368, 33);
-            textBox2.TabIndex = 13;
+            textBoxValor.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            textBoxValor.Location = new Point(12, 276);
+            textBoxValor.Name = "textBoxValor";
+            textBoxValor.Size = new Size(368, 33);
+            textBoxValor.TabIndex = 3;
             // 
-            // button1
+            // buttonAdicionarValor
             // 
-            button1.BackColor = Color.OliveDrab;
-            button1.Cursor = Cursors.Hand;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            button1.ForeColor = SystemColors.Control;
-            button1.Location = new Point(363, 329);
-            button1.Name = "button1";
-            button1.Size = new Size(118, 34);
-            button1.TabIndex = 14;
-            button1.Text = "Adicionar";
-            button1.UseVisualStyleBackColor = false;
+            buttonAdicionarValor.BackColor = Color.OliveDrab;
+            buttonAdicionarValor.Cursor = Cursors.Hand;
+            buttonAdicionarValor.FlatStyle = FlatStyle.Flat;
+            buttonAdicionarValor.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonAdicionarValor.ForeColor = SystemColors.Control;
+            buttonAdicionarValor.Location = new Point(363, 329);
+            buttonAdicionarValor.Name = "buttonAdicionarValor";
+            buttonAdicionarValor.Size = new Size(118, 34);
+            buttonAdicionarValor.TabIndex = 5;
+            buttonAdicionarValor.Text = "Adicionar";
+            buttonAdicionarValor.UseVisualStyleBackColor = false;
+            buttonAdicionarValor.Click += buttonAdicionarValor_Click;
             // 
             // button2
             // 
@@ -126,7 +127,7 @@
             button2.Location = new Point(239, 329);
             button2.Name = "button2";
             button2.Size = new Size(118, 34);
-            button2.TabIndex = 15;
+            button2.TabIndex = 4;
             button2.Text = "Fechar";
             button2.UseVisualStyleBackColor = false;
             button2.Click += button2_Click;
@@ -145,13 +146,13 @@
             BackColor = SystemColors.ControlLight;
             ClientSize = new Size(493, 375);
             Controls.Add(button2);
-            Controls.Add(button1);
+            Controls.Add(buttonAdicionarValor);
             Controls.Add(label4);
-            Controls.Add(textBox2);
+            Controls.Add(textBoxValor);
             Controls.Add(label3);
-            Controls.Add(comboBox1);
+            Controls.Add(comboBoxTp);
             Controls.Add(label2);
-            Controls.Add(textBox1);
+            Controls.Add(textBoxNomeValor);
             Controls.Add(label1);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.FixedToolWindow;
@@ -165,13 +166,13 @@
         #endregion
 
         private Label label1;
-        private TextBox textBox1;
+        private TextBox textBoxNomeValor;
         private Label label2;
-        private ComboBox comboBox1;
+        private ComboBox comboBoxTp;
         private Label label3;
         private Label label4;
-        private TextBox textBox2;
-        private Button button1;
+        private TextBox textBoxValor;
+        private Button buttonAdicionarValor;
         private Button button2;
         private Panel panel1;
     }

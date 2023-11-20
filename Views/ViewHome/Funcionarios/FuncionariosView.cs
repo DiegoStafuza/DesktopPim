@@ -18,8 +18,6 @@ namespace DesktopPim.Views.ViewHome
     public partial class FuncionariosView : Form
     {
         
-        AlteraFuncionarioView altView = new();
-        
 
         public FuncionariosView()
         {
@@ -101,20 +99,22 @@ namespace DesktopPim.Views.ViewHome
             funcionariosController.LoadDataAPI(this);
         }
 
-        private async void buttonAlterar_Click(object sender, EventArgs e)
+        public async void buttonAlterar_Click(object sender, EventArgs e)
         {
+            if (dataGridViewFuncionarios.SelectedRows.Count > 0)
+            {
 
-            int idFunci = Convert.ToInt32(dataGridViewFuncionarios.SelectedRows[0].Cells["ID"].Value);
+                DataGridViewRow selectedRow = dataGridViewFuncionarios.SelectedRows[0];
 
-            FuncionariosController funcionariosController = new();
+                int idFunci = Convert.ToInt32(selectedRow.Cells["ID"].Value);
 
-            funcionariosController.ObterFuncionarioPorId(idFunci);
+                AlteraFuncionarioView alteraFuncionario = new AlteraFuncionarioView(idFunci);
 
-            altView.PreencherDetalhesFuncionario(idFunci);
-
-            AbrirFormularioAlteracao();
-
-
+            }
+            else
+            {
+                MessageBox.Show("Por favor, selecione um funcionário para alterar.");
+            }
         }
         private AlteraFuncionarioView altera;
         private void AbrirFormularioAlteracao()

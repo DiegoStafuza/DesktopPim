@@ -2,6 +2,7 @@
 using DesktopPim.Views.ViewHome.Mensal;
 using System.Windows.Forms;
 using System.Linq;
+using javax.management.loading;
 
 namespace DesktopPim.Views
 {
@@ -16,14 +17,14 @@ namespace DesktopPim.Views
             dataGridViewDescontos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             calculaFolha.IniciarComboBoxes(this);
 
-
         }
         async void PayrollView_Load(object sender, EventArgs e)
         {
             funcionariosCalculos = await calculaFolha.ObterTodosFuncionarios();
             comboBoxFuncionarios.DataSource = funcionariosCalculos;
             comboBoxFuncionarios.DisplayMember = "nome_funcionario";
-            calculaFolha.ValorLiquido();
+
+
         }
 
 
@@ -56,9 +57,12 @@ namespace DesktopPim.Views
 
                     dataGridViewDescontos.Rows.Add(dataGridViewDescontos.Rows.Count + 1, "Desconto", "INSS", funcionarioDetalhes.descontoINSS);
                     dataGridViewDescontos.Rows.Add(dataGridViewDescontos.Rows.Count + 1, "Desconto", "IRRF", funcionarioDetalhes.descontoIRRF);
-
+                    dataGridViewDescontos.Rows.Add(dataGridViewDescontos.Rows.Count + 1, "Desconto", "FGTS", funcionarioDetalhes.descontoFGTS);
+                    dataGridViewDescontos.Rows.Add(dataGridViewDescontos.Rows.Count + 1, "Provento", "Salário 2", funcionarioDetalhes.salario);
 
                     await PreencherDetalhesFuncionario(funcionarioDetalhes);
+
+                    CalcularValorLiquido();
                 }
                 else
                 {
@@ -128,5 +132,36 @@ namespace DesktopPim.Views
                 }
             }
         }
+
+        private void CalcularValorLiquido()
+        {
+            decimal totalProventos = 0;
+            decimal totalDescontos = 0;
+            string desconto = "DESCONTO";
+            string provento = "PROVENTO";
+
+            foreach (DataGridViewRow row in dataGridViewDescontos.Rows)
+            {
+                if (row.Cells["Tipo"].Value.ToString().ToUpper() == desconto)
+                {
+                    if (decimal.TryParse(row.Cells["Valor"].Value.ToString(), out decimal valorDesconto))
+                    {
+                        totalDescontos += valorDesconto;
+                    }
+                }
+                else if (row.Cells["Tipo"].Value.ToString().ToUpper() == provento)
+                {
+                    if (decimal.TryParse(row.Cells["Valor"].Value.ToString(), out decimal valorProvento))
+                    {
+                        totalProventos += valorProvento;
+                    }
+                }
+            }
+            decimal valorLiquido = totalProventos - totalDescontos;
+
+            labelValorLiquido.Text = $"Valor líquido: R$ {valorLiquido}";
+
+        }
+
     }
 }

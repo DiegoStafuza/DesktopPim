@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -50,6 +51,7 @@ namespace DesktopPim.Views.ViewHome
             this.comboBoxCargos.Items.Clear();
             await funcionariosController.LoadCargos(this);
             funcionariosController.IniciarComboBoxes(this);
+            await funcionariosController.LoadUsuarios(this);
         }
 
         private async void buttonCadastrarFunc_Click(object sender, EventArgs e)
@@ -63,7 +65,7 @@ namespace DesktopPim.Views.ViewHome
                     cpf = maskedTextCPF.Text,
                     sexo = GetSexoSelecionado(),
                     cargo_id = ((CargosDTO)comboBoxCargos.SelectedItem)?.id_cargo,
-                    data_contratacao = monthCalendar1.SelectionStart,
+                    data_contratacao = Convert.ToDateTime(maskedTextBoxDtContratacao.Text),
                     estado_civil = (string)comboBoxEstadoCivil.SelectedItem,
                     rua = textBox2.Text,
                     tipo_endereco = (string)comboBoxTpEndereco.SelectedItem,
@@ -93,7 +95,7 @@ namespace DesktopPim.Views.ViewHome
                 && !string.IsNullOrWhiteSpace(maskedTextCPF.Text)
                 && !string.IsNullOrWhiteSpace(GetSexoSelecionado())
                 && comboBoxCargos.SelectedItem != null
-                && monthCalendar1.SelectionStart != null
+                && (maskedTextBoxDtContratacao_Validating())
                 && !string.IsNullOrWhiteSpace((string)comboBoxEstadoCivil.SelectedItem)
                 && !string.IsNullOrWhiteSpace(textBox2.Text)
                 && !string.IsNullOrWhiteSpace((string)comboBoxTpEndereco.SelectedItem)
@@ -118,6 +120,22 @@ namespace DesktopPim.Views.ViewHome
             else
             {
                 return string.Empty;
+            }
+        }
+
+        private bool maskedTextBoxDtContratacao_Validating()
+        {
+            string dateFormat = "dd/MM/yyyy";
+            CultureInfo provider = CultureInfo.InvariantCulture;
+
+            if (!DateTime.TryParseExact(maskedTextBoxDtContratacao.Text, dateFormat, provider, DateTimeStyles.None, out _))
+            {
+                MessageBox.Show("Por favor, insira uma data válida no formato DD/MM/AAAA.", "Data inválida.", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return false;
+            }
+            else
+            {
+                return true;
             }
         }
     }

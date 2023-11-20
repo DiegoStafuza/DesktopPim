@@ -7,7 +7,6 @@ using DesktopPim.Views;
 using System.Text;
 using System.Windows.Forms;
 using System.Net.Http.Headers;
-using ApiPIM.Models;
 using com.sun.xml.@internal.bind.v2.model.core;
 using DesktopPim.Views.ViewHome.Funcionarios;
 
@@ -131,7 +130,8 @@ namespace DesktopPim.Controllers
                     fun.cidade,
                     fun.uf_estado,
                     fun.tipo_telefone,
-                    fun.numero_contato
+                    fun.numero_contato,
+                    fun.email_usuario
                 };
                 var json = JsonSerializer.Serialize(data);
                 var content = new StringContent(json, Encoding.UTF8, "application/json");
@@ -157,7 +157,7 @@ namespace DesktopPim.Controllers
             addFuncionario.checkBox2.Checked = false;
             addFuncionario.comboBoxEstadoCivil.Text = string.Empty;
             addFuncionario.comboBoxCargos.Text = string.Empty;
-            LimparSelecaoMonthCalendar(addFuncionario.monthCalendar1);
+            addFuncionario.maskedTextBoxDtContratacao.Text = string.Empty;
             addFuncionario.textBox2.Text = string.Empty;
             addFuncionario.comboBoxTpEndereco.Text = string.Empty;
             addFuncionario.textBox3.Text = string.Empty;
@@ -179,31 +179,23 @@ namespace DesktopPim.Controllers
 
                 HttpResponseMessage response = await client.DeleteAsync($"https://20.14.87.19/api/Funcionarios/excluir/{id}");
 
-                    if (response.IsSuccessStatusCode)
-                    {
-                        return true;
-                    }
-                    else
-                    {
-                        MessageBox.Show($"Erro ao excluir funcionário. Status Code: {response.StatusCode}");
-                        return false;
-                    }
-                }
-                catch (Exception ex)
+                if (response.IsSuccessStatusCode)
                 {
-                    MessageBox.Show($"Erro ao excluir funcionário. {ex.Message}");
+                    return true;
+                }
+                else
+                {
+                    MessageBox.Show($"Erro ao excluir funcionário. Status Code: {response.StatusCode}");
                     return false;
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Erro ao excluir funcionário. {ex.Message}");
+                return false;
+            }
         }
-
-        private void LimparSelecaoMonthCalendar(MonthCalendar monthCalendar)
-        {
-            addFuncionario.monthCalendar1.SetDate(DateTime.Today);
-
-            addFuncionario.monthCalendar1.SelectionStart = addFuncionario.monthCalendar1.TodayDate;
-            addFuncionario.monthCalendar1.SelectionEnd = addFuncionario.monthCalendar1.TodayDate;
-        }
-        public void IniciarComboBoxes(AlteraFuncionarioView altFuncionario)
+        public async void IniciarComboBoxes(AlteraFuncionarioView altFuncionario)
         {
             altFuncionario.comboBoxEstadoCivil.Items.Insert(0, string.Empty);
             altFuncionario.comboBoxEstadoCivil.Items.Insert(1, "Solteiro(a)");
@@ -241,28 +233,66 @@ namespace DesktopPim.Controllers
                 //int selectedCargoId = (int)addFuncionariosView.comboBoxCargos.SelectedValue;
             }
         }
-        public async Task<Model.FuncionarioDTO> ObterFuncionarioPorId(int id)
+        public async Task<FuncionarioDTO> ObterFuncionarioPorId(int id)
         {
             var response = await client.GetAsync($"https://20.14.87.19/api/Funcionarios/dadosFuncionarioCompleto/{id}");
 
             if (response.IsSuccessStatusCode)
             {
                 var jsonString = await response.Content.ReadAsStringAsync();
-                var funcionarios = JsonSerializer.Deserialize<List<Model.FuncionarioDTO>>(jsonString);
+                var funcionarios = JsonSerializer.Deserialize<List<FuncionarioDTO>>(jsonString);
+                //var funcionarioDTO = funcionarios.FirstOrDefault();
 
-                if(funcionarios != null && funcionarios.Count > 0)
+                if (funcionarios != null)
                 {
+
                     return funcionarios[0];
+
                 }
                 
             }
             return null;
         }
 
-        //public async Task PreencherDetalhesFuncionario(int idFunc)
-        
-        //    var funcionarioDetalhes = await ObterFuncionarioPorId(idFunc);
-        //    await altView.PreencherFormAlteracao(funcionarioDetalhes);
-        //}
+        public async Task LoadUsuarios(AdicionaFuncionarioView adicionaFuncionario)
+        {
+            var response = await client.GetAsync("https://20.14.87.19/api/Autenticacao/listarUsuarios");
+
+            if (response.IsSuccessStatusCode)
+            {
+
+                var jsonString = await response.Content.ReadAsStringAsync();
+                var usuarios = JsonSerializer.Deserialize<List<UsuarioDTO>>(jsonString);
+
+                var itemVazio = new UsuarioDTO { usuario_id = 0, email = "" };
+
+                usuarios.Insert(0, itemVazio);
+                adicionaFuncionario.comboBoxUsuarios.DataSource = usuarios;
+                adicionaFuncionario.comboBoxUsuarios.DisplayMember = "email";
+                adicionaFuncionario.comboBoxUsuarios.ValueMember = "usuario_id";
+
+            }
+        }
+
+        public async Task LoadUsuarios(AlteraFuncionarioView alteraFuncionarioView)
+        {
+            var response = await client.GetAsync("https://20.14.87.19/api/Autenticacao/listarUsuarios");
+
+            if (response.IsSuccessStatusCode)
+            {
+
+                var jsonString = await response.Content.ReadAsStringAsync();
+                var usuarios = JsonSerializer.Deserialize<List<UsuarioDTO>>(jsonString);
+
+                var itemVazio = new UsuarioDTO { usuario_id = 0, email = "" };
+
+                usuarios.Insert(0, itemVazio);
+                alteraFuncionarioView.comboBoxUsuarios.DataSource = usuarios;
+                alteraFuncionarioView.comboBoxUsuarios.DisplayMember = "email";
+                alteraFuncionarioView.comboBoxUsuarios.ValueMember = "usuario_id";
+
+            }
+        }
+
     }
 }

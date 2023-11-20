@@ -1,4 +1,5 @@
 ﻿using com.sun.security.ntlm;
+using com.sun.xml.@internal.bind.v2.model.core;
 using DesktopPim.Controllers;
 using DesktopPim.Model;
 using DesktopPim.Views;
@@ -7,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Net.Http;
+using System.Net.Http.Json;
 using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -116,68 +118,61 @@ public class CalculaFolhaController
 
 
     }
-    public void ValorLiquido()
+
+    public decimal CorrigeValorDecimal(decimal valorOriginal)
     {
-        PayrollView payroll = new();
 
-        bool todasAsLinhasComValor = true;
+        string valorString = valorOriginal.ToString();
 
-        foreach (DataGridViewRow row in payroll.dataGridViewDescontos.Rows)
+
+        if (valorString.Length > 2)
         {
-            if (!row.IsNewRow && (row.Cells["Valor"].Value == null || string.IsNullOrWhiteSpace(row.Cells["Valor"].Value.ToString())))
-            {
-                todasAsLinhasComValor = false;
-                break;
-            }
-        }
-        if (todasAsLinhasComValor)
-        {
-            double totalProventos = 0.00;
-            double totalDescontos = 0.00;
 
-            foreach (DataGridViewRow row in payroll.dataGridViewDescontos.Rows)
-            {
-                if (!row.IsNewRow)
-                {
-                    if (row.Cells["Tipo"].Value != null && row.Cells["Valor"].Value != null)
-                    {
-                        string tipo = row.Cells["Tipo"].Value.ToString();
-                        double valor = 0.00;
-
-                        if (double.TryParse(row.Cells["Valor"].Value.ToString(), out valor))
-                        {
-                            if (tipo == "Provento")
-                            {
-                                totalProventos += valor;
-                            }
-                            else if (tipo == "Desconto")
-                            {
-                                totalDescontos += valor;
-                            }
-                        }
-                        else
-                        {
-                            todasAsLinhasComValor = false;
-                            break;
-                        }
-                    }
-                }
-            }
-            if (todasAsLinhasComValor)
-            {
-                double saldo = totalProventos - totalDescontos;
-                payroll.labelValorLiquido.Text = $"Valor líquido: R$ {saldo}";
-            }
-            else
-            {
-
-                payroll.labelValorLiquido.Text = "Algumas linhas possuem valores inválidos!";
-            }
+            valorString = valorString.Insert(valorString.Length - 2, ".");
         }
         else
         {
+            valorString = valorString.PadLeft(3, '0').Insert(1, ".");
+        }
 
-            payroll.labelValorLiquido.Text = "Algumas linhas estão sem valor!";
+        return Convert.ToDecimal(valorString, CultureInfo.InvariantCulture);
+    }
+
+    public async Task<bool> AdicionarValores(ProventosViewModel model)
+    {
+        List<ProventosListModel> proventos = new List<ProventosListModel>();
+
+        model.Proventos.ForEach(p =>
+        {
+            var item = new ProventosListModel();
+            item.id_funcionario = model.FuncionarioId;
+            item.mes = model.Mes;
+            item.ano = model.Ano;
+            if (p.Valor.HasValue)
+            {
+                item.valor = CorrigeValorDecimal(p.Valor.Value);
+            }
+            item.nome_valor = p.NomeValor;
+            item.tipo_valor = p.TipoValor;
+            item.data = DateTime.Now;
+            proventos.Add(item);
+        });
+
+        var response = await httpClient.PostAsJsonAsync("https://20.14.87.19/api/Calculo/AdicionaValores", proventos);
+
+        if (response.IsSuccessStatusCode)
+        {
+            return true;
+        }
+        else if (response.StatusCode == System.Net.HttpStatusCode.UnprocessableEntity)
+        {
+            MessageBox.Show($"Já existe cálculo para esse funcionário referente a {model.Mes} de {model.Ano}.", "Erro ao adicionar valores.", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            return false;
+        }
+        else
+        {
+            MessageBox.Show("Erro inesperado.");
+            return false;
         }
     }
 }

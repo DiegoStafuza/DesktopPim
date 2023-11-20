@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PayrollView));
             panel1 = new Panel();
+            label7 = new Label();
             label6 = new Label();
             label5 = new Label();
             comboBoxAno = new ComboBox();
@@ -50,7 +51,6 @@
             Valor = new DataGridViewTextBoxColumn();
             button1 = new Button();
             labelValorLiquido = new Label();
-            label7 = new Label();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewDescontos).BeginInit();
             SuspendLayout();
@@ -75,6 +75,15 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(1147, 274);
             panel1.TabIndex = 0;
+            // 
+            // label7
+            // 
+            label7.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label7.Location = new Point(38, 67);
+            label7.Name = "label7";
+            label7.Size = new Size(115, 35);
+            label7.TabIndex = 12;
+            label7.Text = "Funcionário";
             // 
             // label6
             // 
@@ -211,7 +220,6 @@
             dataGridViewDescontos.Location = new Point(36, 329);
             dataGridViewDescontos.MultiSelect = false;
             dataGridViewDescontos.Name = "dataGridViewDescontos";
-            dataGridViewDescontos.ReadOnly = true;
             dataGridViewDescontos.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridViewDescontos.RowTemplate.Height = 25;
             dataGridViewDescontos.Size = new Size(1008, 275);
@@ -222,25 +230,21 @@
             // 
             ID.HeaderText = "ID";
             ID.Name = "ID";
-            ID.ReadOnly = true;
             // 
             // Tipo
             // 
             Tipo.HeaderText = "Tipo";
             Tipo.Name = "Tipo";
-            Tipo.ReadOnly = true;
             // 
             // Nome
             // 
             Nome.HeaderText = "Nome";
             Nome.Name = "Nome";
-            Nome.ReadOnly = true;
             // 
             // Valor
             // 
             Valor.HeaderText = "Valor";
             Valor.Name = "Valor";
-            Valor.ReadOnly = true;
             // 
             // button1
             // 
@@ -267,15 +271,6 @@
             labelValorLiquido.Size = new Size(245, 40);
             labelValorLiquido.TabIndex = 0;
             labelValorLiquido.TextAlign = ContentAlignment.MiddleLeft;
-            // 
-            // label7
-            // 
-            label7.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label7.Location = new Point(38, 67);
-            label7.Name = "label7";
-            label7.Size = new Size(115, 35);
-            label7.TabIndex = 12;
-            label7.Text = "Funcionário";
             // 
             // PayrollView
             // 

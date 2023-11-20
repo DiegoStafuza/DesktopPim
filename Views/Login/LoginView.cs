@@ -28,9 +28,9 @@ namespace DesktopPim.View
 
                 //if (response != null && response.usuario.ativo == 1 && response.usuario.administrador == 1)
                 //{
-                    HomeView homeView = new();
-                    homeView.Show();
-                    this.Hide();
+                HomeView homeView = new();
+                homeView.Show();
+                this.Hide();
                 //}
                 //else if (response != null && response.usuario.administrador == 0)
                 //{

@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace DesktopPim.Model
 {
-    public class UserModel
+    public class UsuarioDTO
     {
-        public string Email { get; set; }
-        public string Senha { get; set; }
+        public int? usuario_id { get; set; }
+        public string? email { get; set; }
     }
 }
