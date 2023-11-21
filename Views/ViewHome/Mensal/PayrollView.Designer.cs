@@ -51,6 +51,7 @@
             Valor = new DataGridViewTextBoxColumn();
             button1 = new Button();
             labelValorLiquido = new Label();
+            button2 = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewDescontos).BeginInit();
             SuspendLayout();
@@ -261,6 +262,7 @@
             button1.TabIndex = 5;
             button1.Text = "Enviar";
             button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
             // 
             // labelValorLiquido
             // 
@@ -272,12 +274,29 @@
             labelValorLiquido.TabIndex = 0;
             labelValorLiquido.TextAlign = ContentAlignment.MiddleLeft;
             // 
+            // button2
+            // 
+            button2.BackColor = Color.FromArgb(128, 128, 255);
+            button2.BackgroundImageLayout = ImageLayout.Stretch;
+            button2.Cursor = Cursors.Hand;
+            button2.FlatStyle = FlatStyle.Flat;
+            button2.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            button2.ForeColor = SystemColors.Control;
+            button2.Location = new Point(481, 721);
+            button2.Name = "button2";
+            button2.Size = new Size(146, 43);
+            button2.TabIndex = 6;
+            button2.Text = "Gerar PDF";
+            button2.UseVisualStyleBackColor = false;
+            button2.Click += button2_Click;
+            // 
             // PayrollView
             // 
             AutoScaleDimensions = new SizeF(96F, 96F);
             AutoScaleMode = AutoScaleMode.Dpi;
             BackColor = SystemColors.ActiveBorder;
-            ClientSize = new Size(1147, 657);
+            ClientSize = new Size(1147, 776);
+            Controls.Add(button2);
             Controls.Add(labelValorLiquido);
             Controls.Add(button1);
             Controls.Add(dataGridViewDescontos);
@@ -317,5 +336,6 @@
         public ComboBox comboBoxAno;
         public Label labelValorLiquido;
         private Label label7;
+        private Button button2;
     }
 }

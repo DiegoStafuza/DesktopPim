@@ -14,9 +14,10 @@ namespace DesktopPim.Views.ViewHome.Mensal
 {
     public partial class PayrollAdicionaValor : Form
     {
-        PayrollView p = new PayrollView();
-        public PayrollAdicionaValor()
+        private PayrollView payrollView;
+        public PayrollAdicionaValor(PayrollView payrollView)
         {
+            this.payrollView = payrollView;
             InitializeComponent();
             IniciarComboBoxes();
         }
@@ -29,15 +30,17 @@ namespace DesktopPim.Views.ViewHome.Mensal
 
         public void buttonAdicionarValor_Click(object sender, EventArgs e)
         {
-            var nomeValor = textBoxNomeValor.Text;
-            var tipoValor = comboBoxTp.SelectedItem?.ToString();
-            var valor = decimal.Parse(textBoxValor.Text);
+            string nomeValor = textBoxNomeValor.Text;
+            string tipoValor = comboBoxTp.SelectedItem?.ToString();
+            decimal valor;
 
-            if(!string.IsNullOrEmpty(nomeValor) && !string.IsNullOrEmpty(tipoValor))
+            if(decimal.TryParse(textBoxValor.Text, out valor) && !string.IsNullOrEmpty(nomeValor) && !string.IsNullOrEmpty(tipoValor))
             {
-                p.dataGridViewDescontos.Rows.Add(p.dataGridViewDescontos.Rows.Count + 1, tipoValor, nomeValor, valor);
-                this.Close();
-                p.dataGridViewDescontos.Update();
+                payrollView.dataGridViewDescontos.Rows.Add(payrollView.dataGridViewDescontos.Rows.Count + 1, tipoValor, nomeValor, valor);
+                textBoxNomeValor.Text = "";
+                comboBoxTp.SelectedIndex = -1;
+                textBoxValor.Text = "";
+                payrollView.CalcularValorLiquido();
             }
             else
             {
