@@ -65,7 +65,6 @@ namespace DesktopPim.Views.ViewHome
                     cpf = maskedTextCPF.Text,
                     sexo = GetSexoSelecionado(),
                     cargo_id = ((CargosDTO)comboBoxCargos.SelectedItem)?.id_cargo,
-                    data_contratacao = Convert.ToDateTime(maskedTextBoxDtContratacao.Text),
                     estado_civil = (string)comboBoxEstadoCivil.SelectedItem,
                     rua = textBox2.Text,
                     tipo_endereco = (string)comboBoxTpEndereco.SelectedItem,
@@ -75,13 +74,16 @@ namespace DesktopPim.Views.ViewHome
                     cidade = textBox4.Text,
                     uf_estado = maskedTextBox1.Text,
                     tipo_telefone = (string)comboBoxTpContato.SelectedItem,
-                    numero_contato = textBox7.Text
+                    numero_contato = textBox7.Text,
+                    data_contratacao = Convert.ToDateTime(maskedTextBoxDtContratacao.Text)
                 };
 
                 await funcionariosController.CadastrarFuncionario(NovoFunc);
                 MessageBox.Show("Cadastro realizado com sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 funcionariosController.LimparCampos(this);
                 this.Close();
+                FuncionariosView funcionariosView = new FuncionariosView();
+                funcionariosController.LoadDataAPI(funcionariosView);
             }
             else
             {
@@ -106,7 +108,6 @@ namespace DesktopPim.Views.ViewHome
                 && !string.IsNullOrWhiteSpace(maskedTextBox1.Text)
                 && !string.IsNullOrWhiteSpace((string)comboBoxTpContato.SelectedItem)
                 && !string.IsNullOrWhiteSpace(textBox7.Text);
-
         private string GetSexoSelecionado()
         {
             if (checkBox1.Checked)

@@ -94,7 +94,7 @@
             textBoxNomeCompleto.Location = new Point(12, 104);
             textBoxNomeCompleto.Name = "textBoxNomeCompleto";
             textBoxNomeCompleto.Size = new Size(414, 29);
-            textBoxNomeCompleto.TabIndex = 1;
+            textBoxNomeCompleto.TabIndex = 0;
             // 
             // label7
             // 
@@ -121,7 +121,7 @@
             comboBoxEstadoCivil.Location = new Point(14, 274);
             comboBoxEstadoCivil.Name = "comboBoxEstadoCivil";
             comboBoxEstadoCivil.Size = new Size(153, 29);
-            comboBoxEstadoCivil.TabIndex = 4;
+            comboBoxEstadoCivil.TabIndex = 5;
             // 
             // label6
             // 
@@ -139,7 +139,7 @@
             comboBoxCargos.Location = new Point(182, 274);
             comboBoxCargos.Name = "comboBoxCargos";
             comboBoxCargos.Size = new Size(228, 29);
-            comboBoxCargos.TabIndex = 5;
+            comboBoxCargos.TabIndex = 6;
             // 
             // maskedTextBoxDtContratacao
             // 
@@ -148,7 +148,7 @@
             maskedTextBoxDtContratacao.Mask = "00/00/0000";
             maskedTextBoxDtContratacao.Name = "maskedTextBoxDtContratacao";
             maskedTextBoxDtContratacao.Size = new Size(97, 29);
-            maskedTextBoxDtContratacao.TabIndex = 6;
+            maskedTextBoxDtContratacao.TabIndex = 7;
             maskedTextBoxDtContratacao.TextMaskFormat = MaskFormat.IncludePromptAndLiterals;
             maskedTextBoxDtContratacao.ValidatingType = typeof(DateTime);
             // 
@@ -199,7 +199,7 @@
             textBox5.Location = new Point(611, 415);
             textBox5.Name = "textBox5";
             textBox5.Size = new Size(153, 29);
-            textBox5.TabIndex = 11;
+            textBox5.TabIndex = 10;
             // 
             // label15
             // 
@@ -225,7 +225,7 @@
             textBox4.Location = new Point(14, 553);
             textBox4.Name = "textBox4";
             textBox4.Size = new Size(414, 29);
-            textBox4.TabIndex = 12;
+            textBox4.TabIndex = 14;
             // 
             // maskedTextBox2
             // 
@@ -234,7 +234,7 @@
             maskedTextBox2.Mask = "00000-000";
             maskedTextBox2.Name = "maskedTextBox2";
             maskedTextBox2.Size = new Size(153, 29);
-            maskedTextBox2.TabIndex = 10;
+            maskedTextBox2.TabIndex = 12;
             maskedTextBox2.TextMaskFormat = MaskFormat.IncludePromptAndLiterals;
             // 
             // label16
@@ -270,7 +270,7 @@
             textBox3.Location = new Point(14, 483);
             textBox3.Name = "textBox3";
             textBox3.Size = new Size(414, 29);
-            textBox3.TabIndex = 9;
+            textBox3.TabIndex = 11;
             // 
             // comboBoxTpContato
             // 
@@ -279,7 +279,7 @@
             comboBoxTpContato.Location = new Point(13, 676);
             comboBoxTpContato.Name = "comboBoxTpContato";
             comboBoxTpContato.Size = new Size(176, 29);
-            comboBoxTpContato.TabIndex = 14;
+            comboBoxTpContato.TabIndex = 15;
             // 
             // label10
             // 
@@ -297,7 +297,7 @@
             comboBoxTpEndereco.Location = new Point(442, 415);
             comboBoxTpEndereco.Name = "comboBoxTpEndereco";
             comboBoxTpEndereco.Size = new Size(153, 29);
-            comboBoxTpEndereco.TabIndex = 8;
+            comboBoxTpEndereco.TabIndex = 9;
             // 
             // label18
             // 
@@ -314,7 +314,7 @@
             textBox7.Location = new Point(220, 676);
             textBox7.Name = "textBox7";
             textBox7.Size = new Size(206, 29);
-            textBox7.TabIndex = 15;
+            textBox7.TabIndex = 16;
             // 
             // textBox2
             // 
@@ -322,7 +322,7 @@
             textBox2.Location = new Point(12, 415);
             textBox2.Name = "textBox2";
             textBox2.Size = new Size(414, 29);
-            textBox2.TabIndex = 7;
+            textBox2.TabIndex = 8;
             // 
             // buttonCadastrarFunc
             // 
@@ -334,7 +334,7 @@
             buttonCadastrarFunc.Location = new Point(636, 726);
             buttonCadastrarFunc.Name = "buttonCadastrarFunc";
             buttonCadastrarFunc.Size = new Size(199, 51);
-            buttonCadastrarFunc.TabIndex = 16;
+            buttonCadastrarFunc.TabIndex = 17;
             buttonCadastrarFunc.Text = "Cadastrar";
             buttonCadastrarFunc.UseVisualStyleBackColor = false;
             buttonCadastrarFunc.Click += buttonCadastrarFunc_Click;
@@ -356,7 +356,7 @@
             maskedTextCPF.Mask = "000,000,000-00";
             maskedTextCPF.Name = "maskedTextCPF";
             maskedTextCPF.Size = new Size(122, 29);
-            maskedTextCPF.TabIndex = 3;
+            maskedTextCPF.TabIndex = 2;
             maskedTextCPF.TextMaskFormat = MaskFormat.IncludePromptAndLiterals;
             // 
             // label3
@@ -383,7 +383,7 @@
             checkBox1.Location = new Point(14, 190);
             checkBox1.Name = "checkBox1";
             checkBox1.Size = new Size(124, 35);
-            checkBox1.TabIndex = 0;
+            checkBox1.TabIndex = 3;
             checkBox1.Text = "Masculino";
             checkBox1.UseVisualStyleBackColor = true;
             checkBox1.CheckedChanged += checkBox1_CheckedChanged;
@@ -394,7 +394,7 @@
             checkBox2.Location = new Point(141, 190);
             checkBox2.Name = "checkBox2";
             checkBox2.Size = new Size(109, 35);
-            checkBox2.TabIndex = 0;
+            checkBox2.TabIndex = 4;
             checkBox2.Text = "Feminino";
             checkBox2.UseVisualStyleBackColor = true;
             checkBox2.CheckedChanged += checkBox2_CheckedChanged;
@@ -406,7 +406,7 @@
             comboBoxUsuarios.Location = new Point(458, 104);
             comboBoxUsuarios.Name = "comboBoxUsuarios";
             comboBoxUsuarios.Size = new Size(228, 29);
-            comboBoxUsuarios.TabIndex = 2;
+            comboBoxUsuarios.TabIndex = 1;
             // 
             // label19
             // 

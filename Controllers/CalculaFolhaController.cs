@@ -93,28 +93,29 @@ public class CalculaFolhaController
 
     public void IniciarComboBoxes(PayrollView payroll)
     {
+        payroll.comboBoxMes.Items.Add("");
+        payroll.comboBoxMes.Items.Add("Janeiro");
+        payroll.comboBoxMes.Items.Add("Fevereiro");
+        payroll.comboBoxMes.Items.Add("Março");
+        payroll.comboBoxMes.Items.Add("Abril");
+        payroll.comboBoxMes.Items.Add("Maio");
+        payroll.comboBoxMes.Items.Add("Junho");
+        payroll.comboBoxMes.Items.Add("Julho");
+        payroll.comboBoxMes.Items.Add("Agosto");
+        payroll.comboBoxMes.Items.Add("Setembro");
+        payroll.comboBoxMes.Items.Add("Outubro");
+        payroll.comboBoxMes.Items.Add("Novembro");
+        payroll.comboBoxMes.Items.Add("Dezembro");
 
-        payroll.comboBoxMes.Items.Insert(0, "Janeiro");
-        payroll.comboBoxMes.Items.Insert(1, "Fevereiro");
-        payroll.comboBoxMes.Items.Insert(2, "Março");
-        payroll.comboBoxMes.Items.Insert(3, "Abril");
-        payroll.comboBoxMes.Items.Insert(4, "Maio");
-        payroll.comboBoxMes.Items.Insert(5, "Junho");
-        payroll.comboBoxMes.Items.Insert(6, "Julho");
-        payroll.comboBoxMes.Items.Insert(7, "Agosto");
-        payroll.comboBoxMes.Items.Insert(8, "Setembro");
-        payroll.comboBoxMes.Items.Insert(9, "Outubro");
-        payroll.comboBoxMes.Items.Insert(10, "Novembro");
-        payroll.comboBoxMes.Items.Insert(11, "Dezembro");
-
-        payroll.comboBoxAno.Items.Insert(0, "2023");
-        payroll.comboBoxAno.Items.Insert(1, "2024");
-        payroll.comboBoxAno.Items.Insert(2, "2025");
-        payroll.comboBoxAno.Items.Insert(3, "2026");
-        payroll.comboBoxAno.Items.Insert(4, "2027");
-        payroll.comboBoxAno.Items.Insert(5, "2028");
-        payroll.comboBoxAno.Items.Insert(6, "2029");
-        payroll.comboBoxAno.Items.Insert(7, "2030");
+        payroll.comboBoxAno.Items.Insert(0, string.Empty);
+        payroll.comboBoxAno.Items.Insert(1, "2023");
+        payroll.comboBoxAno.Items.Insert(2, "2024");
+        payroll.comboBoxAno.Items.Insert(3, "2025");
+        payroll.comboBoxAno.Items.Insert(4, "2026");
+        payroll.comboBoxAno.Items.Insert(5, "2027");
+        payroll.comboBoxAno.Items.Insert(6, "2028");
+        payroll.comboBoxAno.Items.Insert(7, "2029");
+        payroll.comboBoxAno.Items.Insert(8, "2030");
 
 
     }
@@ -138,41 +139,47 @@ public class CalculaFolhaController
         return Convert.ToDecimal(valorString, CultureInfo.InvariantCulture);
     }
 
-    public async Task<bool> AdicionarValores(ProventosViewModel model)
+    public async Task AdicionarValores(ProventosViewModel model)
     {
-        List<ProventosListModel> proventos = new List<ProventosListModel>();
-
-        model.Proventos.ForEach(p =>
+        try
         {
-            var item = new ProventosListModel();
-            item.id_funcionario = model.FuncionarioId;
-            item.mes = model.Mes;
-            item.ano = model.Ano;
-            if (p.Valor.HasValue)
+            List<ProventosListModel> proventos = new List<ProventosListModel>();
+
+            model.Proventos.ForEach(p =>
             {
-                item.valor = CorrigeValorDecimal(p.Valor.Value);
+                var item = new ProventosListModel();
+                item.id_funcionario = model.FuncionarioId;
+                item.mes = model.Mes;
+                item.ano = model.Ano;
+                if (p.Valor.HasValue)
+                {
+                    item.valor = CorrigeValorDecimal(p.Valor.Value);
+                }
+                item.nome_valor = p.NomeValor;
+                item.tipo_valor = p.TipoValor;
+                item.data = DateTime.Now;
+                proventos.Add(item);
+            });
+
+            var response = await httpClient.PostAsJsonAsync("https://20.14.87.19/api/Calculo/AdicionaValores", proventos);
+
+            if (response.IsSuccessStatusCode)
+            {
+                MessageBox.Show("Folha de pagamento gerada com sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            item.nome_valor = p.NomeValor;
-            item.tipo_valor = p.TipoValor;
-            item.data = DateTime.Now;
-            proventos.Add(item);
-        });
+            else if (response.StatusCode == System.Net.HttpStatusCode.UnprocessableEntity)
+            {
+                MessageBox.Show($"Já existe cálculo para esse funcionário referente a {model.Mes} de {model.Ano}.", "Erro ao adicionar valores.", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show($"Erro na requisição. Status: {response.StatusCode}", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
 
-        var response = await httpClient.PostAsJsonAsync("https://20.14.87.19/api/Calculo/AdicionaValores", proventos);
-
-        if (response.IsSuccessStatusCode)
-        {
-            return true;
         }
-        else if (response.StatusCode == System.Net.HttpStatusCode.UnprocessableEntity)
+        catch (Exception ex)
         {
-            MessageBox.Show($"Já existe cálculo para esse funcionário referente a {model.Mes} de {model.Ano}.", "Erro ao adicionar valores.", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            return false;
-        }
-        else
-        {
-            MessageBox.Show("Erro inesperado.");
-            return false;
+            MessageBox.Show($"Erro inesperado. Status: {ex.Message}");
         }
     }
 }

@@ -5,8 +5,10 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -20,6 +22,7 @@ namespace DesktopPim.Views.ViewHome.Mensal
             this.payrollView = payrollView;
             InitializeComponent();
             IniciarComboBoxes();
+
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -32,14 +35,17 @@ namespace DesktopPim.Views.ViewHome.Mensal
         {
             string nomeValor = textBoxNomeValor.Text;
             string tipoValor = comboBoxTp.SelectedItem?.ToString();
-            decimal valor;
+            string valor = textBox1.Text;
 
-            if(decimal.TryParse(textBoxValor.Text, out valor) && !string.IsNullOrEmpty(nomeValor) && !string.IsNullOrEmpty(tipoValor))
+            string valorTexto = valor.Replace("R$ ", "").Replace(".", "");
+
+
+            if (decimal.TryParse(valorTexto, out decimal valorNovo) && !string.IsNullOrEmpty(nomeValor) && !string.IsNullOrEmpty(tipoValor))
             {
-                payrollView.dataGridViewDescontos.Rows.Add(payrollView.dataGridViewDescontos.Rows.Count + 1, tipoValor, nomeValor, valor);
+                payrollView.dataGridViewDescontos.Rows.Add(payrollView.dataGridViewDescontos.Rows.Count + 1, tipoValor, nomeValor, valorNovo);
                 textBoxNomeValor.Text = "";
                 comboBoxTp.SelectedIndex = -1;
-                textBoxValor.Text = "";
+                textBox1.Text = "";
                 payrollView.CalcularValorLiquido();
             }
             else
@@ -55,5 +61,33 @@ namespace DesktopPim.Views.ViewHome.Mensal
             comboBoxTp.Items.Insert(1, "Provento");
             comboBoxTp.Items.Insert(2, "Desconto");
         }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            // Remove o manipulador de eventos para evitar a chamada recursiva
+            textBox1.TextChanged -= textBox1_TextChanged;
+
+            // Remove caracteres não numéricos
+            string text = Regex.Replace(textBox1.Text, @"[^0-9]", "");
+
+            // Verifica se a string é um número válido
+            if (decimal.TryParse(text, out decimal value))
+            {
+                // Converte para decimal e divide por 100 para obter os centavos
+                value /= 100;
+
+                // Formata como valor monetário brasileiro
+                textBox1.Text = value.ToString("C2", CultureInfo.GetCultureInfo("pt-BR"));
+
+                // Move o cursor para o final
+                textBox1.SelectionStart = textBox1.Text.Length;
+            }
+
+            // Adiciona o manipulador de eventos de volta
+            textBox1.TextChanged += textBox1_TextChanged;
+        }
+
+
+
     }
 }

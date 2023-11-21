@@ -86,7 +86,7 @@
             EmailTx.Location = new Point(199, 229);
             EmailTx.Name = "EmailTx";
             EmailTx.Size = new Size(414, 23);
-            EmailTx.TabIndex = 3;
+            EmailTx.TabIndex = 1;
             // 
             // label4
             // 
@@ -103,7 +103,7 @@
             SenhaTx.Location = new Point(199, 317);
             SenhaTx.Name = "SenhaTx";
             SenhaTx.Size = new Size(414, 23);
-            SenhaTx.TabIndex = 5;
+            SenhaTx.TabIndex = 2;
             SenhaTx.UseSystemPasswordChar = true;
             // 
             // label5
@@ -121,7 +121,7 @@
             ConfirmSenTx.Location = new Point(199, 404);
             ConfirmSenTx.Name = "ConfirmSenTx";
             ConfirmSenTx.Size = new Size(414, 23);
-            ConfirmSenTx.TabIndex = 7;
+            ConfirmSenTx.TabIndex = 3;
             ConfirmSenTx.UseSystemPasswordChar = true;
             // 
             // CheckAtivo
@@ -132,7 +132,7 @@
             CheckAtivo.Location = new Point(199, 510);
             CheckAtivo.Name = "CheckAtivo";
             CheckAtivo.Size = new Size(166, 57);
-            CheckAtivo.TabIndex = 9;
+            CheckAtivo.TabIndex = 5;
             CheckAtivo.Text = "Ativo";
             CheckAtivo.UseVisualStyleBackColor = true;
             // 
@@ -144,7 +144,7 @@
             CheckAdm.Location = new Point(199, 447);
             CheckAdm.Name = "CheckAdm";
             CheckAdm.Size = new Size(166, 57);
-            CheckAdm.TabIndex = 10;
+            CheckAdm.TabIndex = 4;
             CheckAdm.Text = "Administrador";
             CheckAdm.UseVisualStyleBackColor = true;
             // 
@@ -158,7 +158,7 @@
             button1.Location = new Point(199, 573);
             button1.Name = "button1";
             button1.Size = new Size(414, 57);
-            button1.TabIndex = 11;
+            button1.TabIndex = 6;
             button1.Text = "Cadastrar";
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;

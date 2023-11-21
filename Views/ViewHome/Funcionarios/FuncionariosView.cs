@@ -57,10 +57,10 @@ namespace DesktopPim.Views.ViewHome
                         if (excluiu)
                         {
                             dataGridViewFuncionarios.Columns.Clear();
-                            funcionariosController.LoadDataAPI(this);
                             FuncionariosView funcionariosView = new();
                             HomeView homeView = new();
                             homeView.ABrirFormFilho(funcionariosView);
+                            funcionariosController.LoadDataAPI(this);
                         }
                     }
                 }

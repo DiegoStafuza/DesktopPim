@@ -69,6 +69,7 @@ namespace DesktopPim.Controllers
             }
         }
 
+
         public async Task LoadCargos(AdicionaFuncionarioView addFuncionariosView)
         {
             var response = await client.GetAsync("https://20.14.87.19/api/Cargos/retornaCargos");

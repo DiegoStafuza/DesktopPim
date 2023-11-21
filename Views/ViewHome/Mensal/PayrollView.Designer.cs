@@ -266,11 +266,12 @@
             // 
             // labelValorLiquido
             // 
+            labelValorLiquido.AutoEllipsis = true;
             labelValorLiquido.BackColor = SystemColors.ActiveBorder;
-            labelValorLiquido.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            labelValorLiquido.Location = new Point(799, 610);
+            labelValorLiquido.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
+            labelValorLiquido.Location = new Point(734, 610);
             labelValorLiquido.Name = "labelValorLiquido";
-            labelValorLiquido.Size = new Size(245, 40);
+            labelValorLiquido.Size = new Size(348, 40);
             labelValorLiquido.TabIndex = 0;
             labelValorLiquido.TextAlign = ContentAlignment.MiddleLeft;
             // 

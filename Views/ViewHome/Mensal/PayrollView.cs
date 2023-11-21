@@ -6,6 +6,8 @@ using Font = iTextSharp.text.Font;
 using System.Diagnostics;
 using Rectangle = iTextSharp.text.Rectangle;
 using Paragraph = iTextSharp.text.Paragraph;
+using Microsoft.IdentityModel.Tokens;
+using Azure;
 
 namespace DesktopPim.Views
 {
@@ -181,32 +183,60 @@ namespace DesktopPim.Views
                         TipoValor = tipoValor,
                         Valor = valor
                     });
+
                 }
-                string mes = comboBoxMes.SelectedIndex.ToString();
-                string ano = comboBoxAno.SelectedIndex.ToString();
-                int? funcionarioId = (comboBoxFuncionarios.SelectedItem as FuncionariosCalculo)?.id_funcionario;
 
-                ProventosViewModel model = new ProventosViewModel
+                if (comboBoxMes.SelectedIndex <= 0 || string.IsNullOrEmpty(comboBoxAno.SelectedItem?.ToString()))
                 {
-                    FuncionarioId = funcionarioId,
-                    Ano = ano,
-                    Mes = mes,
-                    Proventos = proventos
-                };
+                    MessageBox.Show("Preencha as informações corretamente antes de realizar o envio", "Erro ao lançar folha.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    string mes = (comboBoxMes.SelectedIndex).ToString("D2");
+                    string ano = comboBoxAno.SelectedItem.ToString();
+                    int? funcionarioId = (comboBoxFuncionarios.SelectedItem as FuncionariosCalculo)?.id_funcionario;
 
-                await calculaFolha.AdicionarValores(model);
-                MessageBox.Show("Lançamento realizado com sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    ProventosViewModel model = new ProventosViewModel
+                    {
+                        FuncionarioId = funcionarioId,
+                        Ano = ano,
+                        Mes = mes,
+                        Proventos = proventos
+                    };
+
+                    await calculaFolha.AdicionarValores(model);
+
+                    DialogResult dialogResult = MessageBox.Show("Deseja gerar um arquivo PDF desse lançamento?", "PDF", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        GerarPDF();
+                    }
+                    else
+                    {
+
+                    }
+
+                }
+
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Não foi possível realizar o lançamento. Status: {ex.Message}", "Erro ao lançar folha.", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
         }
 
         public void button2_Click(object sender, EventArgs e)
         {
-            GerarPDF();
-
+            if (comboBoxMes.SelectedIndex <= 0 || string.IsNullOrEmpty(comboBoxAno.SelectedItem?.ToString()))
+            {
+                MessageBox.Show("Preencha as informações corretamente antes de gerar o PDF", "Erro ao gerar PDF", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                GerarPDF();
+            }
         }
 
         public class PdfHeader : PdfPageEventHelper
@@ -242,7 +272,7 @@ namespace DesktopPim.Views
                 BaseColor customColor = new BaseColor(4, 120, 87);
                 BaseColor customColor2 = new BaseColor(220, 220, 220);
                 BaseColor customColor3 = new BaseColor(97, 135, 91);
-                BaseColor customColor4 = new BaseColor(183,8,29);
+                BaseColor customColor4 = new BaseColor(183, 8, 29);
 
 
 
@@ -309,7 +339,7 @@ namespace DesktopPim.Views
 
                             if (dataGridViewDescontos.Columns[j].Name == "Valor")
                             {
-                                cellValue = $"R$ {double.Parse(cellValue).ToString("N2")}"; 
+                                cellValue = $"R$ {double.Parse(cellValue).ToString("N2")}";
                                 PdfPCell cell = new PdfPCell(new Phrase(cellValue, valorFont));
                                 cell.FixedHeight = 20;
                                 cell.BackgroundColor = customColor2;
@@ -329,26 +359,26 @@ namespace DesktopPim.Views
 
 
                 Font salarioFont = FontFactory.GetFont(FontFactory.HELVETICA, 16, BaseColor.BLACK);
-                    Paragraph salarioLiquido = new Paragraph($"{labelValorLiquido.Text}", salarioFont);
+                Paragraph salarioLiquido = new Paragraph($"{labelValorLiquido.Text}", salarioFont);
                 salarioLiquido.SpacingBefore = 15;
                 salarioLiquido.Alignment = Element.ALIGN_RIGHT;
-                    doc.Add(salarioLiquido);
+                doc.Add(salarioLiquido);
 
 
                 doc.Close();
 
-                    MessageBox.Show("PDF gerado com sucesso!", "PDF gerado.", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("PDF gerado com sucesso!", "PDF gerado.", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    if (System.IO.File.Exists(filePath))
-                    {
-                        ProcessStartInfo psi = new ProcessStartInfo(filePath);
-                        psi.UseShellExecute = true;
-                        Process.Start(psi);
-                    }
-                    else
-                    {
-                        MessageBox.Show("Arquivo PDF não encontrado.", "Erro ao encontrar PDF.");
-                    }
+                if (System.IO.File.Exists(filePath))
+                {
+                    ProcessStartInfo psi = new ProcessStartInfo(filePath);
+                    psi.UseShellExecute = true;
+                    Process.Start(psi);
+                }
+                else
+                {
+                    MessageBox.Show("Arquivo PDF não encontrado.", "Erro ao encontrar PDF.");
+                }
             }
             catch (Exception ex)
             {

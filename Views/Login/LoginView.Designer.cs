@@ -105,7 +105,7 @@
             // 
             pictureBox3.BackgroundImage = (Image)resources.GetObject("pictureBox3.BackgroundImage");
             pictureBox3.BackgroundImageLayout = ImageLayout.Zoom;
-            pictureBox3.Location = new Point(200, 89);
+            pictureBox3.Location = new Point(191, 89);
             pictureBox3.Name = "pictureBox3";
             pictureBox3.Size = new Size(406, 178);
             pictureBox3.SizeMode = PictureBoxSizeMode.Zoom;
