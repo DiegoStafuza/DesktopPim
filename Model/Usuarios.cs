@@ -5,7 +5,7 @@ namespace DesktopPim.Models
 {
     public class Usuarios
     {
-        public int usuarioId { get; set; }
+        public int usuario_id { get; set; }
         public string? nome { get; set; }
         public string? email { get; set; }
         public Int16? ativo { get; set; }

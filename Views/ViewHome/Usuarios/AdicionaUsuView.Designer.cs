@@ -46,9 +46,10 @@
             // NomeCompletoTx
             // 
             NomeCompletoTx.Cursor = Cursors.IBeam;
+            NomeCompletoTx.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             NomeCompletoTx.Location = new Point(199, 138);
             NomeCompletoTx.Name = "NomeCompletoTx";
-            NomeCompletoTx.Size = new Size(414, 23);
+            NomeCompletoTx.Size = new Size(414, 29);
             NomeCompletoTx.TabIndex = 0;
             // 
             // label1
@@ -83,9 +84,10 @@
             // EmailTx
             // 
             EmailTx.Cursor = Cursors.IBeam;
+            EmailTx.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             EmailTx.Location = new Point(199, 229);
             EmailTx.Name = "EmailTx";
-            EmailTx.Size = new Size(414, 23);
+            EmailTx.Size = new Size(414, 29);
             EmailTx.TabIndex = 1;
             // 
             // label4
@@ -100,9 +102,10 @@
             // SenhaTx
             // 
             SenhaTx.Cursor = Cursors.IBeam;
+            SenhaTx.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             SenhaTx.Location = new Point(199, 317);
             SenhaTx.Name = "SenhaTx";
-            SenhaTx.Size = new Size(414, 23);
+            SenhaTx.Size = new Size(414, 29);
             SenhaTx.TabIndex = 2;
             SenhaTx.UseSystemPasswordChar = true;
             // 
@@ -118,9 +121,10 @@
             // ConfirmSenTx
             // 
             ConfirmSenTx.Cursor = Cursors.IBeam;
+            ConfirmSenTx.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             ConfirmSenTx.Location = new Point(199, 404);
             ConfirmSenTx.Name = "ConfirmSenTx";
-            ConfirmSenTx.Size = new Size(414, 23);
+            ConfirmSenTx.Size = new Size(414, 29);
             ConfirmSenTx.TabIndex = 3;
             ConfirmSenTx.UseSystemPasswordChar = true;
             // 
@@ -155,7 +159,7 @@
             button1.FlatStyle = FlatStyle.Flat;
             button1.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
             button1.ForeColor = Color.White;
-            button1.Location = new Point(199, 573);
+            button1.Location = new Point(199, 659);
             button1.Name = "button1";
             button1.Size = new Size(414, 57);
             button1.TabIndex = 6;

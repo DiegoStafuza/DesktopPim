@@ -68,6 +68,7 @@ namespace DesktopPim.Controllers
                 }
             }
         }
+        
 
 
         public async Task LoadCargos(AdicionaFuncionarioView addFuncionariosView)
@@ -192,7 +193,7 @@ namespace DesktopPim.Controllers
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Erro ao excluir funcionário. {ex.Message}");
+                MessageBox.Show($"Erro ao excluir funcionário. Status: {ex.Message}");
                 return false;
             }
         }
@@ -291,6 +292,26 @@ namespace DesktopPim.Controllers
                 alteraFuncionarioView.comboBoxUsuarios.DataSource = usuarios;
                 alteraFuncionarioView.comboBoxUsuarios.DisplayMember = "email";
                 alteraFuncionarioView.comboBoxUsuarios.ValueMember = "usuario_id";
+
+            }
+        }
+
+
+
+
+
+        public async Task LoadUsuarios(int id)
+        {
+            var response = await client.GetAsync("https://20.14.87.19/api/Autenticacao/listarUsuarios");
+
+            if (response.IsSuccessStatusCode)
+            {
+
+                var jsonString = await response.Content.ReadAsStringAsync();
+                var usuarios = JsonSerializer.Deserialize<List<UsuarioDTO>>(jsonString);
+
+                
+
 
             }
         }

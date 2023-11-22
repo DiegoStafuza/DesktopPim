@@ -46,11 +46,15 @@ namespace DesktopPim.Views
             // 
             // dataGridViewUsuarios
             // 
+            dataGridViewUsuarios.AllowUserToAddRows = false;
+            dataGridViewUsuarios.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewUsuarios.BackgroundColor = SystemColors.Control;
+            dataGridViewUsuarios.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
             dataGridViewUsuarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewUsuarios.GridColor = SystemColors.Control;
             dataGridViewUsuarios.Location = new Point(72, 3);
             dataGridViewUsuarios.Name = "dataGridViewUsuarios";
+            dataGridViewUsuarios.ReadOnly = true;
+            dataGridViewUsuarios.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridViewUsuarios.RowTemplate.Height = 25;
             dataGridViewUsuarios.Size = new Size(1070, 323);
             dataGridViewUsuarios.TabIndex = 6;
@@ -96,6 +100,7 @@ namespace DesktopPim.Views
             button4.TabIndex = 9;
             button4.Text = "Alterar";
             button4.UseVisualStyleBackColor = false;
+            button4.Click += buttonAlterar_Click;
             // 
             // button2
             // 
@@ -114,7 +119,7 @@ namespace DesktopPim.Views
             button2.TabIndex = 3;
             button2.Text = "Adicionar";
             button2.UseVisualStyleBackColor = false;
-            button2.Click += button2_Click;
+            button2.Click += buttonCadastrar_Click;
             // 
             // button1
             // 
@@ -133,6 +138,7 @@ namespace DesktopPim.Views
             button1.TabIndex = 0;
             button1.Text = "Consultar";
             button1.UseVisualStyleBackColor = false;
+            button1.Click += buttonConsultar_Click;
             // 
             // button3
             // 
@@ -151,6 +157,7 @@ namespace DesktopPim.Views
             button3.TabIndex = 6;
             button3.Text = "Excluir";
             button3.UseVisualStyleBackColor = false;
+            button3.Click += buttonExcluir_Click;
             // 
             // panel2
             // 
