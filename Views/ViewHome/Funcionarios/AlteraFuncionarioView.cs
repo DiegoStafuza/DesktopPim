@@ -8,7 +8,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using ApiPIM.Controllers;
 using DesktopPim.Controllers;
 using DesktopPim.Model;
 using javax.management.loading;

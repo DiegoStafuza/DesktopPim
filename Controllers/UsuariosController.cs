@@ -15,7 +15,6 @@ using DesktopPim.Views;
 using DesktopPim.View;
 using Newtonsoft.Json;
 using DesktopPim.Views.ViewHome;
-using ApiPIM.Models;
 using Chilkat;
 using UsuariosModel = DesktopPim.Models.UsuariosModel;
 using JsonSerializer = System.Text.Json.JsonSerializer;
