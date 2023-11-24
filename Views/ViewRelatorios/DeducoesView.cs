@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace DesktopPim.Views.ViewDuvidas
 {
-    public partial class DvdProventoDesc : Form
+    public partial class DeducoesView : Form
     {
-        public DvdProventoDesc()
+        public DeducoesView()
         {
             InitializeComponent();
         }

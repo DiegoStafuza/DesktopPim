@@ -44,7 +44,7 @@ namespace DesktopPim.Views
             }
         }
 
-        private async void buttonConsultar_Click(object sender, EventArgs e)
+        private async void buttonAtualizar_Click(object sender, EventArgs e)
         {
             UsuariosController usuariosController = new();
             usuariosController.LoadDataAPI(this);
@@ -102,6 +102,12 @@ namespace DesktopPim.Views
             {
                 MessageBox.Show("Por favor, selecione um funcionário para alterar.");
             }
+        }
+
+        private void UsuariosView_Load(object sender, EventArgs e)
+        {
+            UsuariosController usuariosController = new();
+            usuariosController.LoadDataAPI(this);
         }
     }
 }

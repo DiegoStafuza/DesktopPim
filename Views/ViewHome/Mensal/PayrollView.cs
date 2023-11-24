@@ -293,15 +293,6 @@ namespace DesktopPim.Views
                 infos.Alignment = Element.ALIGN_LEFT;
                 doc.Add(infos);
 
-                //Font mesesAnoFont = FontFactory.GetFont(FontFactory.HELVETICA, 16, BaseColor.BLACK);
-                //Paragraph mesEAno = new Paragraph();
-                //mesEAno.Add(new Chunk($"Mês de pagamento: {comboBoxMes.SelectedItem}\n", mesesAnoFont));
-                //mesEAno.Add(new Chunk($"Ano de pagamento: {comboBoxAno.SelectedItem}\n", mesesAnoFont));
-                //mesEAno.SpacingAfter = 25;
-                //mesEAno.SpacingBefore = 40;
-                //mesEAno.Alignment = Element.ALIGN_BOTTOM;
-                //doc.Add(mesEAno);
-
                 PdfPTable table = new PdfPTable(dataGridViewDescontos.Columns.Count);
                 table.WidthPercentage = 100;
 

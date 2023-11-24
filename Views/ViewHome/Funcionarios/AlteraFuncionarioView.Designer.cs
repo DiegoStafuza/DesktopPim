@@ -61,8 +61,12 @@
             label18 = new Label();
             comboBoxUsuarios = new ComboBox();
             label8 = new Label();
-            maskedTextBox1 = new MaskedTextBox();
+            maskedTextBoxCpf = new MaskedTextBox();
             label9 = new Label();
+            textBoxNumero = new TextBox();
+            label19 = new Label();
+            label20 = new Label();
+            maskedTextBoxUF = new MaskedTextBox();
             SuspendLayout();
             // 
             // label1
@@ -314,6 +318,7 @@
             button1.TabIndex = 16;
             button1.Text = "Alterar";
             button1.UseVisualStyleBackColor = false;
+            button1.Click += buttonAlterar_Click;
             // 
             // labelID
             // 
@@ -368,15 +373,15 @@
             label8.TabIndex = 68;
             label8.Text = "Usuário";
             // 
-            // maskedTextBox1
+            // maskedTextBoxCpf
             // 
-            maskedTextBox1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            maskedTextBox1.Location = new Point(689, 127);
-            maskedTextBox1.Mask = "000,000,000-00";
-            maskedTextBox1.Name = "maskedTextBox1";
-            maskedTextBox1.Size = new Size(146, 29);
-            maskedTextBox1.TabIndex = 3;
-            maskedTextBox1.TextMaskFormat = MaskFormat.IncludePromptAndLiterals;
+            maskedTextBoxCpf.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            maskedTextBoxCpf.Location = new Point(689, 127);
+            maskedTextBoxCpf.Mask = "000,000,000-00";
+            maskedTextBoxCpf.Name = "maskedTextBoxCpf";
+            maskedTextBoxCpf.Size = new Size(146, 29);
+            maskedTextBoxCpf.TabIndex = 3;
+            maskedTextBoxCpf.TextMaskFormat = MaskFormat.IncludePromptAndLiterals;
             // 
             // label9
             // 
@@ -387,14 +392,54 @@
             label9.TabIndex = 51;
             label9.Text = "CPF";
             // 
+            // textBoxNumero
+            // 
+            textBoxNumero.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            textBoxNumero.Location = new Point(607, 437);
+            textBoxNumero.Name = "textBoxNumero";
+            textBoxNumero.Size = new Size(153, 29);
+            textBoxNumero.TabIndex = 50;
+            // 
+            // label19
+            // 
+            label19.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label19.Location = new Point(605, 402);
+            label19.Name = "label19";
+            label19.Size = new Size(94, 34);
+            label19.TabIndex = 52;
+            label19.Text = "Número";
+            // 
+            // label20
+            // 
+            label20.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label20.Location = new Point(602, 482);
+            label20.Name = "label20";
+            label20.Size = new Size(38, 34);
+            label20.TabIndex = 53;
+            label20.Text = "UF";
+            // 
+            // maskedTextBoxUF
+            // 
+            maskedTextBoxUF.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            maskedTextBoxUF.Location = new Point(602, 519);
+            maskedTextBoxUF.Mask = "AA";
+            maskedTextBoxUF.Name = "maskedTextBoxUF";
+            maskedTextBoxUF.Size = new Size(53, 29);
+            maskedTextBoxUF.TabIndex = 51;
+            maskedTextBoxUF.TextMaskFormat = MaskFormat.IncludePromptAndLiterals;
+            // 
             // AlteraFuncionarioView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(847, 789);
+            Controls.Add(maskedTextBoxUF);
             Controls.Add(label9);
+            Controls.Add(label20);
             Controls.Add(label8);
-            Controls.Add(maskedTextBox1);
+            Controls.Add(label19);
+            Controls.Add(maskedTextBoxCpf);
+            Controls.Add(textBoxNumero);
             Controls.Add(comboBoxUsuarios);
             Controls.Add(label18);
             Controls.Add(maskedTextBoxDTContratacao);
@@ -466,11 +511,15 @@
         public Button button1;
         public Label labelID;
         private Label label3;
-        private MaskedTextBox maskedTextBoxDTContratacao;
         private Label label18;
         public ComboBox comboBoxUsuarios;
         private Label label8;
-        private MaskedTextBox maskedTextBox1;
         private Label label9;
+        public MaskedTextBox maskedTextBoxCpf;
+        public MaskedTextBox maskedTextBoxDTContratacao;
+        private Label label19;
+        private Label label20;
+        public TextBox textBoxNumero;
+        public MaskedTextBox maskedTextBoxUF;
     }
 }

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DesktopPim.Controllers;
 using DesktopPim.Views;
 using DesktopPim.Views.ViewHome;
 
@@ -19,6 +20,7 @@ namespace DesktopPim.Views
             InitializeComponent();
             this.WindowState = FormWindowState.Maximized;
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            
         }
 
         public void ABrirFormFilho(Form formularioFilho)
@@ -49,8 +51,14 @@ namespace DesktopPim.Views
 
         private void DuvidasBtn_Click(object sender, EventArgs e)
         {
-            DuvidasView duvidasView = new();
-            ABrirFormFilho(duvidasView);
+            FuncionariosController funcionariosController = new FuncionariosController();
+            FuncionariosView funcionariosView = new FuncionariosView();
+            funcionariosController.LoadDataAPI(funcionariosView);
+
+            RelatoriosView relatorios = new(funcionariosView.dataGridViewFuncionarios);
+            ABrirFormFilho(relatorios);
+
+
         }
 
         private void button1_Click(object sender, EventArgs e)

@@ -9,7 +9,7 @@ namespace DesktopPim.Model
 {
     public class LoginResponse
     {
-        public Usuarios usuario { get; set; }
+        public UsuariosModel usuario { get; set; }
     }
 
 }

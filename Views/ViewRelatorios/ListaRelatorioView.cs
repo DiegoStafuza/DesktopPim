@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace DesktopPim.Views.ViewDuvidas
+namespace DesktopPim.Views
 {
-    public partial class DvdCadFunc : Form
+    public partial class ListaRelatorioView : Form
     {
-        public DvdCadFunc()
+        public ListaRelatorioView()
         {
             InitializeComponent();
         }

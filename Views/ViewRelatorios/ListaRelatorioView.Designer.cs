@@ -1,6 +1,6 @@
-﻿namespace DesktopPim.Views.ViewDuvidas
+﻿namespace DesktopPim.Views
 {
-    partial class DvdProventoDesc
+    partial class ListaRelatorioView
     {
         /// <summary>
         /// Required designer variable.
@@ -30,14 +30,14 @@
         {
             SuspendLayout();
             // 
-            // DvdProventoDesc
+            // ListaRelatorioView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveBorder;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(800, 750);
             FormBorderStyle = FormBorderStyle.None;
-            Name = "DvdProventoDesc";
+            Name = "ListaRelatorioView";
             ResumeLayout(false);
         }
 

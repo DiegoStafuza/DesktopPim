@@ -75,7 +75,8 @@ namespace DesktopPim.Views.ViewHome
                     uf_estado = maskedTextBox1.Text,
                     tipo_telefone = (string)comboBoxTpContato.SelectedItem,
                     numero_contato = textBox7.Text,
-                    data_contratacao = Convert.ToDateTime(maskedTextBoxDtContratacao.Text)
+                    data_contratacao = Convert.ToDateTime(maskedTextBoxDtContratacao.Text),
+                    email_usuario = (string)comboBoxUsuarios.SelectedItem
                 };
 
                 await funcionariosController.CadastrarFuncionario(NovoFunc);

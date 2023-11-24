@@ -3,15 +3,16 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DesktopPim.Models
 {
-    public class Usuarios
+    public class UsuariosModel
     {
         public int usuario_id { get; set; }
         public string? nome { get; set; }
         public string? email { get; set; }
+        public string? senha { get; set; }
         public Int16? ativo { get; set; }
         public Int16? administrador { get; set; }
         public string? token { get; set; }
         public DateTime? expiration_token { get; set; }
-    }
 
+    }
 }

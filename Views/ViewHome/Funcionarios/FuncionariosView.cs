@@ -17,13 +17,14 @@ namespace DesktopPim.Views.ViewHome
 {
     public partial class FuncionariosView : Form
     {
-        
 
         public FuncionariosView()
         {
             InitializeComponent();
             dataGridViewFuncionarios.Columns.Clear();
             dataGridViewFuncionarios.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            
+            RelatoriosView rView = new RelatoriosView(dataGridViewFuncionarios);
 
         }
 

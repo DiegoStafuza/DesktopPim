@@ -1,6 +1,6 @@
 ﻿namespace DesktopPim.Views.ViewDuvidas
 {
-    partial class DvdCadFunc
+    partial class ListaFuncionarioView
     {
         /// <summary>
         /// Required designer variable.
@@ -30,14 +30,14 @@
         {
             SuspendLayout();
             // 
-            // DvdCadFunc
+            // DvdAttFunc
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveBorder;
             ClientSize = new Size(800, 450);
             FormBorderStyle = FormBorderStyle.None;
-            Name = "DvdCadFunc";
+            Name = "DvdAttFunc";
             ResumeLayout(false);
         }
 

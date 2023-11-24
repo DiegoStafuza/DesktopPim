@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using System.Net.Http.Headers;
 using com.sun.xml.@internal.bind.v2.model.core;
 using DesktopPim.Views.ViewHome.Funcionarios;
+using System.Web.Helpers;
 
 namespace DesktopPim.Controllers
 {
@@ -42,7 +43,10 @@ namespace DesktopPim.Controllers
                     {
                         funcionario_id = item.funcionario.id_funcionario,
                         nome_completo = item.funcionario.nome_funcionario,
-                        deparamento = item.funcionario.departamento
+                        deparamento = item.funcionario.departamento,
+                        sexo = item.funcionario.sexo,
+                        cargo = item.funcionario.cargo,
+                        data_contratacao = item.funcionario.data_contratacao
                     };
                     funcionariosLista.Add(funcionario);
                 }
@@ -53,10 +57,14 @@ namespace DesktopPim.Controllers
 
         public async void LoadDataAPI(FuncionariosView funcionariosView)
         {
+
             funcionariosView.dataGridViewFuncionarios.Columns.Clear();
             funcionariosView.dataGridViewFuncionarios.Columns.Add("ID", "ID");
             funcionariosView.dataGridViewFuncionarios.Columns.Add("Nome Completo", "Nome Completo");
             funcionariosView.dataGridViewFuncionarios.Columns.Add("Departamento", "Departamento");
+            funcionariosView.dataGridViewFuncionarios.Columns.Add("Sexo", "Sexo");
+            funcionariosView.dataGridViewFuncionarios.Columns.Add("Cargo", "Cargo");
+            funcionariosView.dataGridViewFuncionarios.Columns.Add("Data contratação", "Data contratação");
 
             List<ListaFuncionarios> funcionarios = await this.ObterFuncionarios();
 
@@ -64,12 +72,17 @@ namespace DesktopPim.Controllers
             {
                 foreach (var funcionario in funcionarios)
                 {
-                    funcionariosView.dataGridViewFuncionarios.Rows.Add(funcionario.funcionario_id, funcionario.nome_completo, funcionario.deparamento);
+                    funcionariosView.dataGridViewFuncionarios.Rows.Add(
+                        funcionario.funcionario_id,
+                        funcionario.nome_completo,
+                        funcionario.deparamento,
+                        funcionario.sexo,
+                        funcionario.cargo,
+                        funcionario.data_contratacao
+                        );
                 }
             }
         }
-        
-
 
         public async Task LoadCargos(AdicionaFuncionarioView addFuncionariosView)
         {
@@ -171,6 +184,26 @@ namespace DesktopPim.Controllers
             addFuncionario.textBox7.Text = string.Empty;
 
         }
+        public void LimparCampos(AlteraFuncionarioView alt)
+        {
+            alt.textBoxNomeCompleto.Text = string.Empty;
+            alt.maskedTextBoxCpf.Text = string.Empty;
+            alt.comboBoxUsuarios.Text = string.Empty;
+            alt.checkBoxFeminino.Checked = false;
+            alt.checkBoxMasculino.Checked = false;
+            alt.comboBoxEstadoCivil.Text = string.Empty;
+            alt.comboBoxCargos.Text = string.Empty;
+            alt.maskedTextBoxDTContratacao.Text = string.Empty;
+            alt.maskedTextBoxCEP.Text = string.Empty;
+            alt.comboBoxTpEndereco.Text = string.Empty;
+            alt.textBoxBairro.Text = string.Empty;
+            alt.textBoxCidade.Text = string.Empty;
+            alt.textBoxNmrContato.Text = string.Empty;
+            alt.textBoxRua.Text = string.Empty;
+            alt.comboBoxTpContato.Text = string.Empty;
+            alt.textBoxNumero.Text = string.Empty;
+            alt.maskedTextBoxUF.Text = string.Empty;
+        }
 
 
         public async Task<bool> ExcluirFuncionario(int id)
@@ -243,7 +276,6 @@ namespace DesktopPim.Controllers
             {
                 var jsonString = await response.Content.ReadAsStringAsync();
                 var funcionarios = JsonSerializer.Deserialize<List<FuncionarioDTO>>(jsonString);
-                //var funcionarioDTO = funcionarios.FirstOrDefault();
 
                 if (funcionarios != null)
                 {
@@ -251,7 +283,7 @@ namespace DesktopPim.Controllers
                     return funcionarios[0];
 
                 }
-                
+
             }
             return null;
         }
@@ -296,25 +328,51 @@ namespace DesktopPim.Controllers
             }
         }
 
+        //public async Task<bool> AtualizarFuncionario(FuncionarioDTO model)
+        //{
+        //    try
+        //    {
+        //        var apiDto = new FuncionarioApiDTO
+        //        {
+        //            nome = model.funcionario.nome_funcionario,
+        //            cpf = model.funcionario.cpf,
+        //            sexo = model.funcionario.sexo,
+        //            estado_civil = model.funcionario.estado_civil,
+        //            cargo_id = model.funcionario.cargo_id,
+        //            data_contratacao = model.funcionario.data_contratacao,
+        //            rua = model.enderecos.FirstOrDefault()?.rua,
+        //            tipo_endereco = model.enderecos.FirstOrDefault()?.tipo_endereco,
+        //            num_endereco = model.enderecos.FirstOrDefault()?.
+        //            bairro = model.enderecos.FirstOrDefault()?.bairro,
+        //            cep = model.enderecos.FirstOrDefault()?.cep,
+        //            cidade = model.enderecos.FirstOrDefault()?.cidade,
+        //            tipo_telefone = model.contatos.FirstOrDefault()?.tipo_telefone,
+        //            numero_contato = model.contatos.FirstOrDefault()?.numero_contato
+        //        };
 
+        //        var jsonString = JsonSerializer.Serialize(apiDto);
+        //        var content = new StringContent(jsonString, Encoding.UTF8, "application/json");
 
+        //        var response = await client.PutAsync($"https://20.14.87.19/api/Funcionarios/atualizaFuncionario/{model.funcionario.id_funcionario}", content);
 
+        //        if (response.IsSuccessStatusCode)
+        //        {
+        //            MessageBox.Show("Sucesso ao atualizar o funcionário!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-        public async Task LoadUsuarios(int id)
-        {
-            var response = await client.GetAsync("https://20.14.87.19/api/Autenticacao/listarUsuarios");
+        //            return true;
+        //        }
+        //        else
+        //        {
+        //            MessageBox.Show("Erro ao atualizar o funcionário!", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //            return false;
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show($"Erro ao atualizar o funcionário!\n Status: {ex.Message}");
+        //        return false;
+        //    }
 
-            if (response.IsSuccessStatusCode)
-            {
-
-                var jsonString = await response.Content.ReadAsStringAsync();
-                var usuarios = JsonSerializer.Deserialize<List<UsuarioDTO>>(jsonString);
-
-                
-
-
-            }
-        }
-
+        //}
     }
 }

@@ -33,7 +33,6 @@
             panelPrincipal = new Panel();
             button2 = new Button();
             DuvidasBtn = new Button();
-            relatorioBtn = new Button();
             payrollBtn = new Button();
             panelLogo = new Panel();
             labelLogo = new Label();
@@ -50,9 +49,9 @@
             // panelPrincipal
             // 
             panelPrincipal.BackColor = Color.FromArgb(4, 120, 87);
+            panelPrincipal.BorderStyle = BorderStyle.Fixed3D;
             panelPrincipal.Controls.Add(button2);
             panelPrincipal.Controls.Add(DuvidasBtn);
-            panelPrincipal.Controls.Add(relatorioBtn);
             panelPrincipal.Controls.Add(payrollBtn);
             panelPrincipal.Controls.Add(panelLogo);
             panelPrincipal.Controls.Add(peopleBtn);
@@ -96,34 +95,14 @@
             DuvidasBtn.Font = new Font("Segoe UI", 24F, FontStyle.Regular, GraphicsUnit.Point);
             DuvidasBtn.ForeColor = SystemColors.Control;
             DuvidasBtn.Image = (Image)resources.GetObject("DuvidasBtn.Image");
-            DuvidasBtn.ImageAlign = ContentAlignment.TopLeft;
-            DuvidasBtn.Location = new Point(0, 444);
+            DuvidasBtn.ImageAlign = ContentAlignment.BottomLeft;
+            DuvidasBtn.Location = new Point(3, 358);
             DuvidasBtn.Name = "DuvidasBtn";
             DuvidasBtn.Size = new Size(289, 64);
             DuvidasBtn.TabIndex = 0;
-            DuvidasBtn.Text = "Dúvidas";
+            DuvidasBtn.Text = "    Relatórios";
             DuvidasBtn.UseVisualStyleBackColor = false;
             DuvidasBtn.Click += DuvidasBtn_Click;
-            // 
-            // relatorioBtn
-            // 
-            relatorioBtn.BackgroundImageLayout = ImageLayout.Stretch;
-            relatorioBtn.Cursor = Cursors.Hand;
-            relatorioBtn.FlatAppearance.BorderColor = Color.FromArgb(4, 120, 87);
-            relatorioBtn.FlatAppearance.BorderSize = 0;
-            relatorioBtn.FlatAppearance.MouseDownBackColor = Color.FromArgb(4, 120, 87);
-            relatorioBtn.FlatAppearance.MouseOverBackColor = Color.FromArgb(4, 120, 87);
-            relatorioBtn.FlatStyle = FlatStyle.Flat;
-            relatorioBtn.Font = new Font("Segoe UI", 24F, FontStyle.Regular, GraphicsUnit.Point);
-            relatorioBtn.ForeColor = SystemColors.Control;
-            relatorioBtn.Image = (Image)resources.GetObject("relatorioBtn.Image");
-            relatorioBtn.ImageAlign = ContentAlignment.BottomLeft;
-            relatorioBtn.Location = new Point(3, 360);
-            relatorioBtn.Name = "relatorioBtn";
-            relatorioBtn.Size = new Size(290, 64);
-            relatorioBtn.TabIndex = 0;
-            relatorioBtn.Text = "   Relatórios";
-            relatorioBtn.UseVisualStyleBackColor = false;
             // 
             // payrollBtn
             // 
@@ -155,7 +134,7 @@
             panelLogo.Dock = DockStyle.Top;
             panelLogo.Location = new Point(0, 0);
             panelLogo.Name = "panelLogo";
-            panelLogo.Size = new Size(293, 92);
+            panelLogo.Size = new Size(289, 92);
             panelLogo.TabIndex = 0;
             // 
             // labelLogo
@@ -165,7 +144,7 @@
             labelLogo.ForeColor = SystemColors.Control;
             labelLogo.Location = new Point(0, 0);
             labelLogo.Name = "labelLogo";
-            labelLogo.Size = new Size(293, 92);
+            labelLogo.Size = new Size(289, 92);
             labelLogo.TabIndex = 0;
             labelLogo.Text = "Holfree";
             labelLogo.TextAlign = ContentAlignment.MiddleCenter;
@@ -197,7 +176,7 @@
             panel2.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             panel2.BackColor = Color.Transparent;
             panel2.Controls.Add(button1);
-            panel2.Location = new Point(0, 516);
+            panel2.Location = new Point(0, 512);
             panel2.Name = "panel2";
             panel2.Size = new Size(293, 64);
             panel2.TabIndex = 11;
@@ -270,7 +249,6 @@
         private Label labelLogo;
         private Button payrollBtn;
         private Button peopleBtn;
-        private Button relatorioBtn;
         private Button DuvidasBtn;
         private Panel panel1;
         private Button button2;

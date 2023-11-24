@@ -38,7 +38,6 @@
             departamento = new DataGridViewTextBoxColumn();
             buttonAlterar = new Button();
             label1 = new Label();
-            panel3 = new Panel();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewFuncionarios).BeginInit();
             SuspendLayout();
@@ -72,7 +71,7 @@
             // 
             // buttonExcluir
             // 
-            buttonExcluir.BackColor = Color.Brown;
+            buttonExcluir.BackColor = Color.FromArgb(174, 13, 13);
             buttonExcluir.Cursor = Cursors.Hand;
             buttonExcluir.FlatStyle = FlatStyle.Flat;
             buttonExcluir.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
@@ -92,7 +91,7 @@
             buttonCadastrar.FlatStyle = FlatStyle.Flat;
             buttonCadastrar.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             buttonCadastrar.ForeColor = SystemColors.Control;
-            buttonCadastrar.Location = new Point(987, 87);
+            buttonCadastrar.Location = new Point(985, 87);
             buttonCadastrar.Name = "buttonCadastrar";
             buttonCadastrar.Size = new Size(166, 56);
             buttonCadastrar.TabIndex = 2;
@@ -139,7 +138,7 @@
             // 
             // buttonAlterar
             // 
-            buttonAlterar.BackColor = Color.Goldenrod;
+            buttonAlterar.BackColor = Color.FromArgb(215, 190, 57);
             buttonAlterar.Cursor = Cursors.Hand;
             buttonAlterar.FlatStyle = FlatStyle.Flat;
             buttonAlterar.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
@@ -163,13 +162,6 @@
             label1.TabIndex = 3;
             label1.Text = "Funcionários";
             // 
-            // panel3
-            // 
-            panel3.Location = new Point(14, 12);
-            panel3.Name = "panel3";
-            panel3.Size = new Size(1208, 39);
-            panel3.TabIndex = 4;
-            // 
             // FuncionariosView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -177,7 +169,6 @@
             BackColor = SystemColors.ActiveBorder;
             ClientSize = new Size(1223, 602);
             Controls.Add(label1);
-            Controls.Add(panel3);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
             Name = "FuncionariosView";
@@ -191,7 +182,6 @@
         #endregion
         private Panel panel1;
         private Label label1;
-        private Panel panel3;
         private Button buttonAlterar;
         public Button buttonCadastrar;
         public Button buttonExcluir;

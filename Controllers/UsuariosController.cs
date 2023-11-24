@@ -17,8 +17,9 @@ using Newtonsoft.Json;
 using DesktopPim.Views.ViewHome;
 using ApiPIM.Models;
 using Chilkat;
-using Usuarios = DesktopPim.Models.Usuarios;
+using UsuariosModel = DesktopPim.Models.UsuariosModel;
 using JsonSerializer = System.Text.Json.JsonSerializer;
+using DesktopPim.Views.ViewHome.Funcionarios;
 
 namespace DesktopPim.Controllers
 {
@@ -33,23 +34,23 @@ namespace DesktopPim.Controllers
             client = new HttpClientService().CreateHttpClient();
         }
 
-        public async Task<List<Models.Usuarios>> LoadUsuarios(UsuariosView usuariosView)
+        public async Task<List<Models.UsuariosModel>> LoadUsuarios(UsuariosView usuariosView)
         {
 
             FuncionariosController funcionariosController = new FuncionariosController();
-            var usuariosLista = new List<Models.Usuarios>();
+            var usuariosLista = new List<Models.UsuariosModel>();
             var response = await client.GetAsync("https://20.14.87.19/api/Autenticacao/listarUsuarios");
 
             if (response.IsSuccessStatusCode)
             {
 
                 var jsonString = await response.Content.ReadAsStringAsync();
-                var dadosUsu = System.Text.Json.JsonSerializer.Deserialize<List<Models.Usuarios>>(jsonString);
+                var dadosUsu = System.Text.Json.JsonSerializer.Deserialize<List<Models.UsuariosModel>>(jsonString);
 
 
                 foreach (var item in dadosUsu)
                 {
-                    var usuario = new Usuarios
+                    var usuario = new Models.UsuariosModel
                     {
                         usuario_id = item.usuario_id,
                         nome = item.nome,
@@ -74,7 +75,7 @@ namespace DesktopPim.Controllers
             usuariosView.dataGridViewUsuarios.Columns.Add("Ativo", "Ativo");
             usuariosView.dataGridViewUsuarios.Columns.Add("Administrador", "Administrador");
 
-            List<Usuarios> usuarios = await usuariosController.LoadUsuarios(usuariosView);
+            List<UsuariosModel> usuarios = await usuariosController.LoadUsuarios(usuariosView);
 
             if (usuarios != null)
             {
@@ -110,16 +111,16 @@ namespace DesktopPim.Controllers
             }
         }
 
-        public async Task <Usuarios> ObterUsuarioPorId(int id)
+        public async Task <UsuariosModel> ObterUsuarioPorId(int id)
         {
             var response = await client.GetAsync($"https://20.14.87.19/api/Usuarios/listarUsuarios");
 
             if (response.IsSuccessStatusCode)
             {
                 var jsonString = await response.Content.ReadAsStringAsync();
-                var usuarios = JsonConvert.DeserializeObject<List<Usuarios>>(jsonString);
+                var usuarios = JsonConvert.DeserializeObject<List<UsuariosModel>>(jsonString);
 
-                Usuarios usuarioDados = usuarios.FirstOrDefault(usuarios => usuarios.usuario_id == id);
+                UsuariosModel usuarioDados = usuarios.FirstOrDefault(usuarios => usuarios.usuario_id == id);
 
                 if (usuarioDados != null)
                 {
@@ -130,6 +131,46 @@ namespace DesktopPim.Controllers
 
             }
             return null;
+        }
+
+        public async Task<bool> EditarUsuario(UsuariosModel model)
+        {
+            try
+            {
+                var user = new UsuariosModel
+                {
+                    usuario_id = model.usuario_id,
+                    nome = model.nome,
+                    email = model.email,
+                    administrador = model.administrador,
+                    ativo = model.ativo,
+                    senha = model.senha,
+                    token = model.token,
+                    expiration_token = model.expiration_token
+                };
+
+                var jsonSring = JsonSerializer.Serialize(user);
+                var content = new StringContent(jsonSring, Encoding.UTF8, "application/json");
+
+                var response = await client.PutAsync($"https://20.14.87.19/api/Usuarios/editar/{model.usuario_id}", content);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    MessageBox.Show("Sucesso ao atualizar o funcionário!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    return true;
+                }
+                else
+                {
+                    MessageBox.Show("Erro ao atualizar o funcionário!", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Erro ao atualizar o funcionário!\n Status: {ex.Message}");
+                return false;
+            }
         }
     }
 }

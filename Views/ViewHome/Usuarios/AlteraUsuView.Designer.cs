@@ -42,6 +42,7 @@
             checkBoxAdministrador = new CheckBox();
             buttonCadastrar = new Button();
             label6 = new Label();
+            labeliD = new Label();
             SuspendLayout();
             // 
             // textBoxSenha
@@ -162,6 +163,7 @@
             buttonCadastrar.TabIndex = 18;
             buttonCadastrar.Text = "Alterar";
             buttonCadastrar.UseVisualStyleBackColor = true;
+            buttonCadastrar.Click += buttonAlterar_Click;
             // 
             // label6
             // 
@@ -174,11 +176,22 @@
             label6.TabIndex = 7;
             label6.Text = "Alterar usuário";
             // 
+            // labeliD
+            // 
+            labeliD.FlatStyle = FlatStyle.Flat;
+            labeliD.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
+            labeliD.ForeColor = Color.Black;
+            labeliD.Location = new Point(12, 9);
+            labeliD.Name = "labeliD";
+            labeliD.Size = new Size(117, 60);
+            labeliD.TabIndex = 19;
+            // 
             // AlteraUsuView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(847, 728);
+            Controls.Add(labeliD);
             Controls.Add(label6);
             Controls.Add(buttonCadastrar);
             Controls.Add(textBoxSenha);
@@ -196,7 +209,6 @@
             MaximizeBox = false;
             Name = "AlteraUsuView";
             StartPosition = FormStartPosition.CenterScreen;
-            Load += AlteraUsuView_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -216,5 +228,6 @@
         private CheckBox checkBoxAdministrador;
         private Button buttonCadastrar;
         private Label label6;
+        public Label labeliD;
     }
 }

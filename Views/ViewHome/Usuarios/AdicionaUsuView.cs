@@ -33,18 +33,7 @@ namespace DesktopPim.Views
 
         private async void button1_Click(object sender, EventArgs e)
         {
-            var cadastroController = new CadastroUsuarioController();
-
-            var sucesso = await cadastroController.Cadastro(new CadastroViewModel()
-            {
-                Nome = NomeCompletoTx.Text,
-                Email = EmailTx.Text,
-                Senha = SenhaTx.Text,
-                Tipo = (short)(CheckAdm.Checked ? 1 : 0),
-                Ativo = (short)(CheckAtivo.Checked ? 1 : 0)
-            });
-
-            if (CamposPreenchidos() == true)
+            if (CamposPreenchidos())
             {
                 if (SenhaTx.Text != ConfirmSenTx.Text)
                 {
@@ -52,18 +41,26 @@ namespace DesktopPim.Views
                 }
                 else
                 {
-                    if (sucesso == true)
+                    var cadastroController = new CadastroUsuarioController();
+                    CadastroViewModel cadastroViewModel = new CadastroViewModel
                     {
-                        MessageBox.Show("Cadastro realizado com sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        LimparCampos();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Não foi possível concluir o cadastro. Revise as informações do usuário.", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
+                        Nome = NomeCompletoTx.Text,
+                        Email = EmailTx.Text,
+                        Senha = SenhaTx.Text,
+                        Tipo = (short)(CheckAdm.Checked ? 1 : 0),
+                        Ativo = (short)(CheckAtivo.Checked ? 1 : 0)
+                    };
+
+                    await cadastroController.Cadastro(cadastroViewModel);
+                    this.LimparCampos();
+                    this.Close();
+                    UsuariosView usuariosView = new UsuariosView();
+                    UsuariosController usuariosController = new UsuariosController();
+                    usuariosController.LoadDataAPI(usuariosView);
+
                 }
             }
-            else if (CamposPreenchidos() == false)
+            else
             {
                 MessageBox.Show("Um dos campos obrigatórios não está preenchido.", "Verifique!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
