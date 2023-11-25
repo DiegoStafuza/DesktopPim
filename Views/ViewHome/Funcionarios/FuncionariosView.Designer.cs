@@ -102,12 +102,14 @@
             // dataGridViewFuncionarios
             // 
             dataGridViewFuncionarios.AllowUserToAddRows = false;
+            dataGridViewFuncionarios.AllowUserToDeleteRows = false;
             dataGridViewFuncionarios.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewFuncionarios.BackgroundColor = SystemColors.Control;
             dataGridViewFuncionarios.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
             dataGridViewFuncionarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewFuncionarios.Columns.AddRange(new DataGridViewColumn[] { ID, nome_completo, departamento });
             dataGridViewFuncionarios.Location = new Point(81, 154);
+            dataGridViewFuncionarios.MultiSelect = false;
             dataGridViewFuncionarios.Name = "dataGridViewFuncionarios";
             dataGridViewFuncionarios.ReadOnly = true;
             dataGridViewFuncionarios.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;

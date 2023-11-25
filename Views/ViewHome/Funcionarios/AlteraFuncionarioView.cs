@@ -28,6 +28,7 @@ namespace DesktopPim.Views.ViewHome.Funcionarios
             InitializeComponent();
             idFuncionario = id;
             PreencherDetalhesFuncionario(idFuncionario);
+            //this.Show();
         }
         public AlteraFuncionarioView()
         {
@@ -36,7 +37,6 @@ namespace DesktopPim.Views.ViewHome.Funcionarios
 
         public async void AlteraFuncionarioView_Load(object sender, EventArgs e)
         {
-
             this.comboBoxCargos.Items.Clear();
             await funcionariosController.LoadCargos(this);
             funcionariosController.IniciarComboBoxes(this);
@@ -46,7 +46,6 @@ namespace DesktopPim.Views.ViewHome.Funcionarios
 
         public async void PreencherDetalhesFuncionario(int id)
         {
-            this.Show();
             var funcionario = await funcionariosController.ObterFuncionarioPorId(id);
 
 
@@ -129,16 +128,14 @@ namespace DesktopPim.Views.ViewHome.Funcionarios
                     }
                 };
 
-                //await funcionariosController.AtualizarFuncionario(funcionarioDTO);
                 funcionariosController.LimparCampos(this);
-                this.Close();
                 FuncionariosView funcionariosView = new FuncionariosView();
                 funcionariosController.LoadDataAPI(funcionariosView);
-
+                this.Close();
             }
             else
             {
-                FuncionariosController funcionariosController = new();
+                //FuncionariosController funcionariosController = new();
                 MessageBox.Show("Preencha todos os campos antes de cadastrar um novo funcionário!", "Existem campos sem preenchimento!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }

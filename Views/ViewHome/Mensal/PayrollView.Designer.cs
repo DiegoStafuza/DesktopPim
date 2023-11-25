@@ -213,6 +213,7 @@
             // dataGridViewDescontos
             // 
             dataGridViewDescontos.AllowUserToAddRows = false;
+            dataGridViewDescontos.AllowUserToDeleteRows = false;
             dataGridViewDescontos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewDescontos.BackgroundColor = SystemColors.Control;
             dataGridViewDescontos.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
@@ -221,6 +222,7 @@
             dataGridViewDescontos.Location = new Point(36, 329);
             dataGridViewDescontos.MultiSelect = false;
             dataGridViewDescontos.Name = "dataGridViewDescontos";
+            dataGridViewDescontos.ReadOnly = true;
             dataGridViewDescontos.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridViewDescontos.RowTemplate.Height = 25;
             dataGridViewDescontos.Size = new Size(1008, 275);
@@ -231,21 +233,25 @@
             // 
             ID.HeaderText = "ID";
             ID.Name = "ID";
+            ID.ReadOnly = true;
             // 
             // Tipo
             // 
             Tipo.HeaderText = "Tipo";
             Tipo.Name = "Tipo";
+            Tipo.ReadOnly = true;
             // 
             // Nome
             // 
             Nome.HeaderText = "Nome";
             Nome.Name = "Nome";
+            Nome.ReadOnly = true;
             // 
             // Valor
             // 
             Valor.HeaderText = "Valor";
             Valor.Name = "Valor";
+            Valor.ReadOnly = true;
             // 
             // button1
             // 

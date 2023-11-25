@@ -124,46 +124,55 @@ namespace DesktopPim.Controllers
             addFuncionario.comboBoxTpEndereco.Items.Insert(3, "Apartamento");
         }
 
-        public async Task<bool> CadastrarFuncionario(NovoFuncionarioViewModel fun)
+        public async Task CadastrarFuncionario(NovoFuncionarioViewModel fun)
         {
 
             try
             {
                 var data = new
                 {
-                    fun.nome,
-                    fun.cpf,
-                    fun.sexo,
-                    fun.cargo_id,
-                    fun.data_contratacao,
-                    fun.estado_civil,
-                    fun.rua,
-                    fun.tipo_endereco,
-                    fun.num_endereco,
-                    fun.bairro,
-                    fun.cep,
-                    fun.cidade,
-                    fun.uf_estado,
-                    fun.tipo_telefone,
-                    fun.numero_contato,
-                    fun.email_usuario
+                    nome = fun.nome,
+                    cpf = fun.cpf,
+                    sexo = fun.sexo,
+                    cargo_id = fun.cargo_id,
+                    data_contratacao = fun.data_contratacao,
+                    estado_civil = fun.estado_civil,
+                    rua = fun.rua,
+                    tipo_endereco = fun.tipo_endereco,
+                    num_endereco = fun.num_endereco,
+                    bairro = fun.bairro,
+                    cep = fun.cep,
+                    cidade = fun.cidade,
+                    uf_estado = fun.uf_estado,
+                    tipo_telefone = fun.tipo_telefone,
+                    numero_contato = fun.numero_contato,
+                    email_usuario = fun.email_usuario
                 };
                 var json = JsonSerializer.Serialize(data);
                 var content = new StringContent(json, Encoding.UTF8, "application/json");
 
                 HttpResponseMessage response = await client.PostAsync(apiNovoFunc, content);
 
-                if (response.IsSuccessStatusCode)
+                if (response.StatusCode == System.Net.HttpStatusCode.Created)
                 {
-                    return true;
+                    MessageBox.Show("Cadastro realizado com sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-                return false;
+                else if (response.StatusCode == System.Net.HttpStatusCode.BadRequest)
+                {
+                    MessageBox.Show("Funcionário já cadastrado.", "Funcionário já possui cadastro.", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else if (response.StatusCode == System.Net.HttpStatusCode.InternalServerError)
+                {
+
+                    MessageBox.Show("Ocorreu um erro ao cadastrar o funcionário. Por favor, tente novamente.", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             catch (Exception ex)
             {
-                return false;
+                MessageBox.Show($"Erro ao cadastrar o funcionário\n Status: {ex.Message}", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         public void LimparCampos(AdicionaFuncionarioView addFuncionario)
         {
             addFuncionario.textBoxNomeCompleto.Text = string.Empty;

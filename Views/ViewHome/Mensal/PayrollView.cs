@@ -229,7 +229,7 @@ namespace DesktopPim.Views
 
         public void button2_Click(object sender, EventArgs e)
         {
-            if (comboBoxMes.SelectedIndex <= 0 || string.IsNullOrEmpty(comboBoxAno.SelectedItem?.ToString()))
+            if (comboBoxMes.SelectedIndex <= 0 || string.IsNullOrEmpty(comboBoxAno.SelectedItem?.ToString()) || string.IsNullOrEmpty(comboBoxFuncionarios.SelectedItem?.ToString()))
             {
                 MessageBox.Show("Preencha as informações corretamente antes de gerar o PDF", "Erro ao gerar PDF", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -249,6 +249,23 @@ namespace DesktopPim.Views
                 document.Add(img);
             }
         }
+        public class RodapeEvento : PdfPageEventHelper
+        {
+            public override void OnEndPage(PdfWriter writer, Document document)
+            {
+                base.OnEndPage(writer, document);
+
+
+                Font font = FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 12, BaseColor.BLACK);
+
+                DateTime dataHoraAtual = DateTime.Now;
+                string texto = $"{dataHoraAtual} ";
+
+                ColumnText.ShowTextAligned(writer.DirectContent,
+                    Element.ALIGN_RIGHT, new Phrase(texto, font),
+                    document.Right, document.Bottom - 10, 0);
+            }
+        }
 
 
         private void GerarPDF()
@@ -258,13 +275,21 @@ namespace DesktopPim.Views
             doc.AddCreationDate();
 
             string timestamp = DateTime.Now.ToString("yyyyMMddHHmmss");
-            string filePath = $"C:\\HoleritesPIM\\holerite_{timestamp}.pdf";
+            string filePath = @$"C:\PIM\Holerites\";
+
+            if (!Directory.Exists(filePath))
+            {
+                Directory.CreateDirectory(filePath);
+            }
 
             try
             {
-                FileStream fileStream = new FileStream(filePath, FileMode.Create);
-                PdfWriter writer = PdfWriter.GetInstance(doc, fileStream);
+
+                string arquivo = filePath + $"Holerite{timestamp}.pdf";
+
+                PdfWriter writer = PdfWriter.GetInstance(doc, new FileStream(arquivo, FileMode.Create));
                 writer.PageEvent = new PdfHeader();
+                writer.PageEvent = new RodapeEvento();
                 doc.Open();
 
 
@@ -360,9 +385,9 @@ namespace DesktopPim.Views
 
                 MessageBox.Show("PDF gerado com sucesso!", "PDF gerado.", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                if (System.IO.File.Exists(filePath))
+                if (System.IO.File.Exists(arquivo))
                 {
-                    ProcessStartInfo psi = new ProcessStartInfo(filePath);
+                    ProcessStartInfo psi = new ProcessStartInfo(arquivo);
                     psi.UseShellExecute = true;
                     Process.Start(psi);
                 }

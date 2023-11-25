@@ -78,7 +78,7 @@ namespace DesktopPim.Views.ViewHome.Usuarios
                 }
                 else
                 {
-                    UsuariosController usuController = new();
+                    //UsuariosController usuController = new();
                     UsuariosModel usuariosModel = new UsuariosModel
                     {
                         usuario_id = int.Parse(labeliD.Text),
@@ -92,9 +92,10 @@ namespace DesktopPim.Views.ViewHome.Usuarios
                     };
                     await usuariosController.EditarUsuario(usuariosModel);
                     this.LimparCampos();
-                    this.Close();
+                    
                     UsuariosView usuariosView = new UsuariosView();
-                    usuController.LoadDataAPI(usuariosView);
+                    usuariosController.LoadDataAPI(usuariosView);
+                    this.Close();
 
                 }
             }

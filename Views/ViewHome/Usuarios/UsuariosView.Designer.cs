@@ -45,11 +45,13 @@ namespace DesktopPim.Views
             // dataGridViewUsuarios
             // 
             dataGridViewUsuarios.AllowUserToAddRows = false;
+            dataGridViewUsuarios.AllowUserToDeleteRows = false;
             dataGridViewUsuarios.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewUsuarios.BackgroundColor = SystemColors.Control;
             dataGridViewUsuarios.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
             dataGridViewUsuarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewUsuarios.Location = new Point(81, 154);
+            dataGridViewUsuarios.MultiSelect = false;
             dataGridViewUsuarios.Name = "dataGridViewUsuarios";
             dataGridViewUsuarios.ReadOnly = true;
             dataGridViewUsuarios.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;

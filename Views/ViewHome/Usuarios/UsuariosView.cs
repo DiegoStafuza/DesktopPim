@@ -44,6 +44,18 @@ namespace DesktopPim.Views
             }
         }
 
+        private bool IsFormOpen(Type formType)
+        {
+            foreach (Form form in Application.OpenForms)
+            {
+                if (form.GetType() == formType)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
         private async void buttonAtualizar_Click(object sender, EventArgs e)
         {
             UsuariosController usuariosController = new();
@@ -69,8 +81,9 @@ namespace DesktopPim.Views
                         if (excluiu)
                         {
                             dataGridViewUsuarios.Columns.Clear();
+                            UsuariosView usuarios = new();
                             HomeView homeView = new();
-                            homeView.ABrirFormFilho(this);
+                            homeView.ABrirFormFilho(usuarios);
                             usuariosController.LoadDataAPI(this);
                         }
                     }
@@ -95,12 +108,21 @@ namespace DesktopPim.Views
 
                 int idFunci = Convert.ToInt32(selectedRow.Cells["ID"].Value);
 
-                AlteraUsuView alteraUsuView = new AlteraUsuView(idFunci);
+                if (!IsFormOpen(typeof(AlteraUsuView)))
+                {
+                    AlteraUsuView alteraUsuView = new AlteraUsuView(idFunci);
+                    alteraUsuView.Show();
 
+                }
+                else
+                {
+                    var openForm = Application.OpenForms.OfType<AlteraUsuView>().FirstOrDefault();
+                    openForm.Focus();
+                }
             }
             else
             {
-                MessageBox.Show("Por favor, selecione um funcionário para alterar.");
+                MessageBox.Show("Por favor, selecione um usuário para alterar.", "Selecione um usuário.", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 

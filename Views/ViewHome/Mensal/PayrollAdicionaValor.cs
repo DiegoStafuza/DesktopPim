@@ -50,7 +50,7 @@ namespace DesktopPim.Views.ViewHome.Mensal
             }
             else
             {
-                MessageBox.Show("Algum campo está em branco ou é inválido.");
+                MessageBox.Show("Algum campo está em branco ou é inválido.", "Erro ao adicionar evento!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

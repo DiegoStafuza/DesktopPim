@@ -23,7 +23,7 @@ namespace DesktopPim.Views.ViewHome
             InitializeComponent();
             dataGridViewFuncionarios.Columns.Clear();
             dataGridViewFuncionarios.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            
+
             RelatoriosView rView = new RelatoriosView(dataGridViewFuncionarios);
 
         }
@@ -94,6 +94,20 @@ namespace DesktopPim.Views.ViewHome
             }
         }
 
+        private bool IsFormOpen(Type formType)
+        {
+            foreach (Form form in Application.OpenForms)
+            {
+                if (form.GetType() == formType)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+
+
         private void buttonAtualizar_Click(object sender, EventArgs e)
         {
             FuncionariosController funcionariosController = new FuncionariosController();
@@ -102,6 +116,7 @@ namespace DesktopPim.Views.ViewHome
 
         public async void buttonAlterar_Click(object sender, EventArgs e)
         {
+
             if (dataGridViewFuncionarios.SelectedRows.Count > 0)
             {
 
@@ -109,28 +124,24 @@ namespace DesktopPim.Views.ViewHome
 
                 int idFunci = Convert.ToInt32(selectedRow.Cells["ID"].Value);
 
-                AlteraFuncionarioView alteraFuncionario = new AlteraFuncionarioView(idFunci);
+                if (!IsFormOpen(typeof(AlteraFuncionarioView)))
+                {
+                    AlteraFuncionarioView alt = new AlteraFuncionarioView(idFunci);
+                    alt.Show();
+                }
+                else
+                {
+                    var openForm = Application.OpenForms.OfType<AlteraFuncionarioView>().FirstOrDefault();
+                    openForm.Focus();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Por favor, selecione um funcionário para alterar.", "Selecione um funcionário.", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
 
-            }
-            else
-            {
-                MessageBox.Show("Por favor, selecione um funcionário para alterar.");
-            }
         }
-        private AlteraFuncionarioView altera;
-        private void AbrirFormularioAlteracao()
-        {
-            if (altera == null || altera.IsDisposed)
-            {
-                altera = new AlteraFuncionarioView();
-                altera.FormClosed += (sender, e) => altera = null;
-                altera.Show();
-            }
-            else
-            {
-                altera.BringToFront();
-            }
-        }
+
 
     }
 }
