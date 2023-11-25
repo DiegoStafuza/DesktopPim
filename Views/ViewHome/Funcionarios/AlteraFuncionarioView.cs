@@ -27,8 +27,11 @@ namespace DesktopPim.Views.ViewHome.Funcionarios
         {
             InitializeComponent();
             idFuncionario = id;
+            funcionariosController.LoadUsuarios(this);
+            funcionariosController.LoadCargos(this);
             PreencherDetalhesFuncionario(idFuncionario);
             //this.Show();
+            
         }
         public AlteraFuncionarioView()
         {
@@ -37,17 +40,17 @@ namespace DesktopPim.Views.ViewHome.Funcionarios
 
         public async void AlteraFuncionarioView_Load(object sender, EventArgs e)
         {
-            this.comboBoxCargos.Items.Clear();
-            await funcionariosController.LoadCargos(this);
+            //this.comboBoxCargos.Items.Clear();
+            //this.comboBoxUsuarios.Items.Clear();
+            //await funcionariosController.LoadUsuarios(this);
             funcionariosController.IniciarComboBoxes(this);
-            await funcionariosController.LoadUsuarios(this);
+            //await funcionariosController.LoadCargos(this);
         }
 
 
         public async void PreencherDetalhesFuncionario(int id)
         {
             var funcionario = await funcionariosController.ObterFuncionarioPorId(id);
-
 
             textBoxNomeCompleto.Text = funcionario.funcionario.nome_funcionario;
             comboBoxEstadoCivil.Text = funcionario.funcionario.estado_civil;
@@ -69,9 +72,10 @@ namespace DesktopPim.Views.ViewHome.Funcionarios
             label3.Text = $"ID: {funcionario.funcionario.id_funcionario}";
             maskedTextBoxDTContratacao.Text = Convert.ToString(funcionario.funcionario.data_contratacao);
             textBoxNmrContato.Text = funcionario.contatos.FirstOrDefault()?.numero_contato;
-            //comboBoxUsuarios.Text = funcionario.funcionario.email_usuario;
-            //maskedTextBoxUF.Text = funcionario.enderecos.FirstOrDefault()?.
+            comboBoxUsuarios.Text = funcionario.funcionario.email_usuario;
+            maskedTextBoxUF.Text = funcionario.enderecos.FirstOrDefault().uf_estado;
             maskedTextBoxCpf.Text = funcionario.funcionario.cpf;
+            textBoxNumero.Text = funcionario.enderecos.FirstOrDefault().num_endereco;
         }
 
         private void checkBoxFeminino_CheckedChanged(object sender, EventArgs e)
@@ -105,7 +109,8 @@ namespace DesktopPim.Views.ViewHome.Funcionarios
                     sexo = GetSexoSelecionado(),
                     cargo_id = ((CargosDTO)comboBoxCargos.SelectedItem)?.id_cargo,
                     estado_civil = (string)comboBoxEstadoCivil.SelectedItem,
-                    data_contratacao = Convert.ToDateTime(maskedTextBoxDTContratacao.Text)
+                    data_contratacao = Convert.ToDateTime(maskedTextBoxDTContratacao.Text),
+                    email_usuario = ((UsuarioDTO)comboBoxUsuarios.SelectedItem)?.email
                 };
 
                 funcionarioDTO.enderecos = new List<FuncionarioDTO.Endereco>
@@ -115,7 +120,10 @@ namespace DesktopPim.Views.ViewHome.Funcionarios
                         tipo_endereco = (string)comboBoxTpEndereco.SelectedItem,
                         bairro = textBoxBairro.Text,
                         cep = maskedTextBoxCEP.Text,
-                        cidade = textBoxCidade.Text
+                        cidade = textBoxCidade.Text,
+                        rua = textBoxRua.Text,
+                        num_endereco = textBoxNumero.Text,
+                        uf_estado = maskedTextBoxUF.Text
                     }
                 };
 
@@ -143,7 +151,7 @@ namespace DesktopPim.Views.ViewHome.Funcionarios
         private bool CamposPreenchidos() =>
        !string.IsNullOrWhiteSpace(textBoxNomeCompleto.Text)
            && !string.IsNullOrWhiteSpace(maskedTextBoxCpf.Text)
-           //&& !string.IsNullOrWhiteSpace((string)comboBoxUsuarios.SelectedItem)
+           && !string.IsNullOrWhiteSpace((string)comboBoxUsuarios.SelectedItem)
            && !string.IsNullOrWhiteSpace(GetSexoSelecionado())
            && comboBoxCargos.SelectedItem != null
            && (maskedTextBoxDtContratacao_Validating())

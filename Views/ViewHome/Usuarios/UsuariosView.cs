@@ -90,12 +90,12 @@ namespace DesktopPim.Views
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"Houve um erro ao tentar excluir o funcionário selecionado. Erro: {ex.Message}", "Erro!", MessageBoxButtons.OK);
+                    MessageBox.Show($"Houve um erro ao tentar excluir o usuário selecionado. Erro: {ex.Message}", "Erro!", MessageBoxButtons.OK);
                 }
             }
             else
             {
-                MessageBox.Show("Selecione um funcionário na tabela para excluí-lo.");
+                MessageBox.Show("Selecione um usuário na tabela para excluí-lo.", "Selecione um usuário.", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 

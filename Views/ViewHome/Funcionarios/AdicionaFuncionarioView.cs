@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using DesktopPim.Controllers;
 using DesktopPim.Model;
 using javax.management.loading;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using FuncionariosController = DesktopPim.Controllers.FuncionariosController;
 
 namespace DesktopPim.Views.ViewHome
@@ -63,7 +64,7 @@ namespace DesktopPim.Views.ViewHome
                     nome = textBoxNomeCompleto.Text,
                     cpf = maskedTextCPF.Text,
                     sexo = GetSexoSelecionado(),
-                    cargo_id = ((CargosDTO)comboBoxCargos.SelectedItem)?.id_cargo,
+                    cargo_id = (int)comboBoxCargos.SelectedValue,
                     estado_civil = (string)comboBoxEstadoCivil.SelectedItem,
                     rua = textBox2.Text,
                     tipo_endereco = (string)comboBoxTpEndereco.SelectedItem,
@@ -75,7 +76,7 @@ namespace DesktopPim.Views.ViewHome
                     tipo_telefone = (string)comboBoxTpContato.SelectedItem,
                     numero_contato = textBox7.Text,
                     data_contratacao = Convert.ToDateTime(maskedTextBoxDtContratacao.Text),
-                    email_usuario = (string)comboBoxUsuarios.SelectedItem
+                    email_usuario = ((UsuarioDTO)comboBoxUsuarios.SelectedItem)?.email
                 };
 
                 await funcionariosController.CadastrarFuncionario(NovoFunc);
@@ -92,21 +93,23 @@ namespace DesktopPim.Views.ViewHome
         }
 
         private bool CamposPreenchidos() =>
-            !string.IsNullOrWhiteSpace(textBoxNomeCompleto.Text)
-                && !string.IsNullOrWhiteSpace(maskedTextCPF.Text)
-                && !string.IsNullOrWhiteSpace(GetSexoSelecionado())
-                && comboBoxCargos.SelectedItem != null
-                && (maskedTextBoxDtContratacao_Validating())
-                && !string.IsNullOrWhiteSpace((string)comboBoxEstadoCivil.SelectedItem)
-                && !string.IsNullOrWhiteSpace(textBox2.Text)
-                && !string.IsNullOrWhiteSpace((string)comboBoxTpEndereco.SelectedItem)
-                && !string.IsNullOrWhiteSpace(textBox5.Text)
-                && !string.IsNullOrWhiteSpace(textBox3.Text)
-                && !string.IsNullOrWhiteSpace(maskedTextBox2.Text)
-                && !string.IsNullOrWhiteSpace(textBox4.Text)
-                && !string.IsNullOrWhiteSpace(maskedTextBox1.Text)
-                && !string.IsNullOrWhiteSpace((string)comboBoxTpContato.SelectedItem)
-                && !string.IsNullOrWhiteSpace(textBox7.Text);
+       !string.IsNullOrWhiteSpace(textBoxNomeCompleto.Text)
+           && !string.IsNullOrWhiteSpace(maskedTextCPF.Text)
+           && !string.IsNullOrWhiteSpace(GetSexoSelecionado())
+           && (comboBoxCargos.SelectedItem != null && comboBoxCargos.SelectedIndex > 0)
+           && (maskedTextBoxDtContratacao_Validating())
+           && !string.IsNullOrWhiteSpace((string)comboBoxEstadoCivil.SelectedItem)
+           && !string.IsNullOrWhiteSpace(textBox2.Text)
+           && !string.IsNullOrWhiteSpace((string)comboBoxTpEndereco.SelectedItem)
+           && !string.IsNullOrWhiteSpace(textBox5.Text)
+           && !string.IsNullOrWhiteSpace(textBox3.Text)
+           && !string.IsNullOrWhiteSpace(maskedTextBox2.Text)
+           && !string.IsNullOrWhiteSpace(textBox4.Text)
+           && !string.IsNullOrWhiteSpace(maskedTextBox1.Text)
+           && !string.IsNullOrWhiteSpace((string)comboBoxTpContato.SelectedItem)
+           && !string.IsNullOrWhiteSpace(textBox7.Text)
+           && comboBoxUsuarios.SelectedItem != null;
+
         private string GetSexoSelecionado()
         {
             if (checkBox1.Checked)

@@ -25,21 +25,32 @@ namespace DesktopPim.Views.ViewHome.Usuarios
             InitializeComponent();
             idUsuario = id;
             PreencherDetalhesUsuario(idUsuario);
+            checkBox1.Checked = false;
+            textBoxSenha.Enabled = false;
+            textBoxConfirmaSenha.Enabled = false;
+            label5.Enabled = false;
+            label4.Enabled = false;
         }
         public AlteraUsuView()
         {
             InitializeComponent();
         }
 
+
+
+
         public async void PreencherDetalhesUsuario(int id)
         {
 
             this.Show();
 
+
             var usuario = await usuariosController.ObterUsuarioPorId(id);
 
             if (usuario != null)
             {
+
+
                 labeliD.Text = $"{usuario.usuario_id}";
                 textBoxNomeCompleto.Text = usuario.nome.ToString();
                 textBoxEmail.Text = usuario.email;
@@ -68,7 +79,7 @@ namespace DesktopPim.Views.ViewHome.Usuarios
 
         private async void buttonAlterar_Click(object sender, EventArgs e)
         {
-            if (CamposPreenchidos()) 
+            if (CamposPreenchidos())
             {
 
                 if (textBoxSenha.Text != textBoxConfirmaSenha.Text)
@@ -78,7 +89,6 @@ namespace DesktopPim.Views.ViewHome.Usuarios
                 }
                 else
                 {
-                    //UsuariosController usuController = new();
                     UsuariosModel usuariosModel = new UsuariosModel
                     {
                         usuario_id = int.Parse(labeliD.Text),
@@ -92,7 +102,7 @@ namespace DesktopPim.Views.ViewHome.Usuarios
                     };
                     await usuariosController.EditarUsuario(usuariosModel);
                     this.LimparCampos();
-                    
+
                     UsuariosView usuariosView = new UsuariosView();
                     usuariosController.LoadDataAPI(usuariosView);
                     this.Close();
@@ -109,9 +119,7 @@ namespace DesktopPim.Views.ViewHome.Usuarios
 
         private bool CamposPreenchidos() =>
             !string.IsNullOrWhiteSpace(textBoxNomeCompleto.Text)
-                && !string.IsNullOrWhiteSpace(textBoxEmail.Text)
-                && !string.IsNullOrWhiteSpace(textBoxSenha.Text)
-                && !string.IsNullOrWhiteSpace(textBoxConfirmaSenha.Text);
+                && !string.IsNullOrWhiteSpace(textBoxEmail.Text);
 
         private void LimparCampos()
         {
@@ -123,6 +131,24 @@ namespace DesktopPim.Views.ViewHome.Usuarios
             checkBoxAdministrador.Checked = false;
         }
 
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+
+            if (checkBox1.Checked)
+            {
+                textBoxSenha.Enabled = true;
+                textBoxConfirmaSenha.Enabled = true;
+                label4.Enabled = true;
+                label5.Enabled = true;
+            }
+            else
+            {
+                textBoxSenha.Enabled = false;
+                textBoxConfirmaSenha.Enabled = false;
+                label4.Enabled = false;
+                label5.Enabled = false;
+            }
+        }
     }
 
 }

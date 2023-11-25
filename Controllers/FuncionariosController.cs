@@ -337,51 +337,50 @@ namespace DesktopPim.Controllers
             }
         }
 
-        //public async Task<bool> AtualizarFuncionario(FuncionarioDTO model)
-        //{
-        //    try
-        //    {
-        //        var apiDto = new FuncionarioApiDTO
-        //        {
-        //            nome = model.funcionario.nome_funcionario,
-        //            cpf = model.funcionario.cpf,
-        //            sexo = model.funcionario.sexo,
-        //            estado_civil = model.funcionario.estado_civil,
-        //            cargo_id = model.funcionario.cargo_id,
-        //            data_contratacao = model.funcionario.data_contratacao,
-        //            rua = model.enderecos.FirstOrDefault()?.rua,
-        //            tipo_endereco = model.enderecos.FirstOrDefault()?.tipo_endereco,
-        //            num_endereco = model.enderecos.FirstOrDefault()?.
-        //            bairro = model.enderecos.FirstOrDefault()?.bairro,
-        //            cep = model.enderecos.FirstOrDefault()?.cep,
-        //            cidade = model.enderecos.FirstOrDefault()?.cidade,
-        //            tipo_telefone = model.contatos.FirstOrDefault()?.tipo_telefone,
-        //            numero_contato = model.contatos.FirstOrDefault()?.numero_contato
-        //        };
+        public async Task<bool> AtualizarFuncionario(FuncionarioDTO model)
+        {
+            try
+            {
+                var apiDto = new FuncionarioApiDTO
+                {
+                    nome = model?.funcionario.nome_funcionario,
+                    sexo = model?.funcionario.sexo,
+                    estado_civil = model?.funcionario.estado_civil,
+                    cargo_id = model?.funcionario.cargo_id,
+                    data_contratacao = model?.funcionario.data_contratacao,
+                    cpf = model?.funcionario.cpf,
+                    rua = model?.enderecos?.FirstOrDefault()?.rua,
+                    tipo_endereco = model?.enderecos?.FirstOrDefault()?.tipo_endereco,
+                    bairro = model?.enderecos?.FirstOrDefault()?.bairro,
+                    cep = model?.enderecos?.FirstOrDefault()?.cep,
+                    cidade = model?.enderecos?.FirstOrDefault()?.cidade,
+                    tipo_telefone = model?.contatos?.FirstOrDefault()?.tipo_telefone,
+                    numero_contato = model?.contatos?.FirstOrDefault()?.numero_contato
+                }; 
 
-        //        var jsonString = JsonSerializer.Serialize(apiDto);
-        //        var content = new StringContent(jsonString, Encoding.UTF8, "application/json");
+                var jsonString = JsonSerializer.Serialize(apiDto);
+                var content = new StringContent(jsonString, Encoding.UTF8, "application/json");
 
-        //        var response = await client.PutAsync($"https://20.14.87.19/api/Funcionarios/atualizaFuncionario/{model.funcionario.id_funcionario}", content);
+                var response = await client.PutAsync($"https://20.14.87.19/api/Funcionarios/atualizaFuncionario/{model.funcionario.id_funcionario}", content);
 
-        //        if (response.IsSuccessStatusCode)
-        //        {
-        //            MessageBox.Show("Sucesso ao atualizar o funcionário!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                if (response.IsSuccessStatusCode)
+                {
+                    MessageBox.Show("Sucesso ao atualizar o funcionário!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-        //            return true;
-        //        }
-        //        else
-        //        {
-        //            MessageBox.Show("Erro ao atualizar o funcionário!", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //            return false;
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show($"Erro ao atualizar o funcionário!\n Status: {ex.Message}");
-        //        return false;
-        //    }
+                    return true;
+                }
+                else
+                {
+                    MessageBox.Show("Erro ao atualizar o funcionário!", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Erro ao atualizar o funcionário!\n Status: {ex.Message}", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
 
-        //}
+        }
     }
 }

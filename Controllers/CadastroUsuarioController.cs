@@ -26,7 +26,7 @@ namespace DesktopPim.Controllers
             client = new HttpClientService().CreateHttpClient();
         }
 
-        public async Task<bool> Cadastro(CadastroViewModel form)
+        public async Task Cadastro(CadastroViewModel form)
         {
             try
             {
@@ -47,13 +47,16 @@ namespace DesktopPim.Controllers
 
                 if (response.IsSuccessStatusCode)
                 {
-                    return true;
+                    MessageBox.Show("Sucesso ao cadastrar o novo usuário!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-                return false;
+                else
+                {
+                    MessageBox.Show("Erro ao cadastrar o novo usuário!", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
-            catch
+            catch(Exception ex)
             {
-                return false;
+                MessageBox.Show($"Erro inesperado ao cadastrar o usuário.\n Status: {ex.Message}", "Erro inesperado.", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

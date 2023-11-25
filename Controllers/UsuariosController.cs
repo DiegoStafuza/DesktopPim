@@ -148,6 +148,7 @@ namespace DesktopPim.Controllers
                     expiration_token = model.expiration_token
                 };
 
+
                 var jsonSring = JsonSerializer.Serialize(user);
                 var content = new StringContent(jsonSring, Encoding.UTF8, "application/json");
 

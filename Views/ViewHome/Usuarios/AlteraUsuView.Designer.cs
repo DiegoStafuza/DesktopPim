@@ -43,12 +43,13 @@
             buttonCadastrar = new Button();
             label6 = new Label();
             labeliD = new Label();
+            checkBox1 = new CheckBox();
             SuspendLayout();
             // 
             // textBoxSenha
             // 
             textBoxSenha.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            textBoxSenha.Location = new Point(179, 317);
+            textBoxSenha.Location = new Point(179, 313);
             textBoxSenha.Name = "textBoxSenha";
             textBoxSenha.Size = new Size(414, 29);
             textBoxSenha.TabIndex = 2;
@@ -102,7 +103,7 @@
             // label4
             // 
             label4.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label4.Location = new Point(179, 280);
+            label4.Location = new Point(179, 276);
             label4.Name = "label4";
             label4.Size = new Size(180, 34);
             label4.TabIndex = 8;
@@ -111,7 +112,7 @@
             // textBoxConfirmaSenha
             // 
             textBoxConfirmaSenha.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            textBoxConfirmaSenha.Location = new Point(179, 404);
+            textBoxConfirmaSenha.Location = new Point(179, 400);
             textBoxConfirmaSenha.Name = "textBoxConfirmaSenha";
             textBoxConfirmaSenha.Size = new Size(414, 29);
             textBoxConfirmaSenha.TabIndex = 3;
@@ -120,7 +121,7 @@
             // label5
             // 
             label5.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label5.Location = new Point(179, 367);
+            label5.Location = new Point(179, 363);
             label5.Name = "label5";
             label5.Size = new Size(180, 34);
             label5.TabIndex = 7;
@@ -131,7 +132,7 @@
             checkBoxAtivo.Cursor = Cursors.Hand;
             checkBoxAtivo.FlatStyle = FlatStyle.Flat;
             checkBoxAtivo.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            checkBoxAtivo.Location = new Point(179, 510);
+            checkBoxAtivo.Location = new Point(179, 506);
             checkBoxAtivo.Name = "checkBoxAtivo";
             checkBoxAtivo.Size = new Size(166, 57);
             checkBoxAtivo.TabIndex = 5;
@@ -143,7 +144,7 @@
             checkBoxAdministrador.Cursor = Cursors.Hand;
             checkBoxAdministrador.FlatStyle = FlatStyle.Flat;
             checkBoxAdministrador.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            checkBoxAdministrador.Location = new Point(179, 447);
+            checkBoxAdministrador.Location = new Point(179, 443);
             checkBoxAdministrador.Name = "checkBoxAdministrador";
             checkBoxAdministrador.Size = new Size(166, 57);
             checkBoxAdministrador.TabIndex = 4;
@@ -186,11 +187,25 @@
             labeliD.Size = new Size(117, 60);
             labeliD.TabIndex = 19;
             // 
+            // checkBox1
+            // 
+            checkBox1.Cursor = Cursors.Hand;
+            checkBox1.FlatStyle = FlatStyle.Flat;
+            checkBox1.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            checkBox1.Location = new Point(606, 210);
+            checkBox1.Name = "checkBox1";
+            checkBox1.Size = new Size(166, 57);
+            checkBox1.TabIndex = 20;
+            checkBox1.Text = "Alterar senha";
+            checkBox1.UseVisualStyleBackColor = true;
+            checkBox1.CheckedChanged += checkBox1_CheckedChanged;
+            // 
             // AlteraUsuView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(847, 728);
+            Controls.Add(checkBox1);
             Controls.Add(labeliD);
             Controls.Add(label6);
             Controls.Add(buttonCadastrar);
@@ -229,5 +244,6 @@
         private Button buttonCadastrar;
         private Label label6;
         public Label labeliD;
+        private CheckBox checkBox1;
     }
 }
