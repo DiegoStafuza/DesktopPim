@@ -12,7 +12,7 @@ namespace DesktopPim.Model
         public string departamento { get; set; }
         public string cargo { get; set; }
         public decimal salario { get; set; }
-        public DateTime dataContratacao { get; set; }
+        public string dataContratacao { get; set; }
         public decimal descontoINSS { get; set; }
         public decimal descontoIRRF { get; set; }
 

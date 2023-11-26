@@ -1,5 +1,4 @@
-﻿using ApiPIM.Models;
-using com.sun.security.ntlm;
+﻿using com.sun.security.ntlm;
 using com.sun.xml.@internal.bind.v2.model.core;
 using DesktopPim.Controllers;
 using DesktopPim.Model;
@@ -170,11 +169,11 @@ public class CalculaFolhaController
             }
             else if (response.StatusCode == System.Net.HttpStatusCode.UnprocessableEntity)
             {
-                MessageBox.Show($"Já existe cálculo para esse funcionário referente a {model.Mes} de {model.Ano}.", "Erro ao adicionar valores.", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show($"Já existe cálculo para esse funcionário referente a {model.Mes} de {model.Ano}.", "Erro ao adicionar valores.", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
-                MessageBox.Show($"Erro na requisição. Status: {response.StatusCode}", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show($"Erro na requisição. Status: {response.StatusCode}", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }
