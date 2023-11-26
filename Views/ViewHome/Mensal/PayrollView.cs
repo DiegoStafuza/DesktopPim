@@ -60,7 +60,6 @@ namespace DesktopPim.Views
                     dataGridViewDescontos.Rows.Add(1, "Provento", "Salário", funcionarioDetalhes.salario);
 
                     var dataContratacao = DateTime.Parse(funcionarioDetalhes.dataContratacao.ToString()).ToString("MM/yyyy");
-
                     dataGridViewDescontos.Rows.Add(dataGridViewDescontos.Rows.Count + 1, "Desconto", "INSS", funcionarioDetalhes.descontoINSS);
                     dataGridViewDescontos.Rows.Add(dataGridViewDescontos.Rows.Count + 1, "Desconto", "IRRF", funcionarioDetalhes.descontoIRRF);
                     dataGridViewDescontos.Rows.Add(dataGridViewDescontos.Rows.Count + 1, "Desconto", "FGTS", funcionarioDetalhes.descontoFGTS);
@@ -75,7 +74,6 @@ namespace DesktopPim.Views
                 }
             }
         }
-        DateTime dataContratacao;
         public async Task PreencherDetalhesFuncionario(FuncionarioDetalhes funcionario) 
         {
             if (funcionario != null)
@@ -83,7 +81,7 @@ namespace DesktopPim.Views
                 textBoxDepto.Text = funcionario.departamento;
                 textBoxSalario.Text = "R$ " + funcionario.salario.ToString();
                 textBoxCargo.Text = funcionario.cargo;
-                textBoxDataContratacao.Text = contratacao;
+                
 
                 textBoxDepto.Enabled = false;
                 textBoxSalario.Enabled = false;
@@ -204,8 +202,7 @@ namespace DesktopPim.Views
                         FuncionarioId = funcionarioId,
                         Ano = ano,
                         Mes = mes,
-                        Proventos = proventos,
-                        DataContratacao = dataContratacao
+                        Proventos = proventos
                     };
 
                     await calculaFolha.AdicionarValores(model);

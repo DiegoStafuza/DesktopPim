@@ -72,7 +72,7 @@ public class CalculaFolhaController
     {
         PayrollView payrollView = new();
         var funcionarioDetalhes = await ObterDetalhesFuncionario(selectedFuncionarioId);
-        await payrollView.PreencherDetalhesFuncionario(funcionarioDetalhes, funcionarioDetalhes.dataContratacao.ToString());
+        await payrollView.PreencherDetalhesFuncionario(funcionarioDetalhes);
     }
 
     public async Task<FuncionarioDetalhes> ObterDetalhesFuncionarioPorId(int id)
