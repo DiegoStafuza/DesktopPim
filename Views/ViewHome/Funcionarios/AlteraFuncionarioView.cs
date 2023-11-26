@@ -78,6 +78,7 @@ namespace DesktopPim.Views.ViewHome.Funcionarios
             maskedTextBoxUF.Text = funcionario.enderecos.FirstOrDefault()?.uf_estado;
             maskedTextBoxCpf.Text = funcionario.funcionario.cpf;
             textBoxNumero.Text = funcionario.enderecos.FirstOrDefault()?.num_endereco;
+
         }
 
         private void checkBoxFeminino_CheckedChanged(object sender, EventArgs e)

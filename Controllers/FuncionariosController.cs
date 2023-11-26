@@ -230,13 +230,13 @@ namespace DesktopPim.Controllers
                 }
                 else
                 {
-                    MessageBox.Show($"Erro ao excluir funcionário. Status Code: {response.StatusCode}");
+                    MessageBox.Show($"Erro ao excluir funcionário. \n Status Code: {response.StatusCode}", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Erro ao excluir funcionário. Status: {ex.Message}");
+                MessageBox.Show($"Erro ao excluir funcionário. \n Status: {ex.Message}", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
         }

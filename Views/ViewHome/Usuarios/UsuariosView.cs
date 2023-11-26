@@ -12,16 +12,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Timer = System.Windows.Forms.Timer;
 
 namespace DesktopPim.Views
 {
+
     public partial class UsuariosView : Form
     {
+        private bool podeClicar = true;
+        private Timer timer1;
         public UsuariosView()
         {
             InitializeComponent();
             dataGridViewUsuarios.Columns.Clear();
             dataGridViewUsuarios.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            timer1 = new Timer();
+            timer1.Interval = 2000;
+            timer1.Tick += HabilitarClique;
         }
         private void buttonCadastrar_Click(object sender, EventArgs e)
         {
@@ -58,8 +65,23 @@ namespace DesktopPim.Views
 
         private async void buttonAtualizar_Click(object sender, EventArgs e)
         {
+            if (podeClicar)
+            {
+                podeClicar = false;
+                buttonAtualizar.Enabled = false;
+                timer1.Start();
+
+
+            }
             UsuariosController usuariosController = new();
             usuariosController.LoadDataAPI(this);
+        }
+        private void HabilitarClique(object sender, EventArgs e)
+        {
+            podeClicar = true;
+            buttonAtualizar.Enabled = true;
+            timer1.Stop();
+
         }
 
         public async void buttonExcluir_Click(object sender, EventArgs e)

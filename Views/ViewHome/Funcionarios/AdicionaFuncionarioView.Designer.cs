@@ -462,6 +462,7 @@
             FormBorderStyle = FormBorderStyle.FixedToolWindow;
             MaximizeBox = false;
             Name = "AdicionaFuncionarioView";
+            StartPosition = FormStartPosition.CenterScreen;
             Load += AdicionaFuncionarioView_Load;
             ResumeLayout(false);
             PerformLayout();

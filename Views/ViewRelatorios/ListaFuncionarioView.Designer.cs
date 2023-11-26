@@ -30,14 +30,14 @@
         {
             SuspendLayout();
             // 
-            // DvdAttFunc
+            // ListaFuncionarioView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveBorder;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(1178, 548);
             FormBorderStyle = FormBorderStyle.None;
-            Name = "DvdAttFunc";
+            Name = "ListaFuncionarioView";
             ResumeLayout(false);
         }
 

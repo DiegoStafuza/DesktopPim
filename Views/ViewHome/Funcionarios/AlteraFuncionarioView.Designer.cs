@@ -495,6 +495,7 @@
             FormBorderStyle = FormBorderStyle.FixedToolWindow;
             MaximizeBox = false;
             Name = "AlteraFuncionarioView";
+            StartPosition = FormStartPosition.CenterScreen;
             Load += AlteraFuncionarioView_Load;
             ResumeLayout(false);
             PerformLayout();

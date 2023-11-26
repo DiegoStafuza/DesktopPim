@@ -12,12 +12,14 @@ using System.Windows.Forms;
 using DesktopPim.Model;
 using DesktopPim.Views.ViewHome.Funcionarios;
 using com.sun.xml.@internal.bind.v2.model.core;
+using Timer = System.Windows.Forms.Timer;
 
 namespace DesktopPim.Views.ViewHome
 {
     public partial class FuncionariosView : Form
     {
-
+        private bool podeClicar = true;
+        private Timer timer1;
         public FuncionariosView()
         {
             InitializeComponent();
@@ -25,7 +27,9 @@ namespace DesktopPim.Views.ViewHome
             dataGridViewFuncionarios.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
             RelatoriosView rView = new RelatoriosView(dataGridViewFuncionarios);
-
+            timer1 = new Timer();
+            timer1.Interval = 2000;
+            timer1.Tick += HabilitarClique;
         }
 
         private void FuncionariosView_Load(object sender, EventArgs e)
@@ -110,8 +114,23 @@ namespace DesktopPim.Views.ViewHome
 
         private void buttonAtualizar_Click(object sender, EventArgs e)
         {
+            if (podeClicar)
+            {
+                podeClicar = false;
+                buttonAtualizar.Enabled = false;
+                timer1.Start();
+
+                
+            }
             FuncionariosController funcionariosController = new FuncionariosController();
             funcionariosController.LoadDataAPI(this);
+        }
+        private void HabilitarClique(object sender, EventArgs e)
+        {
+            podeClicar = true;
+            buttonAtualizar.Enabled = true;
+            timer1.Stop();
+            
         }
 
         public async void buttonAlterar_Click(object sender, EventArgs e)

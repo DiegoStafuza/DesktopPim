@@ -1,4 +1,5 @@
-﻿using com.sun.security.ntlm;
+﻿using ApiPIM.Models;
+using com.sun.security.ntlm;
 using com.sun.xml.@internal.bind.v2.model.core;
 using DesktopPim.Controllers;
 using DesktopPim.Model;
@@ -42,7 +43,7 @@ public class CalculaFolhaController
             }
             else
             {
-                MessageBox.Show("Não foi possível obter os dados do funcionário");
+                MessageBox.Show("Não foi possível obter os dados do funcionário", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         catch (Exception ex)
@@ -179,7 +180,7 @@ public class CalculaFolhaController
         }
         catch (Exception ex)
         {
-            MessageBox.Show($"Erro inesperado. Status: {ex.Message}");
+            MessageBox.Show($"Erro inesperado. Status: {ex.Message}", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
 }
