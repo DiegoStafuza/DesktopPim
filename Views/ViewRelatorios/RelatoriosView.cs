@@ -15,7 +15,7 @@ using PdfSharp.Pdf.Advanced;
 using static jdk.nashorn.@internal.codegen.CompilerConstants;
 using Chilkat;
 using iText.IO.Util;
-
+using DesktopPim.Views.ViewDuvidas;
 
 namespace DesktopPim.Views
 {
@@ -44,7 +44,26 @@ namespace DesktopPim.Views
             {
 
             }
-            
+
+        }
+
+        public void ABrirFormFilho(Form formularioFilho)
+        {
+            if (panelPrincipal.Controls.Count > 0)
+            {
+                panelPrincipal.Controls.RemoveAt(0);
+            }
+
+            formularioFilho.TopLevel = false;
+            formularioFilho.Dock = DockStyle.Fill;
+            panelPrincipal.Controls.Add(formularioFilho);
+            panelPrincipal.Tag = formularioFilho;
+            formularioFilho.Show();
+        }
+        private void buttonPagamento_Click(object sender, EventArgs e)
+        {
+            ListaFuncionarioView listView = new();
+            ABrirFormFilho(listView);
         }
         public class PdfHeader : PdfPageEventHelper
         {
@@ -75,8 +94,8 @@ namespace DesktopPim.Views
             }
         }
 
-         public void GerarPDF(DataGridView dataGridView)
-         {
+        public void GerarPDF(DataGridView dataGridView)
+        {
 
             Document doc = new Document(PageSize.A4);
             doc.SetMargins(40, 40, 40, 80);
@@ -93,82 +112,83 @@ namespace DesktopPim.Views
 
             try
             {
-                
-
-                    string arquivo = filePath + $"funcionarios{timestamp}.pdf";
-
-                    PdfWriter writer = PdfWriter.GetInstance(doc, new FileStream(arquivo, FileMode.Create));
-                    writer.PageEvent = new PdfHeader();
-                    writer.PageEvent = new RodapeEvento();
-
-                    doc.Open();
 
 
+                string arquivo = filePath + $"funcionarios{timestamp}.pdf";
 
-                    BaseColor customColor = new BaseColor(4, 120, 87);
-                    BaseColor customColor2 = new BaseColor(220, 220, 220);
-                    BaseColor customColor3 = new BaseColor(97, 135, 91);
-                    BaseColor customColor4 = new BaseColor(183, 8, 29);
+                PdfWriter writer = PdfWriter.GetInstance(doc, new FileStream(arquivo, FileMode.Create));
+                writer.PageEvent = new PdfHeader();
+                writer.PageEvent = new RodapeEvento();
+
+                doc.Open();
 
 
 
-                    Font titleFonte = FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 18, customColor);
-                    Paragraph title = new Paragraph($"Relatório de funcionários", titleFonte);
-                    title.Alignment = Element.ALIGN_CENTER;
-                    title.SpacingBefore = 20;
-                    title.SpacingAfter = 50;
-                    doc.Add(title);
+                BaseColor customColor = new BaseColor(4, 120, 87);
+                BaseColor customColor2 = new BaseColor(220, 220, 220);
+                BaseColor customColor3 = new BaseColor(97, 135, 91);
+                BaseColor customColor4 = new BaseColor(183, 8, 29);
 
 
-                    PdfPTable table = new PdfPTable(dataGridView.Columns.Count);
-                    table.WidthPercentage = 100;
 
-                    Font headerFont = FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 12, BaseColor.WHITE);
-                    for (int i = 0; i < dataGridView.Columns.Count; i++)
+                Font titleFonte = FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 18, customColor);
+                Paragraph title = new Paragraph($"Relatório de funcionários", titleFonte);
+                title.Alignment = Element.ALIGN_CENTER;
+                title.SpacingBefore = 20;
+                title.SpacingAfter = 50;
+                doc.Add(title);
+
+
+                PdfPTable table = new PdfPTable(dataGridView.Columns.Count);
+                table.WidthPercentage = 100;
+
+                Font headerFont = FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 12, BaseColor.WHITE);
+                for (int i = 0; i < dataGridView.Columns.Count; i++)
+                {
+                    PdfPCell cell = new PdfPCell(new Phrase(dataGridView.Columns[i].HeaderText, headerFont));
+                    cell.BackgroundColor = customColor;
+                    table.AddCell(cell);
+                }
+
+                Font cellFont = FontFactory.GetFont(FontFactory.HELVETICA, 11, BaseColor.BLACK);
+                Font valorFont = FontFactory.GetFont(FontFactory.HELVETICA, 11, BaseColor.BLACK);
+
+                foreach (DataGridViewRow r in dataGridView.Rows)
+                {
+                    foreach (DataGridViewCell c in r.Cells)
                     {
-                        PdfPCell cell = new PdfPCell(new Phrase(dataGridView.Columns[i].HeaderText, headerFont));
-                        cell.BackgroundColor = customColor;
-                        table.AddCell(cell);
+                        string cellValue = (c.Value).ToString();
+                        PdfPCell pdfCell = new PdfPCell(new Phrase(cellValue, valorFont));
+                        pdfCell.FixedHeight = 25;
+                        pdfCell.BackgroundColor = customColor2;
+                        table.AddCell(pdfCell);
                     }
+                }
 
-                    Font cellFont = FontFactory.GetFont(FontFactory.HELVETICA, 11, BaseColor.BLACK);
-                    Font valorFont = FontFactory.GetFont(FontFactory.HELVETICA, 11, BaseColor.BLACK);
-
-                    foreach (DataGridViewRow r in dataGridView.Rows)
-                    {
-                        foreach (DataGridViewCell c in r.Cells)
-                        {
-                            string cellValue = (c.Value).ToString();
-                            PdfPCell pdfCell = new PdfPCell(new Phrase(cellValue, valorFont));
-                            pdfCell.FixedHeight = 25;
-                            pdfCell.BackgroundColor = customColor2;
-                            table.AddCell(pdfCell);
-                        }
-                    }
-
-                    doc.Add(table);
+                doc.Add(table);
 
 
-                    doc.Close();
+                doc.Close();
 
-                    MessageBox.Show("PDF gerado com sucesso!", "PDF gerado.", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("PDF gerado com sucesso!", "PDF gerado.", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    if (System.IO.File.Exists(arquivo))
-                    {
-                        ProcessStartInfo psi = new ProcessStartInfo(arquivo);
-                        psi.UseShellExecute = true;
-                        Process.Start(psi);
-                    }
-                    else
-                    {
-                        MessageBox.Show("Arquivo PDF não encontrado.", "Erro ao encontrar PDF.");
-                    }
+                if (System.IO.File.Exists(arquivo))
+                {
+                    ProcessStartInfo psi = new ProcessStartInfo(arquivo);
+                    psi.UseShellExecute = true;
+                    Process.Start(psi);
+                }
+                else
+                {
+                    MessageBox.Show("Arquivo PDF não encontrado.", "Erro ao encontrar PDF.");
+                }
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Não foi possível gerar o PDF. Status: {ex.Message}");
             }
         }
+
 
     }
 }

@@ -11,6 +11,9 @@ using com.sun.xml.@internal.bind.v2.model.core;
 using DesktopPim.Views.ViewHome.Funcionarios;
 using System.Web.Helpers;
 using Microsoft.IdentityModel.Tokens;
+using ApiPIM.Models;
+using DesktopPim.Views.ViewDuvidas;
+using FuncionarioDTO = DesktopPim.Model.FuncionarioDTO;
 
 namespace DesktopPim.Controllers
 {
@@ -55,7 +58,7 @@ namespace DesktopPim.Controllers
 
             return funcionariosLista;
         }
-
+                
         public async void LoadDataAPI(FuncionariosView funcionariosView)
         {
 
@@ -413,6 +416,26 @@ namespace DesktopPim.Controllers
                 MessageBox.Show($"Erro ao atualizar o funcionário!\n Status: {ex.Message}", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
+        }
+
+        public async Task LoadFuncionarios(ListaFuncionarioView list)
+        {
+            var response = await client.GetAsync(baseUrl);
+
+            if (response.IsSuccessStatusCode)
+            {
+                var jsonString = await response.Content.ReadAsStringAsync();
+                var funcionarios = JsonSerializer.Deserialize<List<ListaFuncionariosRelatorio>>(jsonString);
+
+                list.comboBoxFuncionarios.Items.Clear();
+
+                list.comboBoxFuncionarios.Items.Add("");
+
+                list.comboBoxFuncionarios.DataSource = funcionarios;
+                list.comboBoxFuncionarios.DisplayMember = "nome_funcionario";
+                list.comboBoxFuncionarios.ValueMember = "id_funcionario";
+                //int selectedCargoId = (int)addFuncionariosView.comboBoxCargos.SelectedValue;
+            }
         }
     }
 }

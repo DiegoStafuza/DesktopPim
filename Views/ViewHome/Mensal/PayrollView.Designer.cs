@@ -55,12 +55,14 @@
             button1 = new Button();
             labelValorLiquido = new Label();
             button2 = new Button();
+            textBoxDataContratacao = new TextBox();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewDescontos).BeginInit();
             SuspendLayout();
             // 
             // panel1
             // 
+            panel1.Controls.Add(textBoxDataContratacao);
             panel1.Controls.Add(label7);
             panel1.Controls.Add(label6);
             panel1.Controls.Add(label5);
@@ -331,6 +333,15 @@
             button2.Text = "Gerar PDF";
             button2.UseVisualStyleBackColor = false;
             button2.Click += button2_Click;
+            // 
+            // textBoxDataContratacao
+            // 
+            textBoxDataContratacao.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point);
+            textBoxDataContratacao.Location = new Point(610, 9);
+            textBoxDataContratacao.Name = "textBoxDataContratacao";
+            textBoxDataContratacao.Size = new Size(421, 39);
+            textBoxDataContratacao.TabIndex = 13;
+            textBoxDataContratacao.Visible = false;
             // 
             // PayrollView
             // 

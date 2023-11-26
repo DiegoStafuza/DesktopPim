@@ -8,6 +8,7 @@ using Rectangle = iTextSharp.text.Rectangle;
 using Paragraph = iTextSharp.text.Paragraph;
 using Microsoft.IdentityModel.Tokens;
 using Azure;
+using ApiPIM.Models;
 
 namespace DesktopPim.Views
 {
@@ -58,12 +59,13 @@ namespace DesktopPim.Views
 
                     dataGridViewDescontos.Rows.Add(1, "Provento", "Salário", funcionarioDetalhes.salario);
 
+                    var dataContratacao = DateTime.Parse(funcionarioDetalhes.dataContratacao.ToString()).ToString("MM/yyyy");
 
                     dataGridViewDescontos.Rows.Add(dataGridViewDescontos.Rows.Count + 1, "Desconto", "INSS", funcionarioDetalhes.descontoINSS);
                     dataGridViewDescontos.Rows.Add(dataGridViewDescontos.Rows.Count + 1, "Desconto", "IRRF", funcionarioDetalhes.descontoIRRF);
                     dataGridViewDescontos.Rows.Add(dataGridViewDescontos.Rows.Count + 1, "Desconto", "FGTS", funcionarioDetalhes.descontoFGTS);
 
-                    await PreencherDetalhesFuncionario(funcionarioDetalhes);
+                    await PreencherDetalhesFuncionario(funcionarioDetalhes, dataContratacao);
 
                     CalcularValorLiquido();
                 }
@@ -73,8 +75,8 @@ namespace DesktopPim.Views
                 }
             }
         }
-
-        public async Task PreencherDetalhesFuncionario(FuncionarioDetalhes funcionario)
+        DateTime dataContratacao;
+        public async Task PreencherDetalhesFuncionario(FuncionarioDetalhes funcionario, string contratacao)
         {
             if (funcionario != null)
             {
@@ -82,6 +84,7 @@ namespace DesktopPim.Views
                 textBoxSalario.Text = "R$ " + funcionario.salario.ToString();
                 textBoxCargo.Text = funcionario.cargo;
                 textDataContratacao.Text = DateTime.Parse(funcionario.dataContratacao.ToString()).ToString("dd/MM/yyyy");
+
 
                 textBoxDepto.Enabled = false;
                 textBoxSalario.Enabled = false;
@@ -203,7 +206,8 @@ namespace DesktopPim.Views
                         FuncionarioId = funcionarioId,
                         Ano = ano,
                         Mes = mes,
-                        Proventos = proventos
+                        Proventos = proventos,
+                        DataContratacao = dataContratacao
                     };
 
                     string dataContratacao = DateTime.Parse(textDataContratacao.Text.ToString()).ToString("MM/yyyy");
