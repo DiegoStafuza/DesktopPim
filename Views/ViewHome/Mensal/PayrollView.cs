@@ -76,7 +76,7 @@ namespace DesktopPim.Views
             }
         }
         DateTime dataContratacao;
-        public async Task PreencherDetalhesFuncionario(FuncionarioDetalhes funcionario, string contratacao)
+        public async Task PreencherDetalhesFuncionario(FuncionarioDetalhes funcionario) 
         {
             if (funcionario != null)
             {
