@@ -45,6 +45,7 @@
             label1 = new Label();
             textBoxCargo = new TextBox();
             comboBoxFuncionarios = new ComboBox();
+            textDataContratacao = new TextBox();
             buttonAdicionar = new Button();
             dataGridViewDescontos = new DataGridView();
             ID = new DataGridViewTextBoxColumn();
@@ -75,11 +76,13 @@
             panel1.Controls.Add(label1);
             panel1.Controls.Add(textBoxCargo);
             panel1.Controls.Add(comboBoxFuncionarios);
+            panel1.Controls.Add(textDataContratacao);
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
             panel1.Size = new Size(1573, 274);
             panel1.TabIndex = 0;
+            panel1.Paint += panel1_Paint;
             // 
             // label7
             // 
@@ -196,6 +199,19 @@
             comboBoxFuncionarios.Size = new Size(421, 40);
             comboBoxFuncionarios.TabIndex = 0;
             comboBoxFuncionarios.SelectedIndexChanged += comboBoxFuncionarios_SelectedIndexChanged;
+            // 
+            // textDataContratacao
+            // 
+            textDataContratacao.BackColor = SystemColors.ActiveCaptionText;
+            textDataContratacao.BorderStyle = BorderStyle.None;
+            textDataContratacao.Enabled = false;
+            textDataContratacao.Font = new Font("Segoe UI", 1F, FontStyle.Regular, GraphicsUnit.Point);
+            textDataContratacao.ForeColor = SystemColors.ActiveBorder;
+            textDataContratacao.Location = new Point(428, 38);
+            textDataContratacao.Name = "textDataContratacao";
+            textDataContratacao.Size = new Size(315, 2);
+            textDataContratacao.TabIndex = 13;
+            textDataContratacao.Visible = false;
             // 
             // buttonAdicionar
             // 
@@ -374,6 +390,7 @@
         public Label labelValorLiquido;
         private Label label7;
         private Button button2;
-        public TextBox textBoxDataContratacao;
+        private TextBox textDataContratacao;
+        private Label LabelDataContratacao;
     }
 }

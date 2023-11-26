@@ -83,7 +83,8 @@ namespace DesktopPim.Views
                 textBoxDepto.Text = funcionario.departamento;
                 textBoxSalario.Text = "R$ " + funcionario.salario.ToString();
                 textBoxCargo.Text = funcionario.cargo;
-                textBoxDataContratacao.Text = contratacao;
+                textDataContratacao.Text = DateTime.Parse(funcionario.dataContratacao.ToString()).ToString("dd/MM/yyyy");
+
 
                 textBoxDepto.Enabled = false;
                 textBoxSalario.Enabled = false;
@@ -96,6 +97,7 @@ namespace DesktopPim.Views
             textBoxDepto.Text = string.Empty;
             textBoxSalario.Text = string.Empty;
             textBoxCargo.Text = string.Empty;
+
 
 
             textBoxDepto.Enabled = true;
@@ -207,6 +209,20 @@ namespace DesktopPim.Views
                         Proventos = proventos,
                         DataContratacao = dataContratacao
                     };
+
+                    string dataContratacao = DateTime.Parse(textDataContratacao.Text.ToString()).ToString("MM/yyyy");
+
+                    string juntaAnoMes = $"{model.Mes}/{model.Ano}";
+                    string mesAnoCalculo = DateTime.Parse(juntaAnoMes.ToString()).ToString("MM/yyyy");
+
+                    DateTime dataContratacaoFormatada = DateTime.Parse(dataContratacao);
+                    DateTime mesAno = DateTime.Parse(mesAnoCalculo);
+
+                    if (mesAno <= dataContratacaoFormatada)
+                    {
+                        MessageBox.Show("Não é permitido inserir pagamentos anteriores a data de contratação do funcionário!", "Erro ao lançar folha.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
 
                     await calculaFolha.AdicionarValores(model);
 
@@ -404,6 +420,11 @@ namespace DesktopPim.Views
             {
                 MessageBox.Show($"Não foi possível gerar o PDF. Tente novamente mais tarde! \n Status: {ex.Message}", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

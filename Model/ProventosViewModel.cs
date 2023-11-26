@@ -13,5 +13,7 @@ namespace DesktopPim.Model
         public string? Mes { get; set; }
         public DateTime? DataContratacao { get; set; }
         public List<Provento>? Proventos { get; set; }
+
+        public DateTime? dataContratacao { get; set; }
     }
 }
