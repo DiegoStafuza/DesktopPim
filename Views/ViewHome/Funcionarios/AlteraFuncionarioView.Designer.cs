@@ -56,7 +56,7 @@
             textBoxNmrContato = new TextBox();
             button1 = new Button();
             labelID = new Label();
-            label3 = new Label();
+            Id = new Label();
             maskedTextBoxDTContratacao = new MaskedTextBox();
             label18 = new Label();
             comboBoxUsuarios = new ComboBox();
@@ -67,6 +67,8 @@
             label19 = new Label();
             label20 = new Label();
             maskedTextBoxUF = new MaskedTextBox();
+            labelidEndereco = new Label();
+            labelidContato = new Label();
             SuspendLayout();
             // 
             // label1
@@ -86,7 +88,7 @@
             textBoxNomeCompleto.Location = new Point(12, 127);
             textBoxNomeCompleto.Name = "textBoxNomeCompleto";
             textBoxNomeCompleto.Size = new Size(414, 29);
-            textBoxNomeCompleto.TabIndex = 1;
+            textBoxNomeCompleto.TabIndex = 0;
             // 
             // label2
             // 
@@ -103,7 +105,7 @@
             checkBoxFeminino.Location = new Point(144, 207);
             checkBoxFeminino.Name = "checkBoxFeminino";
             checkBoxFeminino.Size = new Size(109, 35);
-            checkBoxFeminino.TabIndex = 5;
+            checkBoxFeminino.TabIndex = 4;
             checkBoxFeminino.Text = "Feminino";
             checkBoxFeminino.UseVisualStyleBackColor = true;
             checkBoxFeminino.CheckedChanged += checkBoxFeminino_CheckedChanged;
@@ -123,7 +125,7 @@
             checkBoxMasculino.Location = new Point(16, 207);
             checkBoxMasculino.Name = "checkBoxMasculino";
             checkBoxMasculino.Size = new Size(124, 35);
-            checkBoxMasculino.TabIndex = 4;
+            checkBoxMasculino.TabIndex = 3;
             checkBoxMasculino.Text = "Masculino";
             checkBoxMasculino.UseVisualStyleBackColor = true;
             checkBoxMasculino.CheckedChanged += checkBoxMasculino_CheckedChanged;
@@ -135,7 +137,7 @@
             comboBoxEstadoCivil.Location = new Point(12, 283);
             comboBoxEstadoCivil.Name = "comboBoxEstadoCivil";
             comboBoxEstadoCivil.Size = new Size(153, 29);
-            comboBoxEstadoCivil.TabIndex = 6;
+            comboBoxEstadoCivil.TabIndex = 5;
             // 
             // label5
             // 
@@ -153,7 +155,7 @@
             comboBoxCargos.Location = new Point(205, 283);
             comboBoxCargos.Name = "comboBoxCargos";
             comboBoxCargos.Size = new Size(262, 29);
-            comboBoxCargos.TabIndex = 7;
+            comboBoxCargos.TabIndex = 6;
             // 
             // label6
             // 
@@ -179,7 +181,7 @@
             textBoxRua.Location = new Point(16, 437);
             textBoxRua.Name = "textBoxRua";
             textBoxRua.Size = new Size(414, 29);
-            textBoxRua.TabIndex = 9;
+            textBoxRua.TabIndex = 8;
             // 
             // label10
             // 
@@ -196,7 +198,7 @@
             textBoxCidade.Location = new Point(18, 612);
             textBoxCidade.Name = "textBoxCidade";
             textBoxCidade.Size = new Size(414, 29);
-            textBoxCidade.TabIndex = 13;
+            textBoxCidade.TabIndex = 14;
             // 
             // maskedTextBoxCEP
             // 
@@ -241,7 +243,7 @@
             comboBoxTpEndereco.Location = new Point(438, 437);
             comboBoxTpEndereco.Name = "comboBoxTpEndereco";
             comboBoxTpEndereco.Size = new Size(153, 29);
-            comboBoxTpEndereco.TabIndex = 10;
+            comboBoxTpEndereco.TabIndex = 9;
             // 
             // label13
             // 
@@ -273,7 +275,7 @@
             // label16
             // 
             label16.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point);
-            label16.Location = new Point(19, 659);
+            label16.Location = new Point(22, 666);
             label16.Name = "label16";
             label16.Size = new Size(117, 34);
             label16.TabIndex = 50;
@@ -295,7 +297,7 @@
             comboBoxTpContato.Location = new Point(22, 744);
             comboBoxTpContato.Name = "comboBoxTpContato";
             comboBoxTpContato.Size = new Size(176, 29);
-            comboBoxTpContato.TabIndex = 14;
+            comboBoxTpContato.TabIndex = 15;
             // 
             // textBoxNmrContato
             // 
@@ -303,7 +305,7 @@
             textBoxNmrContato.Location = new Point(219, 744);
             textBoxNmrContato.Name = "textBoxNmrContato";
             textBoxNmrContato.Size = new Size(206, 29);
-            textBoxNmrContato.TabIndex = 15;
+            textBoxNmrContato.TabIndex = 16;
             // 
             // button1
             // 
@@ -315,7 +317,7 @@
             button1.Location = new Point(636, 726);
             button1.Name = "button1";
             button1.Size = new Size(199, 51);
-            button1.TabIndex = 16;
+            button1.TabIndex = 17;
             button1.Text = "Alterar";
             button1.UseVisualStyleBackColor = false;
             button1.Click += buttonAlterar_Click;
@@ -328,13 +330,13 @@
             labelID.Size = new Size(56, 34);
             labelID.TabIndex = 62;
             // 
-            // label3
+            // Id
             // 
-            label3.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.Location = new Point(16, 9);
-            label3.Name = "label3";
-            label3.Size = new Size(127, 48);
-            label3.TabIndex = 0;
+            Id.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            Id.Location = new Point(16, 9);
+            Id.Name = "Id";
+            Id.Size = new Size(127, 48);
+            Id.TabIndex = 0;
             // 
             // maskedTextBoxDTContratacao
             // 
@@ -343,7 +345,7 @@
             maskedTextBoxDTContratacao.Mask = "00/00/0000";
             maskedTextBoxDTContratacao.Name = "maskedTextBoxDTContratacao";
             maskedTextBoxDTContratacao.Size = new Size(102, 29);
-            maskedTextBoxDTContratacao.TabIndex = 8;
+            maskedTextBoxDTContratacao.TabIndex = 7;
             maskedTextBoxDTContratacao.ValidatingType = typeof(DateTime);
             // 
             // label18
@@ -362,7 +364,7 @@
             comboBoxUsuarios.Location = new Point(451, 127);
             comboBoxUsuarios.Name = "comboBoxUsuarios";
             comboBoxUsuarios.Size = new Size(213, 29);
-            comboBoxUsuarios.TabIndex = 2;
+            comboBoxUsuarios.TabIndex = 1;
             // 
             // label8
             // 
@@ -380,7 +382,7 @@
             maskedTextBoxCpf.Mask = "000,000,000-00";
             maskedTextBoxCpf.Name = "maskedTextBoxCpf";
             maskedTextBoxCpf.Size = new Size(146, 29);
-            maskedTextBoxCpf.TabIndex = 3;
+            maskedTextBoxCpf.TabIndex = 2;
             maskedTextBoxCpf.TextMaskFormat = MaskFormat.IncludePromptAndLiterals;
             // 
             // label9
@@ -398,7 +400,7 @@
             textBoxNumero.Location = new Point(607, 437);
             textBoxNumero.Name = "textBoxNumero";
             textBoxNumero.Size = new Size(153, 29);
-            textBoxNumero.TabIndex = 50;
+            textBoxNumero.TabIndex = 10;
             // 
             // label19
             // 
@@ -425,14 +427,32 @@
             maskedTextBoxUF.Mask = "AA";
             maskedTextBoxUF.Name = "maskedTextBoxUF";
             maskedTextBoxUF.Size = new Size(53, 29);
-            maskedTextBoxUF.TabIndex = 51;
+            maskedTextBoxUF.TabIndex = 13;
             maskedTextBoxUF.TextMaskFormat = MaskFormat.IncludePromptAndLiterals;
+            // 
+            // labelidEndereco
+            // 
+            labelidEndereco.Location = new Point(145, 368);
+            labelidEndereco.Name = "labelidEndereco";
+            labelidEndereco.Size = new Size(100, 23);
+            labelidEndereco.TabIndex = 69;
+            labelidEndereco.Visible = false;
+            // 
+            // labelidContato
+            // 
+            labelidContato.Location = new Point(145, 677);
+            labelidContato.Name = "labelidContato";
+            labelidContato.Size = new Size(100, 23);
+            labelidContato.TabIndex = 70;
+            labelidContato.Visible = false;
             // 
             // AlteraFuncionarioView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(847, 789);
+            Controls.Add(labelidContato);
+            Controls.Add(labelidEndereco);
             Controls.Add(maskedTextBoxUF);
             Controls.Add(label9);
             Controls.Add(label20);
@@ -443,7 +463,7 @@
             Controls.Add(comboBoxUsuarios);
             Controls.Add(label18);
             Controls.Add(maskedTextBoxDTContratacao);
-            Controls.Add(label3);
+            Controls.Add(Id);
             Controls.Add(labelID);
             Controls.Add(button1);
             Controls.Add(textBoxNmrContato);
@@ -510,7 +530,7 @@
         public TextBox textBoxNmrContato;
         public Button button1;
         public Label labelID;
-        private Label label3;
+        private Label Id;
         private Label label18;
         public ComboBox comboBoxUsuarios;
         private Label label8;
@@ -521,5 +541,7 @@
         private Label label20;
         public TextBox textBoxNumero;
         public MaskedTextBox maskedTextBoxUF;
+        private Label labelidEndereco;
+        private Label labelidContato;
     }
 }

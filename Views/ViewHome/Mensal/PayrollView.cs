@@ -374,7 +374,7 @@ namespace DesktopPim.Views
                 doc.Add(table);
 
 
-                Font salarioFont = FontFactory.GetFont(FontFactory.HELVETICA, 16, BaseColor.BLACK);
+                Font salarioFont = FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 16, BaseColor.BLACK);
                 Paragraph salarioLiquido = new Paragraph($"{labelValorLiquido.Text}", salarioFont);
                 salarioLiquido.SpacingBefore = 15;
                 salarioLiquido.Alignment = Element.ALIGN_RIGHT;
@@ -393,12 +393,12 @@ namespace DesktopPim.Views
                 }
                 else
                 {
-                    MessageBox.Show("Arquivo PDF não encontrado.", "Erro ao encontrar PDF.");
+                    MessageBox.Show("Arquivo PDF não encontrado.", "Erro ao encontrar PDF.", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Não foi possível gerar o PDF. Status: {ex.Message}");
+                MessageBox.Show($"Não foi possível gerar o PDF. Tente novamente mais tarde! \n Status: {ex.Message}", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

@@ -10,6 +10,7 @@ using System.Net.Http.Headers;
 using com.sun.xml.@internal.bind.v2.model.core;
 using DesktopPim.Views.ViewHome.Funcionarios;
 using System.Web.Helpers;
+using Microsoft.IdentityModel.Tokens;
 
 namespace DesktopPim.Controllers
 {
@@ -60,11 +61,11 @@ namespace DesktopPim.Controllers
 
             funcionariosView.dataGridViewFuncionarios.Columns.Clear();
             funcionariosView.dataGridViewFuncionarios.Columns.Add("ID", "ID");
-            funcionariosView.dataGridViewFuncionarios.Columns.Add("Nome Completo", "Nome Completo");
+            funcionariosView.dataGridViewFuncionarios.Columns.Add("Nome", "Nome");
             funcionariosView.dataGridViewFuncionarios.Columns.Add("Departamento", "Departamento");
             funcionariosView.dataGridViewFuncionarios.Columns.Add("Sexo", "Sexo");
             funcionariosView.dataGridViewFuncionarios.Columns.Add("Cargo", "Cargo");
-            funcionariosView.dataGridViewFuncionarios.Columns.Add("Data contratação", "Data contratação");
+            funcionariosView.dataGridViewFuncionarios.Columns.Add("Contratação", "Contratação");
 
             List<ListaFuncionarios> funcionarios = await this.ObterFuncionarios();
 
@@ -337,26 +338,60 @@ namespace DesktopPim.Controllers
             }
         }
 
-        public async Task<bool> AtualizarFuncionario(FuncionarioDTO model)
+        public async Task AtualizarFuncionario(FuncionarioDTO model)
         {
-            try
+            try {
+            List<EnderecoApiDTO> listaEndereco = new List<EnderecoApiDTO>();
+            List<TelefoneApiDTO> listaTelefone = new List<TelefoneApiDTO>();
+
+            if (model.enderecos != null)
             {
-                var apiDto = new FuncionarioApiDTO
+                model.enderecos.ForEach(end =>
                 {
-                    nome = model?.funcionario.nome_funcionario,
-                    sexo = model?.funcionario.sexo,
-                    estado_civil = model?.funcionario.estado_civil,
-                    cargo_id = model?.funcionario.cargo_id,
-                    data_contratacao = model?.funcionario.data_contratacao,
-                    cpf = model?.funcionario.cpf,
-                    rua = model?.enderecos?.FirstOrDefault()?.rua,
-                    tipo_endereco = model?.enderecos?.FirstOrDefault()?.tipo_endereco,
-                    bairro = model?.enderecos?.FirstOrDefault()?.bairro,
-                    cep = model?.enderecos?.FirstOrDefault()?.cep,
-                    cidade = model?.enderecos?.FirstOrDefault()?.cidade,
-                    tipo_telefone = model?.contatos?.FirstOrDefault()?.tipo_telefone,
-                    numero_contato = model?.contatos?.FirstOrDefault()?.numero_contato
-                }; 
+                    EnderecoApiDTO item = new EnderecoApiDTO();
+                    item.id = end.id;
+                    item.tipo_endereco = end.tipo_endereco;
+                    item.rua = end.rua;
+                    item.bairro = end.bairro;
+                    item.num_endereco = end.num_endereco;
+                    item.cep = end.cep;
+                    item.cidade = end.cidade;
+                    item.uf_estado = end.uf_estado;
+                    listaEndereco.Add(item);
+                });
+            }
+
+            if (model.contatos != null)
+            {
+                model.contatos.ForEach(cto =>
+                {
+                    TelefoneApiDTO item = new TelefoneApiDTO();
+                    item.id = cto.id;
+                    item.tipo_telefone = cto.tipo_telefone;
+                    item.numero_contato = cto.numero_contato;
+                    listaTelefone.Add(item);
+                });
+            }
+
+            string usuario = "";
+
+            if (model.funcionario.email_usuario != null)
+            {
+                usuario = model.funcionario.email_usuario.ToString();
+            }
+
+            var apiDto = new FuncionarioApiDTO
+            {
+                nome = model?.funcionario.nome_funcionario,
+                sexo = model?.funcionario.sexo,
+                estado_civil = model?.funcionario.estado_civil,
+                cargo_id = model?.funcionario.cargo_id,
+                data_contratacao = model?.funcionario.data_contratacao,
+                cpf = model?.funcionario.cpf,
+                email_usuario = usuario,
+                enderecos = listaEndereco,
+                telefones = listaTelefone
+            };
 
                 var jsonString = JsonSerializer.Serialize(apiDto);
                 var content = new StringContent(jsonString, Encoding.UTF8, "application/json");
@@ -367,18 +402,15 @@ namespace DesktopPim.Controllers
                 {
                     MessageBox.Show("Sucesso ao atualizar o funcionário!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    return true;
                 }
                 else
                 {
                     MessageBox.Show("Erro ao atualizar o funcionário!", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return false;
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Erro ao atualizar o funcionário!\n Status: {ex.Message}", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
             }
 
         }

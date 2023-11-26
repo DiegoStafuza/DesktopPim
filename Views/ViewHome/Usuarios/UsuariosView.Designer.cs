@@ -30,8 +30,15 @@ namespace DesktopPim.Views
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UsuariosView));
             dataGridViewUsuarios = new DataGridView();
+            ID = new DataGridViewTextBoxColumn();
+            Nome = new DataGridViewTextBoxColumn();
+            email = new DataGridViewTextBoxColumn();
+            Ativo = new DataGridViewTextBoxColumn();
+            Administrador = new DataGridViewTextBoxColumn();
             button1 = new Button();
             panel2 = new Panel();
             button2 = new Button();
@@ -48,31 +55,78 @@ namespace DesktopPim.Views
             dataGridViewUsuarios.AllowUserToDeleteRows = false;
             dataGridViewUsuarios.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewUsuarios.BackgroundColor = SystemColors.Control;
+            dataGridViewUsuarios.CellBorderStyle = DataGridViewCellBorderStyle.Sunken;
             dataGridViewUsuarios.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.Control;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dataGridViewUsuarios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dataGridViewUsuarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewUsuarios.Location = new Point(81, 154);
+            dataGridViewUsuarios.Columns.AddRange(new DataGridViewColumn[] { ID, Nome, email, Ativo, Administrador });
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dataGridViewUsuarios.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewUsuarios.Location = new Point(132, 82);
             dataGridViewUsuarios.MultiSelect = false;
             dataGridViewUsuarios.Name = "dataGridViewUsuarios";
             dataGridViewUsuarios.ReadOnly = true;
             dataGridViewUsuarios.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewUsuarios.RowTemplate.Height = 25;
-            dataGridViewUsuarios.Size = new Size(1070, 323);
+            dataGridViewUsuarios.RowTemplate.Height = 30;
+            dataGridViewUsuarios.Size = new Size(1287, 374);
             dataGridViewUsuarios.TabIndex = 6;
+            // 
+            // ID
+            // 
+            ID.HeaderText = "ID";
+            ID.Name = "ID";
+            ID.ReadOnly = true;
+            // 
+            // Nome
+            // 
+            Nome.HeaderText = "Nome";
+            Nome.Name = "Nome";
+            Nome.ReadOnly = true;
+            // 
+            // email
+            // 
+            email.HeaderText = "E-mail";
+            email.Name = "email";
+            email.ReadOnly = true;
+            // 
+            // Ativo
+            // 
+            Ativo.HeaderText = "Ativo";
+            Ativo.Name = "Ativo";
+            Ativo.ReadOnly = true;
+            // 
+            // Administrador
+            // 
+            Administrador.HeaderText = "Administrador";
+            Administrador.Name = "Administrador";
+            Administrador.ReadOnly = true;
             // 
             // button1
             // 
-            button1.Anchor = AnchorStyles.Bottom;
             button1.BackColor = Color.DarkGreen;
             button1.BackgroundImage = (Image)resources.GetObject("button1.BackgroundImage");
             button1.BackgroundImageLayout = ImageLayout.Stretch;
             button1.Cursor = Cursors.Hand;
             button1.FlatAppearance.BorderColor = Color.White;
             button1.FlatStyle = FlatStyle.Flat;
-            button1.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            button1.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
             button1.ForeColor = SystemColors.Control;
-            button1.Location = new Point(81, 483);
+            button1.Location = new Point(132, 462);
             button1.Name = "button1";
-            button1.Size = new Size(166, 56);
+            button1.Size = new Size(181, 66);
             button1.TabIndex = 0;
             button1.Text = "Atualizar tabela";
             button1.UseVisualStyleBackColor = false;
@@ -81,19 +135,15 @@ namespace DesktopPim.Views
             // panel2
             // 
             panel2.AutoSize = true;
-            panel2.Controls.Add(button2);
-            panel2.Controls.Add(dataGridViewUsuarios);
-            panel2.Controls.Add(button4);
             panel2.Controls.Add(button1);
-            panel2.Controls.Add(button3);
-            panel2.Location = new Point(0, 55);
+            panel2.Controls.Add(dataGridViewUsuarios);
+            panel2.Location = new Point(2, 277);
             panel2.Name = "panel2";
-            panel2.Size = new Size(1223, 547);
+            panel2.Size = new Size(1570, 598);
             panel2.TabIndex = 14;
             // 
             // button2
             // 
-            button2.Anchor = AnchorStyles.Bottom;
             button2.BackColor = Color.DarkGreen;
             button2.BackgroundImage = (Image)resources.GetObject("button2.BackgroundImage");
             button2.BackgroundImageLayout = ImageLayout.Stretch;
@@ -102,9 +152,9 @@ namespace DesktopPim.Views
             button2.FlatStyle = FlatStyle.Flat;
             button2.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             button2.ForeColor = SystemColors.Control;
-            button2.Location = new Point(985, 87);
+            button2.Location = new Point(1240, 287);
             button2.Name = "button2";
-            button2.Size = new Size(166, 56);
+            button2.Size = new Size(181, 66);
             button2.TabIndex = 3;
             button2.Text = "Cadastrar";
             button2.UseVisualStyleBackColor = false;
@@ -112,17 +162,16 @@ namespace DesktopPim.Views
             // 
             // button4
             // 
-            button4.Anchor = AnchorStyles.Bottom;
             button4.BackColor = Color.FromArgb(215, 190, 57);
             button4.BackgroundImageLayout = ImageLayout.Stretch;
             button4.Cursor = Cursors.Hand;
             button4.FlatAppearance.BorderColor = Color.White;
             button4.FlatStyle = FlatStyle.Flat;
-            button4.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            button4.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
             button4.ForeColor = SystemColors.Control;
-            button4.Location = new Point(83, 87);
+            button4.Location = new Point(134, 287);
             button4.Name = "button4";
-            button4.Size = new Size(166, 56);
+            button4.Size = new Size(181, 66);
             button4.TabIndex = 9;
             button4.Text = "Alterar";
             button4.UseVisualStyleBackColor = false;
@@ -130,17 +179,16 @@ namespace DesktopPim.Views
             // 
             // button3
             // 
-            button3.Anchor = AnchorStyles.Bottom;
             button3.BackColor = Color.FromArgb(174, 13, 13);
             button3.BackgroundImageLayout = ImageLayout.Stretch;
             button3.Cursor = Cursors.Hand;
             button3.FlatAppearance.BorderColor = Color.White;
             button3.FlatStyle = FlatStyle.Flat;
-            button3.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            button3.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
             button3.ForeColor = SystemColors.Control;
-            button3.Location = new Point(265, 87);
+            button3.Location = new Point(333, 287);
             button3.Name = "button3";
-            button3.Size = new Size(166, 56);
+            button3.Size = new Size(181, 66);
             button3.TabIndex = 6;
             button3.Text = "Excluir";
             button3.UseVisualStyleBackColor = false;
@@ -150,11 +198,11 @@ namespace DesktopPim.Views
             // 
             label6.AutoSize = true;
             label6.BackColor = Color.Transparent;
-            label6.Font = new Font("Segoe UI", 21.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label6.ForeColor = Color.OliveDrab;
+            label6.Font = new Font("Segoe UI", 27.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label6.ForeColor = Color.FromArgb(4, 120, 87);
             label6.Location = new Point(12, 9);
             label6.Name = "label6";
-            label6.Size = new Size(136, 40);
+            label6.Size = new Size(172, 50);
             label6.TabIndex = 16;
             label6.Text = "Usuários";
             // 
@@ -163,9 +211,12 @@ namespace DesktopPim.Views
             AutoScaleDimensions = new SizeF(96F, 96F);
             AutoScaleMode = AutoScaleMode.Dpi;
             BackColor = SystemColors.ActiveBorder;
-            ClientSize = new Size(1223, 602);
-            Controls.Add(panel2);
+            ClientSize = new Size(1573, 877);
+            Controls.Add(button3);
+            Controls.Add(button4);
+            Controls.Add(button2);
             Controls.Add(label6);
+            Controls.Add(panel2);
             FormBorderStyle = FormBorderStyle.None;
             Name = "UsuariosView";
             Load += UsuariosView_Load;
@@ -183,5 +234,10 @@ namespace DesktopPim.Views
         private Button button4;
         private Button button3;
         private Label label6;
+        private DataGridViewTextBoxColumn ID;
+        private DataGridViewTextBoxColumn Nome;
+        private DataGridViewTextBoxColumn email;
+        private DataGridViewTextBoxColumn Ativo;
+        private DataGridViewTextBoxColumn Administrador;
     }
 }

@@ -108,7 +108,7 @@ namespace DesktopPim.Views.ViewHome
            && !string.IsNullOrWhiteSpace(maskedTextBox1.Text)
            && !string.IsNullOrWhiteSpace((string)comboBoxTpContato.SelectedItem)
            && !string.IsNullOrWhiteSpace(textBox7.Text)
-           && comboBoxUsuarios.SelectedItem != null;
+           && (comboBoxUsuarios.SelectedItem != null && comboBoxUsuarios.SelectedIndex > 0);
 
         private string GetSexoSelecionado()
         {

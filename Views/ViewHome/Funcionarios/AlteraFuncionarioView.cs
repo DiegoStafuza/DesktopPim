@@ -31,7 +31,7 @@ namespace DesktopPim.Views.ViewHome.Funcionarios
             funcionariosController.LoadCargos(this);
             PreencherDetalhesFuncionario(idFuncionario);
             //this.Show();
-            
+
         }
         public AlteraFuncionarioView()
         {
@@ -47,11 +47,13 @@ namespace DesktopPim.Views.ViewHome.Funcionarios
             //await funcionariosController.LoadCargos(this);
         }
 
-
+        FuncionarioDTO.Endereco enderecos;
         public async void PreencherDetalhesFuncionario(int id)
         {
             var funcionario = await funcionariosController.ObterFuncionarioPorId(id);
 
+            labelidEndereco.Text = $"{funcionario.enderecos.FirstOrDefault()?.id}";
+            labelidContato.Text = $"{funcionario.contatos.FirstOrDefault()?.id}";
             textBoxNomeCompleto.Text = funcionario.funcionario.nome_funcionario;
             comboBoxEstadoCivil.Text = funcionario.funcionario.estado_civil;
             if (funcionario.funcionario.sexo == "Masculino")
@@ -69,13 +71,13 @@ namespace DesktopPim.Views.ViewHome.Funcionarios
             maskedTextBoxCEP.Text = funcionario.enderecos.FirstOrDefault()?.cep;
             textBoxCidade.Text = funcionario.enderecos.FirstOrDefault()?.cidade;
             comboBoxTpContato.Text = funcionario.contatos.FirstOrDefault()?.tipo_telefone;
-            label3.Text = $"ID: {funcionario.funcionario.id_funcionario}";
+            Id.Text = $"ID: {funcionario.funcionario.id_funcionario}";
             maskedTextBoxDTContratacao.Text = Convert.ToString(funcionario.funcionario.data_contratacao);
             textBoxNmrContato.Text = funcionario.contatos.FirstOrDefault()?.numero_contato;
             comboBoxUsuarios.Text = funcionario.funcionario.email_usuario;
-            maskedTextBoxUF.Text = funcionario.enderecos.FirstOrDefault().uf_estado;
+            maskedTextBoxUF.Text = funcionario.enderecos.FirstOrDefault()?.uf_estado;
             maskedTextBoxCpf.Text = funcionario.funcionario.cpf;
-            textBoxNumero.Text = funcionario.enderecos.FirstOrDefault().num_endereco;
+            textBoxNumero.Text = funcionario.enderecos.FirstOrDefault()?.num_endereco;
         }
 
         private void checkBoxFeminino_CheckedChanged(object sender, EventArgs e)
@@ -104,10 +106,11 @@ namespace DesktopPim.Views.ViewHome.Funcionarios
 
                 funcionarioDTO.funcionario = new FuncionarioDTO.FuncionarioDetalhe
                 {
+                    id_funcionario = idFuncionario,
                     nome_funcionario = textBoxNomeCompleto.Text,
                     cpf = maskedTextBoxCpf.Text,
                     sexo = GetSexoSelecionado(),
-                    cargo_id = ((CargosDTO)comboBoxCargos.SelectedItem)?.id_cargo,
+                    cargo_id = (int)comboBoxCargos.SelectedValue,
                     estado_civil = (string)comboBoxEstadoCivil.SelectedItem,
                     data_contratacao = Convert.ToDateTime(maskedTextBoxDTContratacao.Text),
                     email_usuario = ((UsuarioDTO)comboBoxUsuarios.SelectedItem)?.email
@@ -115,15 +118,17 @@ namespace DesktopPim.Views.ViewHome.Funcionarios
 
                 funcionarioDTO.enderecos = new List<FuncionarioDTO.Endereco>
                 {
+
                     new FuncionarioDTO.Endereco
                     {
+                        id = int.Parse(labelidEndereco.Text),
                         tipo_endereco = (string)comboBoxTpEndereco.SelectedItem,
                         bairro = textBoxBairro.Text,
                         cep = maskedTextBoxCEP.Text,
                         cidade = textBoxCidade.Text,
                         rua = textBoxRua.Text,
                         num_endereco = textBoxNumero.Text,
-                        uf_estado = maskedTextBoxUF.Text
+                        uf_estado = maskedTextBoxUF.Text,
                     }
                 };
 
@@ -131,11 +136,13 @@ namespace DesktopPim.Views.ViewHome.Funcionarios
 {
                     new FuncionarioDTO.Contato
                     {
-                    tipo_telefone = (string)comboBoxTpContato.SelectedItem,
-                    numero_contato = textBoxNmrContato.Text
+                        id = int.Parse(labelidContato.Text),
+                        tipo_telefone = (string)comboBoxTpContato.SelectedItem,
+                        numero_contato = textBoxNmrContato.Text
                     }
                 };
 
+                funcionariosController.AtualizarFuncionario(funcionarioDTO);
                 funcionariosController.LimparCampos(this);
                 FuncionariosView funcionariosView = new FuncionariosView();
                 funcionariosController.LoadDataAPI(funcionariosView);
@@ -144,25 +151,27 @@ namespace DesktopPim.Views.ViewHome.Funcionarios
             else
             {
                 //FuncionariosController funcionariosController = new();
-                MessageBox.Show("Preencha todos os campos antes de cadastrar um novo funcionário!", "Existem campos sem preenchimento!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show("Preencha todos os campos antes de alterar um funcionário!", "Existem campos sem preenchimento!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
 
         private bool CamposPreenchidos() =>
-       !string.IsNullOrWhiteSpace(textBoxNomeCompleto.Text)
+              !string.IsNullOrWhiteSpace(textBoxNomeCompleto.Text)
            && !string.IsNullOrWhiteSpace(maskedTextBoxCpf.Text)
-           && !string.IsNullOrWhiteSpace((string)comboBoxUsuarios.SelectedItem)
            && !string.IsNullOrWhiteSpace(GetSexoSelecionado())
-           && comboBoxCargos.SelectedItem != null
+           && (comboBoxCargos.SelectedItem != null && comboBoxCargos.SelectedIndex > 0)
            && (maskedTextBoxDtContratacao_Validating())
-           && !string.IsNullOrWhiteSpace((string)comboBoxEstadoCivil.SelectedItem)
+           && (comboBoxEstadoCivil.SelectedItem != null && comboBoxEstadoCivil.SelectedIndex > 0)
            && !string.IsNullOrWhiteSpace(textBoxRua.Text)
-           && !string.IsNullOrWhiteSpace((string)comboBoxTpEndereco.SelectedItem)
+           && (comboBoxTpEndereco.SelectedItem != null && comboBoxTpEndereco.SelectedIndex > 0)
+           && !string.IsNullOrWhiteSpace(textBoxNumero.Text)
            && !string.IsNullOrWhiteSpace(textBoxBairro.Text)
-           && !string.IsNullOrWhiteSpace(textBoxCidade.Text)
            && !string.IsNullOrWhiteSpace(maskedTextBoxCEP.Text)
+           && !string.IsNullOrWhiteSpace(textBoxCidade.Text)
+           && !string.IsNullOrWhiteSpace(maskedTextBoxUF.Text)
+           && (comboBoxTpContato.SelectedItem != null && comboBoxTpContato.SelectedIndex > 0)
            && !string.IsNullOrWhiteSpace(textBoxNmrContato.Text)
-           && !string.IsNullOrWhiteSpace((string)comboBoxTpContato.SelectedItem);
+           && (comboBoxUsuarios.SelectedItem != null && comboBoxUsuarios.SelectedIndex > 0);
 
         private string GetSexoSelecionado()
         {

@@ -54,15 +54,15 @@
             textBoxNomeValor.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             textBoxNomeValor.Location = new Point(12, 95);
             textBoxNomeValor.Name = "textBoxNomeValor";
-            textBoxNomeValor.Size = new Size(368, 33);
+            textBoxNomeValor.Size = new Size(551, 33);
             textBoxNomeValor.TabIndex = 0;
             // 
             // label2
             // 
-            label2.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label2.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
             label2.Location = new Point(12, 57);
             label2.Name = "label2";
-            label2.Size = new Size(208, 35);
+            label2.Size = new Size(239, 35);
             label2.TabIndex = 8;
             label2.Text = "Nomenclatura do valor";
             // 
@@ -70,15 +70,15 @@
             // 
             comboBoxTp.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             comboBoxTp.FormattingEnabled = true;
-            comboBoxTp.Location = new Point(12, 189);
+            comboBoxTp.Location = new Point(12, 199);
             comboBoxTp.Name = "comboBoxTp";
-            comboBoxTp.Size = new Size(368, 33);
+            comboBoxTp.Size = new Size(551, 33);
             comboBoxTp.TabIndex = 1;
             // 
             // label3
             // 
-            label3.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.Location = new Point(12, 151);
+            label3.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label3.Location = new Point(12, 161);
             label3.Name = "label3";
             label3.Size = new Size(60, 35);
             label3.TabIndex = 11;
@@ -86,8 +86,8 @@
             // 
             // label4
             // 
-            label4.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label4.Location = new Point(12, 241);
+            label4.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label4.Location = new Point(12, 269);
             label4.Name = "label4";
             label4.Size = new Size(60, 32);
             label4.TabIndex = 12;
@@ -98,11 +98,11 @@
             buttonAdicionarValor.BackColor = Color.OliveDrab;
             buttonAdicionarValor.Cursor = Cursors.Hand;
             buttonAdicionarValor.FlatStyle = FlatStyle.Flat;
-            buttonAdicionarValor.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonAdicionarValor.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             buttonAdicionarValor.ForeColor = SystemColors.Control;
-            buttonAdicionarValor.Location = new Point(363, 329);
+            buttonAdicionarValor.Location = new Point(423, 422);
             buttonAdicionarValor.Name = "buttonAdicionarValor";
-            buttonAdicionarValor.Size = new Size(118, 34);
+            buttonAdicionarValor.Size = new Size(140, 40);
             buttonAdicionarValor.TabIndex = 4;
             buttonAdicionarValor.Text = "Adicionar";
             buttonAdicionarValor.UseVisualStyleBackColor = false;
@@ -113,11 +113,11 @@
             button2.BackColor = SystemColors.ControlDarkDark;
             button2.Cursor = Cursors.Hand;
             button2.FlatStyle = FlatStyle.Flat;
-            button2.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            button2.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             button2.ForeColor = SystemColors.Control;
-            button2.Location = new Point(239, 329);
+            button2.Location = new Point(273, 422);
             button2.Name = "button2";
-            button2.Size = new Size(118, 34);
+            button2.Size = new Size(140, 40);
             button2.TabIndex = 3;
             button2.Text = "Fechar";
             button2.UseVisualStyleBackColor = false;
@@ -126,9 +126,9 @@
             // textBox1
             // 
             textBox1.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox1.Location = new Point(12, 276);
+            textBox1.Location = new Point(12, 304);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(368, 33);
+            textBox1.Size = new Size(551, 33);
             textBox1.TabIndex = 2;
             textBox1.TextChanged += textBox1_TextChanged;
             // 
@@ -137,7 +137,7 @@
             AutoScaleDimensions = new SizeF(96F, 96F);
             AutoScaleMode = AutoScaleMode.Dpi;
             BackColor = SystemColors.ControlLight;
-            ClientSize = new Size(493, 375);
+            ClientSize = new Size(575, 474);
             Controls.Add(textBox1);
             Controls.Add(button2);
             Controls.Add(buttonAdicionarValor);

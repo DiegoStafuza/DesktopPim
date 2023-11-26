@@ -72,7 +72,7 @@ namespace DesktopPim.Views.ViewHome
             }
             else
             {
-                MessageBox.Show("Selecione um funcionário na tabela para excluí-lo.");
+                MessageBox.Show("Selecione um funcionário na tabela para excluí-lo.", "Nenhum funcionário selecionado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
