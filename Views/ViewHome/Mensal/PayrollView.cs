@@ -64,7 +64,7 @@ namespace DesktopPim.Views
                     dataGridViewDescontos.Rows.Add(dataGridViewDescontos.Rows.Count + 1, "Desconto", "IRRF", funcionarioDetalhes.descontoIRRF);
                     dataGridViewDescontos.Rows.Add(dataGridViewDescontos.Rows.Count + 1, "Desconto", "FGTS", funcionarioDetalhes.descontoFGTS);
 
-                    await PreencherDetalhesFuncionario(funcionarioDetalhes, dataContratacao);
+                    await PreencherDetalhesFuncionario(funcionarioDetalhes);
 
                     CalcularValorLiquido();
                 }
@@ -91,16 +91,14 @@ namespace DesktopPim.Views
         }
         void LimparCamposDetalhesFuncionario()
         {
-
+            comboBoxFuncionarios.Text = string.Empty;
             textBoxDepto.Text = string.Empty;
             textBoxSalario.Text = string.Empty;
             textBoxCargo.Text = string.Empty;
+            dataGridViewDescontos.Rows.Clear();
+            comboBoxAno.Text = string.Empty;
+            comboBoxMes.Text = string.Empty;
 
-
-
-            textBoxDepto.Enabled = true;
-            textBoxSalario.Enabled = true;
-            textBoxCargo.Enabled = true;
         }
 
 
@@ -204,7 +202,7 @@ namespace DesktopPim.Views
                         FuncionarioId = funcionarioId,
                         Ano = ano,
                         Mes = mes,
-                        Proventos = proventos
+                        Proventos = proventos 
                     };
 
                     string dataContratacao = DateTime.Parse(textDataContratacao.Text.ToString()).ToString("MM/yyyy");
@@ -223,15 +221,17 @@ namespace DesktopPim.Views
 
                     await calculaFolha.AdicionarValores(model);
 
+
                     DialogResult dialogResult = MessageBox.Show("Deseja gerar um arquivo PDF desse lançamento?", "PDF", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                     if (dialogResult == DialogResult.Yes)
                     {
                         GerarPDF();
+                        LimparCamposDetalhesFuncionario();
                     }
                     else
                     {
-
+                        LimparCamposDetalhesFuncionario();
                     }
 
                 }

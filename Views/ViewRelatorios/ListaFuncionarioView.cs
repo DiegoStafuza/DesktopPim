@@ -34,9 +34,9 @@ namespace DesktopPim.Views.ViewDuvidas
                 }
                 else
                 {
-                    string mesSelecionado = (comboBoxMes.SelectedIndex).ToString("D2");
+                    string mesSelecionado = comboBoxMes.SelectedIndex.ToString("D2");
                     string anoSelecionado = comboBoxAno.SelectedItem.ToString();
-                    int funcionarioId = (comboBoxFuncionarios.SelectedItem as FuncionariosCalculo).id_funcionario;
+                    int funcionarioId = (int)comboBoxFuncionarios.SelectedValue;
 
                     relatorios.LoadDataPgto(this, mesSelecionado, anoSelecionado, funcionarioId);
 
@@ -44,7 +44,7 @@ namespace DesktopPim.Views.ViewDuvidas
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Houve um erro ao tentar buscar as informações de pagamentos do funcionário. \n Status {ex.Message}", "Tente novamente masis tarde.", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show($"Houve um erro ao tentar buscar as informações de pagamentos do funcionário. \n Status: {ex.Message}", "Tente novamente masis tarde.", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
 

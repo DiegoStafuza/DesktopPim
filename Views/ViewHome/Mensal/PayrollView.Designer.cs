@@ -392,5 +392,6 @@
         private Button button2;
         private TextBox textDataContratacao;
         private Label LabelDataContratacao;
+        private TextBox textBoxDataContratacao;
     }
 }

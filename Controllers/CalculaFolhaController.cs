@@ -146,20 +146,6 @@ public class CalculaFolhaController
         {
             List<ProventosListModel> proventos = new List<ProventosListModel>();
 
-            var dataContratacao = DateTime.Parse(model.DataContratacao.ToString()).ToString("MM/yyyy");
-
-            string juntaAnoMes = $"{model.Mes}/{model.Ano}";
-            var mesAnoCalculo = DateTime.Parse(juntaAnoMes.ToString()).ToString("MM/yyyy");
-
-            var dataContratacaoFormatada = DateTime.Parse(dataContratacao);
-
-            var mesAno = DateTime.Parse(mesAnoCalculo);
-
-            if(mesAno <= dataContratacaoFormatada)
-            {
-                MessageBox.Show($"Mês e ano não podem ser menores ou igual a data de contratação. \n\n Data de contratação: {dataContratacao}", "Erro ao adicionar valores.", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
             model.Proventos.ForEach(p =>
             {
                 var item = new ProventosListModel();

@@ -62,6 +62,10 @@ namespace DesktopPim.Controllers
                         });
                     }
                 }
+                if(dadosApi == null)
+                {
+                        MessageBox.Show("Não houve pagamento no mês e ano selecionado para esse funcionário.", "Informações não encontradas.", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
 
                return listaFiltrada;
                 }
@@ -77,10 +81,9 @@ namespace DesktopPim.Controllers
             list.dataGridViewDados.Columns.Clear();
             list.dataGridViewDados.Columns.Add("Mês", "Mês");
             list.dataGridViewDados.Columns.Add("Ano", "Ano");
-            list.dataGridViewDados.Columns.Add("Valor líquido", "Valor líquido");
-            list.dataGridViewDados.Columns.Add("Total descontos", "Total descontos");
             list.dataGridViewDados.Columns.Add("Total proventos", "Total proventos");
-
+            list.dataGridViewDados.Columns.Add("Total descontos", "Total descontos");
+            list.dataGridViewDados.Columns.Add("Valor líquido", "Valor líquido");
 
             List<DadosPgto> dados = await this.DadosPgto(mesSelecionado, anoSelecionado, id);
 
@@ -91,9 +94,9 @@ namespace DesktopPim.Controllers
                     list.dataGridViewDados.Rows.Add(
                         dado.mes,
                         dado.ano,
-                        dado.total_descontos,
-                        dado.total_proventos,
-                        dado.valor_liquido
+                        "R$ " + dado.total_proventos,
+                        "R$ " + dado.total_descontos,
+                        "R$ " + dado.valor_liquido
                         );
                 }
             }
