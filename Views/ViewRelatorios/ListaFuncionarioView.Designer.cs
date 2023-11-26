@@ -30,7 +30,6 @@
         {
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            comboBoxMes = new ComboBox();
             comboBoxAno = new ComboBox();
             dataGridViewDados = new DataGridView();
             Mês = new DataGridViewTextBoxColumn();
@@ -41,18 +40,10 @@
             comboBoxFuncionarios = new ComboBox();
             button1 = new Button();
             panel1 = new Panel();
+            buttonGeraPDF = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridViewDados).BeginInit();
             panel1.SuspendLayout();
             SuspendLayout();
-            // 
-            // comboBoxMes
-            // 
-            comboBoxMes.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point);
-            comboBoxMes.FormattingEnabled = true;
-            comboBoxMes.Location = new Point(690, 156);
-            comboBoxMes.Name = "comboBoxMes";
-            comboBoxMes.Size = new Size(263, 40);
-            comboBoxMes.TabIndex = 0;
             // 
             // comboBoxAno
             // 
@@ -155,12 +146,29 @@
             // panel1
             // 
             panel1.AutoSize = true;
+            panel1.Controls.Add(buttonGeraPDF);
             panel1.Controls.Add(dataGridViewDados);
             panel1.Controls.Add(button1);
             panel1.Location = new Point(2, 277);
             panel1.Name = "panel1";
             panel1.Size = new Size(1570, 598);
             panel1.TabIndex = 15;
+            // 
+            // buttonGeraPDF
+            // 
+            buttonGeraPDF.BackColor = Color.FromArgb(128, 128, 255);
+            buttonGeraPDF.BackgroundImageLayout = ImageLayout.Stretch;
+            buttonGeraPDF.Cursor = Cursors.Hand;
+            buttonGeraPDF.FlatStyle = FlatStyle.Flat;
+            buttonGeraPDF.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonGeraPDF.ForeColor = SystemColors.Control;
+            buttonGeraPDF.Location = new Point(132, 471);
+            buttonGeraPDF.Name = "buttonGeraPDF";
+            buttonGeraPDF.Size = new Size(181, 66);
+            buttonGeraPDF.TabIndex = 7;
+            buttonGeraPDF.Text = "Gerar PDF";
+            buttonGeraPDF.UseVisualStyleBackColor = false;
+            buttonGeraPDF.Click += buttonGeraPDF_Click;
             // 
             // ListaFuncionarioView
             // 
@@ -171,7 +179,6 @@
             Controls.Add(panel1);
             Controls.Add(comboBoxFuncionarios);
             Controls.Add(comboBoxAno);
-            Controls.Add(comboBoxMes);
             FormBorderStyle = FormBorderStyle.None;
             Name = "ListaFuncionarioView";
             Load += ListaFuncionarioView_Load;
@@ -182,8 +189,6 @@
         }
 
         #endregion
-
-        private ComboBox comboBoxMes;
         private ComboBox comboBoxAno;
         private Button button1;
         public ComboBox comboBoxFuncionarios;
@@ -194,5 +199,6 @@
         private DataGridViewTextBoxColumn total_proventos;
         private DataGridViewTextBoxColumn total_descontos;
         private DataGridViewTextBoxColumn Valor;
+        private Button buttonGeraPDF;
     }
 }

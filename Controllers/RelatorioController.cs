@@ -28,14 +28,14 @@ namespace DesktopPim.Controllers
 
         }
 
-        public async Task<List<DadosPgto>> DadosPgto(string mesSelecionado, string anoSelecionado, int id)
+        public async Task<List<DadosPgto>> DadosPgto(string anoSelecionado, int id)
         {
             int mes;
             int ano;
 
-            if (!int.TryParse(mesSelecionado, out mes) || !int.TryParse(anoSelecionado, out ano))
+            if (!int.TryParse(anoSelecionado, out ano))
             {
-                MessageBox.Show("Insira um mês e ano válidos.");
+                MessageBox.Show("Insira e ano válidos.");
                 return new List<DadosPgto>();
             }
             
@@ -50,7 +50,7 @@ namespace DesktopPim.Controllers
 
                 foreach (var item in dadosApi)
                 {
-                    if (int.Parse(item.mes) == mes && int.Parse(item.ano) == ano)
+                    if (int.Parse(item.ano) == ano)
                     {
                         listaFiltrada.Add(new DadosPgto
                         {
@@ -76,7 +76,7 @@ namespace DesktopPim.Controllers
             }
         }
 
-        public async void LoadDataPgto(ListaFuncionarioView list, string mesSelecionado, string anoSelecionado, int id)
+        public async void LoadDataPgto(ListaFuncionarioView list, string anoSelecionado, int id)
         {
             list.dataGridViewDados.Columns.Clear();
             list.dataGridViewDados.Columns.Add("Mês", "Mês");
@@ -85,7 +85,7 @@ namespace DesktopPim.Controllers
             list.dataGridViewDados.Columns.Add("Total descontos", "Total descontos");
             list.dataGridViewDados.Columns.Add("Valor líquido", "Valor líquido");
 
-            List<DadosPgto> dados = await this.DadosPgto(mesSelecionado, anoSelecionado, id);
+            List<DadosPgto> dados = await this.DadosPgto(anoSelecionado, id);
 
             if (dados != null)
             {

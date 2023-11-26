@@ -74,7 +74,7 @@ namespace DesktopPim.Views
                 }
             }
         }
-        public async Task PreencherDetalhesFuncionario(FuncionarioDetalhes funcionario) 
+        public async Task PreencherDetalhesFuncionario(FuncionarioDetalhes funcionario)
         {
             if (funcionario != null)
             {
@@ -202,7 +202,7 @@ namespace DesktopPim.Views
                         FuncionarioId = funcionarioId,
                         Ano = ano,
                         Mes = mes,
-                        Proventos = proventos 
+                        Proventos = proventos
                     };
 
                     string dataContratacao = DateTime.Parse(textDataContratacao.Text.ToString()).ToString("MM/yyyy");
@@ -246,14 +246,7 @@ namespace DesktopPim.Views
 
         public void button2_Click(object sender, EventArgs e)
         {
-            if (comboBoxMes.SelectedIndex <= 0 || string.IsNullOrEmpty(comboBoxAno.SelectedItem?.ToString()) || string.IsNullOrEmpty(comboBoxFuncionarios.SelectedItem?.ToString()))
-            {
-                MessageBox.Show("Preencha as informações corretamente antes de gerar o PDF", "Erro ao gerar PDF", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else
-            {
-                GerarPDF();
-            }
+            
         }
 
         public class PdfHeader : PdfPageEventHelper
