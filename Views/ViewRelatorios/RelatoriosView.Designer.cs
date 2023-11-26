@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RelatoriosView));
             label1 = new Label();
-            panel1 = new Panel();
+            panelPrincipal = new Panel();
             panel2 = new Panel();
             button2 = new Button();
             buttonFuncionariosPDF = new Button();
@@ -49,15 +49,15 @@
             label1.TabIndex = 0;
             label1.Text = "Relatórios";
             // 
-            // panel1
+            // panelPrincipal
             // 
-            panel1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            panel1.AutoSize = true;
-            panel1.BackColor = SystemColors.ControlDark;
-            panel1.Location = new Point(239, 0);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(1049, 573);
-            panel1.TabIndex = 1;
+            panelPrincipal.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            panelPrincipal.AutoSize = true;
+            panelPrincipal.BackColor = SystemColors.ControlDark;
+            panelPrincipal.Location = new Point(239, 0);
+            panelPrincipal.Name = "panelPrincipal";
+            panelPrincipal.Size = new Size(1049, 573);
+            panelPrincipal.TabIndex = 1;
             // 
             // panel2
             // 
@@ -90,6 +90,7 @@
             button2.TabIndex = 15;
             button2.Text = "        Pagamentos";
             button2.UseVisualStyleBackColor = false;
+            button2.Click += buttonPagamento_Click;
             // 
             // buttonFuncionariosPDF
             // 
@@ -126,7 +127,7 @@
             AutoScaleMode = AutoScaleMode.Dpi;
             BackColor = SystemColors.ControlDarkDark;
             ClientSize = new Size(1288, 573);
-            Controls.Add(panel1);
+            Controls.Add(panelPrincipal);
             Controls.Add(panel2);
             Controls.Add(panel3);
             FormBorderStyle = FormBorderStyle.None;
@@ -139,7 +140,7 @@
         #endregion
 
         private Label label1;
-        private Panel panel1;
+        private Panel panelPrincipal;
         private Panel panel2;
         private Button buttonFuncionariosPDF;
         private Button button2;

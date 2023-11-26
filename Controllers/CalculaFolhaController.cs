@@ -5,6 +5,7 @@ using DesktopPim.Controllers;
 using DesktopPim.Model;
 using DesktopPim.Views;
 using DesktopPim.Views.ViewHome;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -71,7 +72,7 @@ public class CalculaFolhaController
     {
         PayrollView payrollView = new();
         var funcionarioDetalhes = await ObterDetalhesFuncionario(selectedFuncionarioId);
-        await payrollView.PreencherDetalhesFuncionario(funcionarioDetalhes);
+        await payrollView.PreencherDetalhesFuncionario(funcionarioDetalhes, funcionarioDetalhes.dataContratacao.ToString());
     }
 
     public async Task<FuncionarioDetalhes> ObterDetalhesFuncionarioPorId(int id)
@@ -145,6 +146,20 @@ public class CalculaFolhaController
         try
         {
             List<ProventosListModel> proventos = new List<ProventosListModel>();
+
+            var dataContratacao = DateTime.Parse(model.DataContratacao.ToString()).ToString("MM/yyyy");
+
+            string juntaAnoMes = $"{model.Mes}/{model.Ano}";
+            var mesAnoCalculo = DateTime.Parse(juntaAnoMes.ToString()).ToString("MM/yyyy");
+
+            var dataContratacaoFormatada = DateTime.Parse(dataContratacao);
+
+            var mesAno = DateTime.Parse(mesAnoCalculo);
+
+            if(mesAno <= dataContratacaoFormatada)
+            {
+                MessageBox.Show($"Mês e ano não podem ser menores ou igual a data de contratação. \n\n Data de contratação: {dataContratacao}", "Erro ao adicionar valores.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
             model.Proventos.ForEach(p =>
             {
