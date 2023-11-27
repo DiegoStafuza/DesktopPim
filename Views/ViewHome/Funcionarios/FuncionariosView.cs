@@ -50,7 +50,7 @@ namespace DesktopPim.Views.ViewHome
                 try
                 {
                     int idFuncionarioSelecionado = Convert.ToInt32(dataGridViewFuncionarios.SelectedRows[0].Cells["ID"].Value);
-                    string nomeFunc = (string)dataGridViewFuncionarios.SelectedRows[0].Cells["Nome completo"].Value;
+                    string nomeFunc = (string)dataGridViewFuncionarios.SelectedRows[0].Cells["Nome"].Value;
 
                     DialogResult desejaExcluir = MessageBox.Show($"Ao continuar, você excluirá o funcionário '{nomeFunc}'. Tem certeza que deseja continuar?", "Exclusão de funcionário", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
 

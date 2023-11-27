@@ -183,6 +183,7 @@ namespace DesktopPim.Views.ViewDuvidas
                             string cellValue = dataGridViewDados[j, i].Value.ToString();
                             PdfPCell cell = new PdfPCell(new Phrase(cellValue, cellFont));
                             cell.BackgroundColor = customColor2;
+                            cell.FixedHeight = 20;
                             table.AddCell(cell);
                         }
                     }

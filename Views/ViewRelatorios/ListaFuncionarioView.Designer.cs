@@ -51,9 +51,9 @@
             // 
             comboBoxAno.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point);
             comboBoxAno.FormattingEnabled = true;
-            comboBoxAno.Location = new Point(591, 156);
+            comboBoxAno.Location = new Point(625, 156);
             comboBoxAno.Name = "comboBoxAno";
-            comboBoxAno.Size = new Size(269, 40);
+            comboBoxAno.Size = new Size(316, 40);
             comboBoxAno.TabIndex = 1;
             // 
             // dataGridViewDados
@@ -127,7 +127,7 @@
             comboBoxFuncionarios.FormattingEnabled = true;
             comboBoxFuncionarios.Location = new Point(133, 156);
             comboBoxFuncionarios.Name = "comboBoxFuncionarios";
-            comboBoxFuncionarios.Size = new Size(440, 40);
+            comboBoxFuncionarios.Size = new Size(472, 40);
             comboBoxFuncionarios.TabIndex = 3;
             // 
             // button1
@@ -151,9 +151,9 @@
             panel1.Controls.Add(buttonGeraPDF);
             panel1.Controls.Add(dataGridViewDados);
             panel1.Controls.Add(button1);
-            panel1.Location = new Point(2, 277);
+            panel1.Location = new Point(2, 261);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1570, 598);
+            panel1.Size = new Size(1570, 614);
             panel1.TabIndex = 15;
             // 
             // buttonGeraPDF
@@ -164,7 +164,7 @@
             buttonGeraPDF.FlatStyle = FlatStyle.Flat;
             buttonGeraPDF.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
             buttonGeraPDF.ForeColor = SystemColors.Control;
-            buttonGeraPDF.Location = new Point(132, 471);
+            buttonGeraPDF.Location = new Point(132, 465);
             buttonGeraPDF.Name = "buttonGeraPDF";
             buttonGeraPDF.Size = new Size(181, 66);
             buttonGeraPDF.TabIndex = 7;
@@ -175,7 +175,7 @@
             // label1
             // 
             label1.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(591, 118);
+            label1.Location = new Point(625, 118);
             label1.Name = "label1";
             label1.Size = new Size(81, 35);
             label1.TabIndex = 14;
