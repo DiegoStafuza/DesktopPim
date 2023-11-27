@@ -55,7 +55,7 @@
             Valor = new DataGridViewTextBoxColumn();
             button1 = new Button();
             labelValorLiquido = new Label();
-            button2 = new Button();
+            buttonGerarPDF = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewDescontos).BeginInit();
             SuspendLayout();
@@ -327,21 +327,21 @@
             labelValorLiquido.TabIndex = 0;
             labelValorLiquido.TextAlign = ContentAlignment.MiddleLeft;
             // 
-            // button2
+            // buttonGerarPDF
             // 
-            button2.BackColor = Color.FromArgb(128, 128, 255);
-            button2.BackgroundImageLayout = ImageLayout.Stretch;
-            button2.Cursor = Cursors.Hand;
-            button2.FlatStyle = FlatStyle.Flat;
-            button2.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
-            button2.ForeColor = SystemColors.Control;
-            button2.Location = new Point(337, 743);
-            button2.Name = "button2";
-            button2.Size = new Size(181, 66);
-            button2.TabIndex = 6;
-            button2.Text = "Gerar PDF";
-            button2.UseVisualStyleBackColor = false;
-            button2.Click += button2_Click;
+            buttonGerarPDF.BackColor = Color.FromArgb(128, 128, 255);
+            buttonGerarPDF.BackgroundImageLayout = ImageLayout.Stretch;
+            buttonGerarPDF.Cursor = Cursors.Hand;
+            buttonGerarPDF.FlatStyle = FlatStyle.Flat;
+            buttonGerarPDF.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonGerarPDF.ForeColor = SystemColors.Control;
+            buttonGerarPDF.Location = new Point(337, 743);
+            buttonGerarPDF.Name = "buttonGerarPDF";
+            buttonGerarPDF.Size = new Size(181, 66);
+            buttonGerarPDF.TabIndex = 6;
+            buttonGerarPDF.Text = "Gerar PDF";
+            buttonGerarPDF.UseVisualStyleBackColor = false;
+            buttonGerarPDF.Click += buttonGerarPDF_Click;
             // 
             // PayrollView
             // 
@@ -349,7 +349,7 @@
             AutoScaleMode = AutoScaleMode.Dpi;
             BackColor = SystemColors.ActiveBorder;
             ClientSize = new Size(1573, 877);
-            Controls.Add(button2);
+            Controls.Add(buttonGerarPDF);
             Controls.Add(labelValorLiquido);
             Controls.Add(button1);
             Controls.Add(dataGridViewDescontos);
@@ -389,7 +389,7 @@
         public ComboBox comboBoxAno;
         public Label labelValorLiquido;
         private Label label7;
-        private Button button2;
+        private Button buttonGerarPDF;
         private TextBox textDataContratacao;
         private Label LabelDataContratacao;
         private TextBox textBoxDataContratacao;

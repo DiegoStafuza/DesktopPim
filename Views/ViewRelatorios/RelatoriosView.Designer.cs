@@ -42,7 +42,7 @@
             // 
             label1.FlatStyle = FlatStyle.Flat;
             label1.Font = new Font("Segoe UI", 26.25F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.ForeColor = Color.DarkGreen;
+            label1.ForeColor = SystemColors.Control;
             label1.Location = new Point(24, 23);
             label1.Name = "label1";
             label1.Size = new Size(191, 60);

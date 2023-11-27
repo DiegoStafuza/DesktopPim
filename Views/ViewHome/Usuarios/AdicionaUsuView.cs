@@ -26,7 +26,6 @@ namespace DesktopPim.Views
             NomeCompletoTx.Clear();
             EmailTx.Clear();
             SenhaTx.Clear();
-            CheckAtivo.Checked = false;
             CheckAdm.Checked = false;
             ConfirmSenTx.Clear();
         }
@@ -47,8 +46,7 @@ namespace DesktopPim.Views
                         Nome = NomeCompletoTx.Text,
                         Email = EmailTx.Text,
                         Senha = SenhaTx.Text,
-                        Tipo = (short)(CheckAdm.Checked ? 1 : 0),
-                        Ativo = (short)(CheckAtivo.Checked ? 1 : 0)
+                        Tipo = (short)(CheckAdm.Checked ? 1 : 0)
                     };
 
                     await cadastroController.Cadastro(cadastroViewModel);

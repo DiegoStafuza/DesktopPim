@@ -20,7 +20,7 @@ namespace DesktopPim.Views
             InitializeComponent();
             this.WindowState = FormWindowState.Maximized;
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
-            
+
         }
 
         public void ABrirFormFilho(Form formularioFilho)

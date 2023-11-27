@@ -99,7 +99,7 @@
             // label7
             // 
             label7.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label7.Location = new Point(428, 237);
+            label7.Location = new Point(489, 237);
             label7.Name = "label7";
             label7.Size = new Size(204, 34);
             label7.TabIndex = 25;
@@ -138,13 +138,13 @@
             comboBoxCargos.FormattingEnabled = true;
             comboBoxCargos.Location = new Point(182, 274);
             comboBoxCargos.Name = "comboBoxCargos";
-            comboBoxCargos.Size = new Size(228, 29);
+            comboBoxCargos.Size = new Size(305, 29);
             comboBoxCargos.TabIndex = 6;
             // 
             // maskedTextBoxDtContratacao
             // 
             maskedTextBoxDtContratacao.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            maskedTextBoxDtContratacao.Location = new Point(432, 274);
+            maskedTextBoxDtContratacao.Location = new Point(493, 274);
             maskedTextBoxDtContratacao.Mask = "00/00/0000";
             maskedTextBoxDtContratacao.Name = "maskedTextBoxDtContratacao";
             maskedTextBoxDtContratacao.Size = new Size(97, 29);
@@ -403,15 +403,15 @@
             // 
             comboBoxUsuarios.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             comboBoxUsuarios.FormattingEnabled = true;
-            comboBoxUsuarios.Location = new Point(458, 104);
+            comboBoxUsuarios.Location = new Point(437, 104);
             comboBoxUsuarios.Name = "comboBoxUsuarios";
-            comboBoxUsuarios.Size = new Size(228, 29);
+            comboBoxUsuarios.Size = new Size(266, 29);
             comboBoxUsuarios.TabIndex = 1;
             // 
             // label19
             // 
             label19.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label19.Location = new Point(458, 67);
+            label19.Location = new Point(437, 67);
             label19.Name = "label19";
             label19.Size = new Size(85, 34);
             label19.TabIndex = 49;

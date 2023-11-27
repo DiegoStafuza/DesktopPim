@@ -146,7 +146,7 @@
             labelLogo.Name = "labelLogo";
             labelLogo.Size = new Size(289, 92);
             labelLogo.TabIndex = 0;
-            labelLogo.Text = "Holfree";
+            labelLogo.Text = "HolFree";
             labelLogo.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // peopleBtn

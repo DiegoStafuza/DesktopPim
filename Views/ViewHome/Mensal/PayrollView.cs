@@ -187,7 +187,7 @@ namespace DesktopPim.Views
 
                 }
 
-                if (comboBoxMes.SelectedIndex <= 0 || string.IsNullOrEmpty(comboBoxAno.SelectedItem?.ToString()))
+                if (comboBoxMes.SelectedIndex <= 0 || string.IsNullOrEmpty(comboBoxAno.SelectedItem?.ToString()) || string.IsNullOrEmpty(comboBoxFuncionarios.SelectedItem?.ToString()))
                 {
                     MessageBox.Show("Preencha as informações corretamente antes de realizar o envio", "Erro ao lançar folha.", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
@@ -244,9 +244,17 @@ namespace DesktopPim.Views
 
         }
 
-        public void button2_Click(object sender, EventArgs e)
+        public void buttonGerarPDF_Click(object sender, EventArgs e)
         {
-            
+            if (comboBoxMes.SelectedIndex <= 0 || string.IsNullOrEmpty(comboBoxAno.SelectedItem?.ToString()) || string.IsNullOrEmpty(comboBoxFuncionarios.SelectedItem?.ToString()))
+            {
+                MessageBox.Show("Preencha as informações corretamente antes de gerar o PDF", "Erro ao gerar PDF", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+            else
+            {
+                GerarPDF();
+            }
         }
 
         public class PdfHeader : PdfPageEventHelper

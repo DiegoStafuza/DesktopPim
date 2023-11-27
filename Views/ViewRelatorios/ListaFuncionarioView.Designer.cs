@@ -41,6 +41,8 @@
             button1 = new Button();
             panel1 = new Panel();
             buttonGeraPDF = new Button();
+            label1 = new Label();
+            label2 = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridViewDados).BeginInit();
             panel1.SuspendLayout();
             SuspendLayout();
@@ -49,9 +51,9 @@
             // 
             comboBoxAno.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point);
             comboBoxAno.FormattingEnabled = true;
-            comboBoxAno.Location = new Point(975, 156);
+            comboBoxAno.Location = new Point(591, 156);
             comboBoxAno.Name = "comboBoxAno";
-            comboBoxAno.Size = new Size(221, 40);
+            comboBoxAno.Size = new Size(269, 40);
             comboBoxAno.TabIndex = 1;
             // 
             // dataGridViewDados
@@ -170,12 +172,32 @@
             buttonGeraPDF.UseVisualStyleBackColor = false;
             buttonGeraPDF.Click += buttonGeraPDF_Click;
             // 
+            // label1
+            // 
+            label1.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.Location = new Point(591, 118);
+            label1.Name = "label1";
+            label1.Size = new Size(81, 35);
+            label1.TabIndex = 14;
+            label1.Text = "Ano";
+            // 
+            // label2
+            // 
+            label2.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point);
+            label2.Location = new Point(133, 118);
+            label2.Name = "label2";
+            label2.Size = new Size(197, 35);
+            label2.TabIndex = 14;
+            label2.Text = "Funcionário";
+            // 
             // ListaFuncionarioView
             // 
             AutoScaleDimensions = new SizeF(96F, 96F);
             AutoScaleMode = AutoScaleMode.Dpi;
             BackColor = SystemColors.ActiveBorder;
             ClientSize = new Size(1573, 877);
+            Controls.Add(label2);
+            Controls.Add(label1);
             Controls.Add(panel1);
             Controls.Add(comboBoxFuncionarios);
             Controls.Add(comboBoxAno);
@@ -200,5 +222,7 @@
         private DataGridViewTextBoxColumn total_descontos;
         private DataGridViewTextBoxColumn Valor;
         private Button buttonGeraPDF;
+        private Label label1;
+        private Label label2;
     }
 }

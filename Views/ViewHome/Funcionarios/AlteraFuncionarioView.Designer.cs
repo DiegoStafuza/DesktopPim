@@ -136,7 +136,7 @@
             comboBoxEstadoCivil.FormattingEnabled = true;
             comboBoxEstadoCivil.Location = new Point(12, 283);
             comboBoxEstadoCivil.Name = "comboBoxEstadoCivil";
-            comboBoxEstadoCivil.Size = new Size(153, 29);
+            comboBoxEstadoCivil.Size = new Size(180, 29);
             comboBoxEstadoCivil.TabIndex = 5;
             // 
             // label5
@@ -154,7 +154,7 @@
             comboBoxCargos.FormattingEnabled = true;
             comboBoxCargos.Location = new Point(205, 283);
             comboBoxCargos.Name = "comboBoxCargos";
-            comboBoxCargos.Size = new Size(262, 29);
+            comboBoxCargos.Size = new Size(296, 29);
             comboBoxCargos.TabIndex = 6;
             // 
             // label6
@@ -341,7 +341,7 @@
             // maskedTextBoxDTContratacao
             // 
             maskedTextBoxDTContratacao.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            maskedTextBoxDTContratacao.Location = new Point(485, 283);
+            maskedTextBoxDTContratacao.Location = new Point(520, 283);
             maskedTextBoxDTContratacao.Mask = "00/00/0000";
             maskedTextBoxDTContratacao.Name = "maskedTextBoxDTContratacao";
             maskedTextBoxDTContratacao.Size = new Size(102, 29);
@@ -351,7 +351,7 @@
             // label18
             // 
             label18.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label18.Location = new Point(489, 246);
+            label18.Location = new Point(524, 246);
             label18.Name = "label18";
             label18.Size = new Size(206, 34);
             label18.TabIndex = 66;
@@ -361,15 +361,15 @@
             // 
             comboBoxUsuarios.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             comboBoxUsuarios.FormattingEnabled = true;
-            comboBoxUsuarios.Location = new Point(451, 127);
+            comboBoxUsuarios.Location = new Point(438, 127);
             comboBoxUsuarios.Name = "comboBoxUsuarios";
-            comboBoxUsuarios.Size = new Size(213, 29);
+            comboBoxUsuarios.Size = new Size(226, 29);
             comboBoxUsuarios.TabIndex = 1;
             // 
             // label8
             // 
             label8.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label8.Location = new Point(451, 90);
+            label8.Location = new Point(438, 90);
             label8.Name = "label8";
             label8.Size = new Size(96, 34);
             label8.TabIndex = 68;
@@ -378,7 +378,7 @@
             // maskedTextBoxCpf
             // 
             maskedTextBoxCpf.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            maskedTextBoxCpf.Location = new Point(689, 127);
+            maskedTextBoxCpf.Location = new Point(684, 127);
             maskedTextBoxCpf.Mask = "000,000,000-00";
             maskedTextBoxCpf.Name = "maskedTextBoxCpf";
             maskedTextBoxCpf.Size = new Size(146, 29);
@@ -388,7 +388,7 @@
             // label9
             // 
             label9.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label9.Location = new Point(689, 90);
+            label9.Location = new Point(684, 90);
             label9.Name = "label9";
             label9.Size = new Size(80, 34);
             label9.TabIndex = 51;

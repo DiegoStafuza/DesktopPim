@@ -32,7 +32,7 @@ namespace DesktopPim.Views.ViewDuvidas
             try
             {
 
-                if (string.IsNullOrEmpty(comboBoxAno.SelectedItem?.ToString()))
+                if (string.IsNullOrEmpty(comboBoxAno.SelectedItem?.ToString()) || string.IsNullOrEmpty(comboBoxFuncionarios.SelectedItem?.ToString()))
                 {
                     MessageBox.Show("Preencha as informações corretamente antes de realizar a busca", "Erro ao buscar lançamentos.", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }

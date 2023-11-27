@@ -38,7 +38,6 @@
             SenhaTx = new TextBox();
             label5 = new Label();
             ConfirmSenTx = new TextBox();
-            CheckAtivo = new CheckBox();
             CheckAdm = new CheckBox();
             button1 = new Button();
             SuspendLayout();
@@ -128,18 +127,6 @@
             ConfirmSenTx.TabIndex = 3;
             ConfirmSenTx.UseSystemPasswordChar = true;
             // 
-            // CheckAtivo
-            // 
-            CheckAtivo.Cursor = Cursors.Hand;
-            CheckAtivo.FlatStyle = FlatStyle.Flat;
-            CheckAtivo.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            CheckAtivo.Location = new Point(199, 510);
-            CheckAtivo.Name = "CheckAtivo";
-            CheckAtivo.Size = new Size(166, 57);
-            CheckAtivo.TabIndex = 5;
-            CheckAtivo.Text = "Ativo";
-            CheckAtivo.UseVisualStyleBackColor = true;
-            // 
             // CheckAdm
             // 
             CheckAdm.Cursor = Cursors.Hand;
@@ -175,7 +162,6 @@
             ClientSize = new Size(847, 728);
             Controls.Add(button1);
             Controls.Add(CheckAdm);
-            Controls.Add(CheckAtivo);
             Controls.Add(label5);
             Controls.Add(ConfirmSenTx);
             Controls.Add(label4);
@@ -204,7 +190,6 @@
         private TextBox SenhaTx;
         private Label label5;
         private TextBox ConfirmSenTx;
-        private CheckBox CheckAtivo;
         private CheckBox CheckAdm;
         private Button button1;
     }

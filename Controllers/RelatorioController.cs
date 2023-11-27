@@ -64,14 +64,14 @@ namespace DesktopPim.Controllers
                 }
                 if(dadosApi == null)
                 {
-                        MessageBox.Show("Não houve pagamento no mês e ano selecionado para esse funcionário.", "Informações não encontradas.", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        MessageBox.Show("Não foram encontrados pagamentos no ano selecionado para esse funcionário.", "Informações não encontradas.", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
 
                return listaFiltrada;
                 }
             else
             {
-                MessageBox.Show("Falha ao obter os dados da API.");
+                MessageBox.Show("Não foram encontrados pagamentos no ano selecionado para esse funcionário.", "Informações não encontradas.", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return new List<DadosPgto>();
             }
         }
